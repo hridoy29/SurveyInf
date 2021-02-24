@@ -1,0 +1,95 @@
+﻿</p>
+<div class="row">
+
+	<div class="col-md-12">
+		<!--<div class="portlet box purple">-->
+			<!--<div class="portlet-title sbold">
+				<div class="caption">
+					<label>
+						Survey Report List
+					</label>
+				</div>
+			</div>-->
+            <div class="portlet-body">
+                <div class="tbl-outer">
+                    <table class="responstable table-hover">
+                        <tbody>
+                            <tr class="t-head" style="font-size: 14px !important">
+                                <th class="sbold">#</th>
+                                <th class="sbold text-center" data-th="Details"><span>Reference</span></th>
+                                <th class="sbold text-center">Distributor</th>
+                                <th class="sbold text-center">Gcc Code</th>
+                                <th class="sbold text-center">Mobile Number</th>
+                                <th class="sbold text-center">Outlate Address</th>
+                                <th class="sbold text-center">Outlet Name</th>
+                                <th class="sbold text-center">Seller Name</th>
+                                <th class="sbold text-center">ASM Name</th>
+                                <th class="sbold text-center">AIC Name</th>
+                                <th class="sbold text-center">Comment Type</th>
+                                <th class="sbold text-center">Comments</th>
+                                <!---->
+                                <th class="sbold text-center">CocaCola Label Available</th>
+                                <th class="sbold text-center">Expired Product Available</th>
+                                <th class="sbold text-center">Got Any Challan</th>
+                                <th class="sbold text-center">Got Latest Discount Offer</th>
+                                <th class="sbold text-center">Satisfied With Product Order And Service</th>
+                                <th class="sbold text-center">Satisfied With Salles Officer</th>
+                                <th class="sbold text-center">Facilitated By Scheme</th>
+                                <th class="sbold text-center">GccCode Available</th>
+                                <th class="sbold text-center">Knowen About Scheme</th>
+                                <th class="sbold text-center">Written Record Available</th>
+                                <!---->
+                                <th class="sbold text-center">Salles Officer Visiting Day</th>
+                                <th class="sbold text-center">Get Any Discount Offer From Distributor</th>
+                                
+
+                            </tr>
+                           
+                            <!-- table data-->
+                            <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
+                                <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
+                                <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
+                                <td class="text-center"> {{item.Number}} </td>
+                                <td class="text-center"> {{item.DistributorName}} </td>
+                                <td class="text-center"> {{item.GccCode}} </td>
+                                <td class="text-center"> {{item.MobileNumber}} </td>
+                                <td class="text-center"> {{item.OutlateAddress}} </td>
+                                <td class="text-center"> {{item.OutlateName}} </td>
+                                <td class="text-center"> {{item.RetailSellerName}} </td>
+                                <td class="text-center"> {{item.ASMName}} </td>
+                                <td class="text-center"> {{item.AICName}} </td>
+                                <td class="text-center"> {{item.CommentsType}} </td>
+                                <td class="text-center"> {{item.Comments}} </td>
+                                <!---->
+
+                                <td class="text-center"> {{item.DoesCocaColaLabelAvailable}} </td>
+                                <td class="text-center"> {{item.DoesExpiredProductAvailable}} </td>
+                                <td class="text-center"> {{item.DoesGotAnyChallan}} </td>
+                                <td class="text-center"> {{item.DoesGotLatestDiscountOffer}} </td>
+                                <td class="text-center"> {{item.DoesSatisfiedWithProductOrderAndService}} </td>
+                                <td class="text-center"> {{item.DoesSatisfiedWithSallesOfficer}} </td>
+                                <td class="text-center"> {{item.IsFacilitatedByScheme}} </td>
+                                <td class="text-center"> {{item.IsGccCodeAvailable}} </td>
+                                <td class="text-center"> {{item.IsKnowenAboutScheme}} </td>
+                                <td class="text-center"> {{item.IsWrittenRecordAvailable}} </td>
+                                <!---->
+                                <td class="text-center"> {{item.SallesOfficerVisitingDay}} DAY</td>
+                                <td class="text-center"> {{item.WillGetAnyDiscountOfferFromDistributor}} </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="tbl-outer" style="padding:10px 20px !important">
+                        <dir-pagination-controls pagination-id="cust"
+                                                 direction-links="true"
+                                                 boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
+                    </div>
+                </div>
+               
+            </div>
+
+		<!--</div>-->
+
+	</div>
+</div>
