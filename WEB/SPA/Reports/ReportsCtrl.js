@@ -24,16 +24,24 @@
     //        }
     //    });
     //}
-    $scope.acceptanceList = [{
-        "Id": "1",
-        "Name": "Yes"
-    }, {
-            "Id": "2",
-            "Name": "No"
-    }, {
-            "Id": "3",
-            "Name": "Not Aplicable"
-    }]
+    $scope.getImage = function (number) {
+        
+        $http({
+            url: '/SurveyReport/GetImageLocation?number=' + number,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            if (data.length) {
+                $scope.imageLocationList = data;
+
+                angular.forEach(data, function (obj) {
+                    window.open('http://202.126.122.85:72' + obj.ImageLocation);
+                });
+                //window.open('http://202.126.122.85:72/image/201_ICL_100017_1.png');
+                
+            }
+        });
+    }
     
 
     function clear() {

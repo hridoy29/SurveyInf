@@ -39,6 +39,7 @@
                                 <th class="sbold text-center">Having date expired products</th>
                                 <th class="sbold text-center">Satisfaction of sales officer’s service</th>
                                 <th class="sbold text-center">Satisfaction on product order & receiving</th>
+                                <th class="sbold text-center">Receiving Amount</th>
                                 <th class="sbold text-center">Frequency of SO’s visit</th>
                                 <th class="sbold text-center">Getting last discount benefit</th>
                                 <!---->
@@ -48,7 +49,7 @@
                                 <th class="sbold text-center">Comments Type</th>
                                 <th class="sbold text-center">Comments</th>
                                 <th class="sbold text-center">Comment Details</th>
-
+                                <th class="sbold text-center">Image</th>
                             </tr>
                            
                             <!-- table data-->
@@ -59,7 +60,7 @@
                                 <td class="text-center"> {{item.OutlateName}} </td>
                                 <td class="text-center"> {{item.GccCode}} </td>
                                 <td class="text-center"> {{item.RetailSellerName}} </td>
-                                
+
                                 <td class="text-center"> {{item.MobileNumber}} </td>
                                 <td class="text-center"> {{item.OutlateTypeId}} </td>
                                 <td class="text-center"> {{item.VisitedDate}} </td>
@@ -73,14 +74,15 @@
                                 <td class="text-center"> {{item.IsFacilitatedByScheme}} </td>
                                 <td class="text-center"> {{item.DateOfScheme}} </td>
                                 <td class="text-center"> {{item.IsWrittenRecordAvailable}} </td>
-                                <td class="text-center"> {{item.LatestChallanDate}} & {{item.ChallanAmount}} </td>
- 
+                                <td class="text-center"> {{item.LatestChallanDate}}</td>
+                                <td class="text-center"> {{item.ChallanAmount}} </td>
+
                                 <td class="text-center"> {{item.DoesGotAnyChallan}} </td>
-<!--                                <td class="text-center"> {{item.ChallanTypeId}} </td>-->
+                                <!--                                <td class="text-center"> {{item.ChallanTypeId}} </td>-->
                                 <td class="text-center"> {{item.DoesExpiredProductAvailable}} </td>
                                 <td class="text-center"> {{item.DoesSatisfiedWithSallesOfficer}} </td>
                                 <td class="text-center"> {{item.DoesSatisfiedWithProductOrderAndService}} </td>
-                                <td class="text-center"> {{item.SallesOfficerVisitingDay}} </td>
+                                <td class="text-center"> {{item.SallesOfficerVisitingDay}} Day</td>
                                 <td class="text-center"> {{item.DoesGotLatestDiscountOffer}} </td>
                                 <td class="text-center"> {{item.WillGetAnyDiscountOfferFromDistributor}} </td>
                                 <td class="text-center"> {{item.DoesCocaColaLabelAvailable}} </td>
@@ -88,7 +90,7 @@
                                 <td class="text-center"> {{item.CommentsType}} </td>
                                 <td class="text-center"> {{item.Comments}} </td>
                                 <td class="text-center"> {{item.CommentDetails}} </td>
-
+                                <td class="text-center"><button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.Number)">Image</button></td>
                             </tr>
                         </tbody>
                     </table>

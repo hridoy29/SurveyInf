@@ -24,20 +24,20 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-        //public JsonResult GetDynamic(string where, string orderBy)
-        //{
-        //    try
-        //    {
+        public JsonResult GetImageLocation(string number)
+        {
+            try
+            {
 
-        //        var list = Facade.LU_AICDAO.GetDynamic(where, orderBy);
-        //        string contentType = "application/json";
-        //        return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(null, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
+                var list = Facade.LU_SurveyReportsDAO.GetImageLocation(number);
+                string contentType = "application/json";
+                return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
         //[HttpPost]
         //public string Post(LU_AIC obj, string transactionType)
         //{
