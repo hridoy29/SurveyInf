@@ -141,7 +141,15 @@
 
         $scope.entityListPaged = $scope.entityList.slice(begin, end);
     }
+    $scope.getExport = function (entityListPaged) {
+        var params = JSON.stringify({ tRN_SurveyReports_Get: entityListPaged });
 
+        $http.post('/SurveyReport/getExport', params).success(function (data) {
+
+            alertify.log($scope.entity.ProgramCode + ' already exists!', 'already', '5000');
+
+        })
+    }
     $scope.post = function (trnType) {
         var where = "ProgramCode = '" + $scope.entity.ProgramCode + "'";
         if ($scope.entity.ProgramId > 0)
