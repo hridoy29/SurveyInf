@@ -1,4 +1,4 @@
-﻿app.controller("ReportsCtrl", function ($scope, $cookieStore, $window, $location, $filter, $http, blockUI,) {
+﻿app.controller("ReportsCtrl", function ($scope, $cookieStore, $window, $location, $filter, $http, blockUI) {
 
     $scope.DefaultPerPage = 10;
     $scope.currentPage = 1;
@@ -141,12 +141,13 @@
 
         $scope.entityListPaged = $scope.entityList.slice(begin, end);
     }
+
     $scope.getExport = function (entityListPaged) {
         var params = JSON.stringify({ tRN_SurveyReports_Get: entityListPaged });
 
         $http.post('/SurveyReport/getExport', params).success(function (data) {
 
-            alertify.log($scope.entity.ProgramCode + ' already exists!', 'already', '5000');
+            alertify.log(data.data);
 
         })
     }

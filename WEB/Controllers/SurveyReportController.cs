@@ -11,10 +11,15 @@ using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClosedXML.Excel;
+using System.Data;
+using OfficeOpenXml;
+using WEB.Model;
+
 namespace WEB.Controllers
 {
     public class SurveyReportController : Controller
     {
+
         public JsonResult Get()
         {
             try
@@ -45,39 +50,61 @@ namespace WEB.Controllers
 
         public void getExport(List<TRN_SurveyReports_get> tRN_SurveyReports_Get)
         {
-            var gv = new GridView();
-            gv.DataSource = tRN_SurveyReports_Get.ToList(); 
-            gv.DataBind();
-            
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
-            Response.ContentType = "application/ms-excel";
-            Response.Charset = "";
-            StringWriter objStringWriter = new StringWriter();
-            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
-            gv.RenderControl(objHtmlTextWriter);
-            Response.Output.Write(objStringWriter.ToString());
-            Response.Flush();
-            Response.End();
-        }
-        //[HttpPost]
-        //public string Post(LU_AIC obj, string transactionType)
-        //{
-        //    string ret = string.Empty;
 
-        //    try
+            DownloadXLfile dl = new DownloadXLfile();
+            dl.createXLfile(tRN_SurveyReports_Get);
+
+        }
+     
+
+
+        //    //[HttpPost]
+        //    //public string Post(LU_AIC obj, string transactionType)
+        //    //{
+        //    //    string ret = string.Empty;
+
+        //    //    try
+        //    //    {
+        //    //        obj.CreatorId = 1;
+        //    //        obj.ModifierId = 1;
+        //    //        obj.CreationDate = DateTime.Now;
+        //    //        obj.ModificationDate = DateTime.Now;
+        //    //        ret = Facade.LU_AICDAO.Post(obj, transactionType);
+        //    //        return ret;
+        //    //    }
+        //    //    catch (Exception ex)
+        //    //    {
+        //    //        return ex.Message;
+        //    //    }
+        //    //}
+        //}
+
+        //[HttpPost]
+        //public FileResult getExport(List<TRN_SurveyReports_get> tRN_SurveyReports_Get)
+        //{
+
+        //    DataTable dt = new DataTable("Grid");
+        //    dt.Columns.AddRange(new DataColumn[4] { new DataColumn("AICName"),
+        //                                    new DataColumn("ASMName"),
+        //                                    new DataColumn("ChallanAmount"),
+        //                                    new DataColumn("CommentDetails") });
+
+        //    var customers = from customer in tRN_SurveyReports_Get.Take(10)
+        //                    select customer;
+
+        //    foreach (var customer in customers)
         //    {
-        //        obj.CreatorId = 1;
-        //        obj.ModifierId = 1;
-        //        obj.CreationDate = DateTime.Now;
-        //        obj.ModificationDate = DateTime.Now;
-        //        ret = Facade.LU_AICDAO.Post(obj, transactionType);
-        //        return ret;
+        //        dt.Rows.Add(customer.AICName, customer.ASMName, customer.ChallanAmount, customer.CommentDetails);
         //    }
-        //    catch (Exception ex)
+
+        //    using (XLWorkbook wb = new XLWorkbook())
         //    {
-        //        return ex.Message;
+        //        wb.Worksheets.Add(dt);
+        //        using (MemoryStream stream = new MemoryStream())
+        //        {
+        //            wb.SaveAs(stream);
+        //            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Grid.xlsx");
+        //        }
         //    }
         //}
     }
