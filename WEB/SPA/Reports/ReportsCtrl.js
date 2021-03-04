@@ -59,9 +59,12 @@
 
     function getList() {
         $scope.lsitBlock.start();
+        $scope.userId = $cookieStore.get('UserID');
+        var params = JSON.stringify({ userId: $scope.userId });
         $http({
             url: "/SurveyReport/Get",
-            method: 'GET',
+            method: 'POST',
+            data: params,
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
 

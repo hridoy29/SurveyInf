@@ -20,11 +20,11 @@ namespace WEB.Controllers
 {
     public class SurveyReportController : Controller
     {
-        public JsonResult Get()
+        public JsonResult Get(int userId)
         {
             try
             {
-                var list = Facade.LU_SurveyReportsDAO.Get();
+                var list = Facade.LU_SurveyReportsDAO.GetListByUserid(userId);
                 string contentType = "application/json";
                 return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
             }
