@@ -12,6 +12,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClosedXML.Excel;
 using WEB.Model;
+using System.Data;
+using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.Office.Interop.Excel;
 
 namespace WEB.Controllers
 {
@@ -44,30 +47,44 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-
-        public void getExport(List<TRN_SurveyReports_get> tRN_SurveyReports_Get)
+       
+ 
+        public void getExport(int userId)
         {
-            ConvertToDt convertToDt = new ConvertToDt();
-            convertToDt.ConvertToDataTable(tRN_SurveyReports_Get);
-        }
-        //[HttpPost]
-        //public string Post(LU_AIC obj, string transactionType)
-        //{
-        //    string ret = string.Empty;
+            List<TRN_SurveyReports_get> tRN_SurveyReports_Get = new List<TRN_SurveyReports_get>();
+            tRN_SurveyReports_Get = Facade.LU_SurveyReportsDAO.GetListByUserid(userId);
+            var gv = new GridView();
+            gv.DataSource = tRN_SurveyReports_Get;
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+          
+            //string path = @"D:\UserManager.xlsx";  //@getpathfromappconfig + "\\" + FileName + ".xlsx";
+            //System.IO.FileInfo file = new System.IO.FileInfo(path);
+            //string Outgoingfile = "UserManager" + ".xlsx";
+            //if (file.Exists)
+            //{
+            //    Response.Clear();
+            //    Response.AddHeader("Content-Disposition", "attachment; filename=" + Outgoingfile);
+            //    Response.AddHeader("Content-Length", file.Length.ToString());
+            //    Response.ContentType = "application/vnd.ms-excel";
+            //    Response.WriteFile(file.FullName);
 
-        //    try
-        //    {
-        //        obj.CreatorId = 1;
-        //        obj.ModifierId = 1;
-        //        obj.CreationDate = DateTime.Now;
-        //        obj.ModificationDate = DateTime.Now;
-        //        ret = Facade.LU_AICDAO.Post(obj, transactionType);
-        //        return ret;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
+            //}
+            //else
+            //{
+            //    Response.Write("This file does not exist.");
+            //}
+        }
+
     }
 }

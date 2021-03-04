@@ -70,6 +70,23 @@ namespace SurveyDAL
 				throw ex;
 			}
 		}
+        public List<TRN_SurveyReports_get> GetListByUserid(int id )
+        {
+            try
+            {
+                List<TRN_SurveyReports_get> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_get>();
+                Parameters[] colparameters = new Parameters[1]{
+                new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input)
+                };
+                TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_get>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak", colparameters);
+                return TRN_SurveyReports_getLst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
 
         public List<TRN_SchemeAuditChild> GetImageLocation(string number)
         {

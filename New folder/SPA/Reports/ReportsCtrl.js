@@ -1,4 +1,4 @@
-﻿app.controller("ReportsCtrl", function ($scope, $cookieStore, $window, $location, $filter, $http, blockUI,) {
+﻿app.controller("ReportsCtrl", function ($scope, $cookieStore, $window, $location, $filter, $http, blockUI) {
 
     $scope.DefaultPerPage = 10;
     $scope.currentPage = 1;
@@ -12,7 +12,7 @@
     clear();
     getList();
     //function getProgramHead() {
-        
+
     //    var where = "EmployeeType = 'Faculty'";
     //    $http({
     //        url: '/Program/GetDynamicEmployee?where=' + where + '&orderBy=EmployeeName',
@@ -24,24 +24,32 @@
     //        }
     //    });
     //}
-    $scope.acceptanceList = [{
-        "Id": "1",
-        "Name": "Yes"
-    }, {
-            "Id": "2",
-            "Name": "No"
-    }, {
-            "Id": "3",
-            "Name": "Not Aplicable"
-    }]
-    
+    $scope.getImage = function (number) {
+
+        $http({
+            url: '/SurveyReport/GetImageLocation?number=' + number,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            if (data.length) {
+                $scope.imageLocationList = data;
+
+                angular.forEach(data, function (obj) {
+                    window.open('http://202.126.122.85:72' + obj.ImageLocation);
+                });
+                //window.open('http://202.126.122.85:72/image/201_ICL_100017_1.png');
+
+            }
+        });
+    }
+
 
     function clear() {
         $scope.entity = { ProgramId: 0, IsActive: true };
         $("#txtFocus").focus();
     };
 
-     $scope.onPageChange = function (currentpage) {
+    $scope.onPageChange = function (currentpage) {
         $scope.currentPage = currentpage;
         var begin = ($scope.PerPage * ($scope.currentPage - 1));
         var end = begin + $scope.PerPage;
@@ -134,6 +142,34 @@
         $scope.entityListPaged = $scope.entityList.slice(begin, end);
     }
 
+    $scope.getExport = function (entityListPaged) {
+        $scope.userId = $cookieStore.get('UserID');
+       // var params = JSON.stringify({ userId: $scope.userId });
+       var params = JSON.stringify({ userId: 1 });
+        $http({
+            url: '/SurveyReport/getExport',
+            method: "POST",
+            data: params, //this is your json data string
+            headers: {
+                'Content-type': 'application/json'
+            },
+            responseType: 'blob'
+        }).success(function (data, status, headers, config) {
+            var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+            var objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }).error(function (data, status, headers, config) {
+            //upload failed
+        });
+
+        //$http.post('/SurveyReport/getExport', params).success(function (data, status, headers, config) {
+        //    var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+        //    var objectUrl = URL.createObjectURL(blob);
+        //    window.open(objectUrl);
+        //}).error(function (data, status, headers, config) {
+        //    //upload failed
+        //});
+    }
     $scope.post = function (trnType) {
         var where = "ProgramCode = '" + $scope.entity.ProgramCode + "'";
         if ($scope.entity.ProgramId > 0)

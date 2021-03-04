@@ -12,7 +12,7 @@
     clear();
     getList();
     //function getProgramHead() {
-        
+
     //    var where = "EmployeeType = 'Faculty'";
     //    $http({
     //        url: '/Program/GetDynamicEmployee?where=' + where + '&orderBy=EmployeeName',
@@ -25,7 +25,7 @@
     //    });
     //}
     $scope.getImage = function (number) {
-        
+
         $http({
             url: '/SurveyReport/GetImageLocation?number=' + number,
             method: 'GET',
@@ -38,18 +38,18 @@
                     window.open('http://202.126.122.85:72' + obj.ImageLocation);
                 });
                 //window.open('http://202.126.122.85:72/image/201_ICL_100017_1.png');
-                
+
             }
         });
     }
-    
+
 
     function clear() {
         $scope.entity = { ProgramId: 0, IsActive: true };
         $("#txtFocus").focus();
     };
 
-     $scope.onPageChange = function (currentpage) {
+    $scope.onPageChange = function (currentpage) {
         $scope.currentPage = currentpage;
         var begin = ($scope.PerPage * ($scope.currentPage - 1));
         var end = begin + $scope.PerPage;
@@ -143,13 +143,24 @@
     }
 
     $scope.getExport = function (entityListPaged) {
-        var params = JSON.stringify({ tRN_SurveyReports_Get: entityListPaged });
-
-        $http.post('/SurveyReport/getExport', params).success(function (data) {
-
-            alertify.log(data.data);
-
-        })
+       $scope.userId = $cookieStore.get('UserID');
+       var params = JSON.stringify({ userId: $scope.userId });
+       //var params = JSON.stringify({ userId: 1 });
+        $http({
+            url: '/SurveyReport/getExport',
+            method: "POST",
+            data: params, //this is your json data string
+            headers: {
+                'Content-type': 'application/json'
+            },
+            responseType: 'blob'
+        }).success(function (data, status, headers, config) {
+            var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+            var objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }).error(function (data, status, headers, config) {
+            
+        });
     }
     $scope.post = function (trnType) {
         var where = "ProgramCode = '" + $scope.entity.ProgramCode + "'";

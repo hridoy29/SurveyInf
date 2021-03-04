@@ -1,107 +1,115 @@
 ﻿</p>
 <div class="row">
+     
+    <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
 
-	<div class="col-md-12">
-		<!--<div class="portlet box purple">-->
-			<!--<div class="portlet-title sbold">
-				<div class="caption">
-					<label>
-						Survey Report List
-					</label>
-				</div>
-			</div>-->
-            <div class="portlet-body">
-                <div class="tbl-outer">
-                    <table class="responstable table-hover">
-                        <tbody>
-                            <tr class="t-head" style="font-size: 14px !important">
-                                <th class="sbold">#</th>
-                                <th class="sbold text-center" data-th="Details"><span>Reference</span></th>
-                                <th class="sbold text-center">Outlet Name</th>
-                                <th class="sbold text-center">Gcc Code</th>
-                                <th class="sbold text-center">Retailer’s Name</th>
-                                <th class="sbold text-center">Mobile No.</th>
-                                <th class="sbold text-center">Outlet Type</th>
-                                <th class="sbold text-center">Visiting Date</th>
-                                <th class="sbold text-center">Distributor’s Name</th>
-                                <th class="sbold text-center">ASM Name</th>
-                                <th class="sbold text-center">AIC Name</th>
-                                <th class="sbold text-center">Outlet Address </th>
-                                <th class="sbold text-center">Known about scheme</th>
-                                <th class="sbold text-center">Last scheme</th>
-                                <th class="sbold text-center">Medium of knowing scheme</th>
-                                <!---->
-                                <th class="sbold text-center">Getting benefit according to scheme</th>
-                                <th class="sbold text-center">Date of getting scheme benefit </th>
-                                <th class="sbold text-center">Written document of scheme benefit</th>
-                                <th class="sbold text-center">Last challan receiving date & amount</th>
-                                <th class="sbold text-center">Challan type</th>
-                                <th class="sbold text-center">Having date expired products</th>
-                                <th class="sbold text-center">Satisfaction of sales officer’s service</th>
-                                <th class="sbold text-center">Satisfaction on product order & receiving</th>
-                                <th class="sbold text-center">Frequency of SO’s visit</th>
-                                <th class="sbold text-center">Getting last discount benefit</th>
-                                <!---->
-                                <th class="sbold text-center">Discount dues from DB</th>
-                                <th class="sbold text-center">Having logo of Coca-Cola</th>
-                                <th class="sbold text-center">GCC Code</th>
-                                <th class="sbold text-center">Comments Type</th>
-                                <th class="sbold text-center">Comments</th>
-                                <th class="sbold text-center">Comment Details</th>
+    </p>
+    <div class="col-md-12">
+        <!--<div class="portlet box purple">-->
+        <!--<div class="portlet-title sbold">
+            <div class="caption">
+                <label>
+                    Survey Report List
+                </label>
+            </div>
+        </div>-->
+        <div class="portlet-body">
+            <div class="tbl-outer">
+                <table class="responstable table-hover">
+                    <tbody>
+                        <tr class="t-head" style="font-size: 14px !important">
+                            <th class="sbold">#</th>
+                            <th class="sbold text-center" data-th="Details"><span>Reference</span></th>
+                            <th class="sbold text-center">Auditor Name</th>
+                            <th class="sbold text-center">Outlet Name</th>
+                            <th class="sbold text-center">Gcc Code</th>
+                            <th class="sbold text-center">Retailer’s Name</th>
+                            <th class="sbold text-center">Mobile No.</th>
+                            <th class="sbold text-center">Outlet Type</th>
+                            <th class="sbold text-center">Visiting Date</th>
+                            <th class="sbold text-center">Distributor’s Name</th>
+                            <th class="sbold text-center">ASM Name</th>
+                            <th class="sbold text-center">AIC Name</th>
+                            <th class="sbold text-center">Outlet Address </th>
+                            <th class="sbold text-center">Known about scheme</th>
+                            <th class="sbold text-center">Last scheme</th>
+                            <th class="sbold text-center">Medium of knowing scheme</th>
+                            <!---->
+                            <th class="sbold text-center">Getting benefit according to scheme</th>
+                            <th class="sbold text-center">Date of getting scheme benefit </th>
+                            <th class="sbold text-center">Written document of scheme benefit</th>
+                            <th class="sbold text-center">Last challan receiving date</th>
+                            <th class="sbold text-center">Last challan Receiving Amount</th>
+                            <th class="sbold text-center">Challan type </th> 
+                            <th class="sbold text-center">Having date expired products </th>
+                            <th class="sbold text-center"> Satisfaction of sales officer’s service </th>
+                            <th class="sbold text-center">Satisfaction on product order & receiving</th>
+                            <th class="sbold text-center">Frequency of SO’s visit</th>
+                            <th class="sbold text-center">Getting last discount benefit</th>
+                            <!---->
+                            <th class="sbold text-center">Discount dues from DB</th>
+                            <th class="sbold text-center">Having logo of Coca-Cola</th>
+                            <th class="sbold text-center">GCC Code</th>
+                            <th class="sbold text-center">Comments Type</th>
+                            <th class="sbold text-center">Comments</th>
+                            <th class="sbold text-center">Comment Details</th>
+                            <th class="sbold text-center">Image</th>
+                        </tr>
 
-                            </tr>
-                           
-                            <!-- table data-->
-                            <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
-                                <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
-                                <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.Number}} </td>
-                                <td class="text-center"> {{item.OutlateName}} </td>
-                                <td class="text-center"> {{item.GccCode}} </td>
-                                <td class="text-center"> {{item.RetailSellerName}} </td>
-                                
-                                <td class="text-center"> {{item.MobileNumber}} </td>
-                                <td class="text-center"> {{item.OutlateTypeId}} </td>
-                                <td class="text-center"> {{item.VisitedDate}} </td>
-                                <td class="text-center"> {{item.DistributorName}} </td>
-                                <td class="text-center"> {{item.ASMName}} </td>
-                                <td class="text-center"> {{item.AICName}} </td>
-                                <td class="text-center"> {{item.OutlateAddress}} </td>
-                                <td class="text-center"> {{item.IsKnowenAboutScheme}} </td>
-                                <td class="text-center"> {{item.SchemeDetails}} </td>
-                                <td class="text-center"> {{item.SchemeMediaTypeId}} </td>
-                                <td class="text-center"> {{item.IsFacilitatedByScheme}} </td>
-                                <td class="text-center"> {{item.DateOfScheme}} </td>
-                                <td class="text-center"> {{item.IsWrittenRecordAvailable}} </td>
-                                <td class="text-center"> {{item.LatestChallanDate}} & {{item.ChallanAmount}} </td>
- 
-                                <td class="text-center"> {{item.DoesGotAnyChallan}} </td>
-<!--                                <td class="text-center"> {{item.ChallanTypeId}} </td>-->
-                                <td class="text-center"> {{item.DoesExpiredProductAvailable}} </td>
-                                <td class="text-center"> {{item.DoesSatisfiedWithSallesOfficer}} </td>
-                                <td class="text-center"> {{item.DoesSatisfiedWithProductOrderAndService}} </td>
-                                <td class="text-center"> {{item.SallesOfficerVisitingDay}} </td>
-                                <td class="text-center"> {{item.DoesGotLatestDiscountOffer}} </td>
-                                <td class="text-center"> {{item.WillGetAnyDiscountOfferFromDistributor}} </td>
-                                <td class="text-center"> {{item.DoesCocaColaLabelAvailable}} </td>
-                                <td class="text-center"> {{item.IsGccCodeAvailable}} </td>
-                                <td class="text-center"> {{item.CommentsType}} </td>
-                                <td class="text-center"> {{item.Comments}} </td>
-                                <td class="text-center"> {{item.CommentDetails}} </td>
+                        <!-- table data-->
+                        <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
+                            <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
+                            <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
 
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="tbl-outer" style="padding:10px 20px !important">
-                        <dir-pagination-controls pagination-id="cust"
-                                                 direction-links="true"
-                                                 boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
-                    </div>
+                            <td class="text-center"> {{item.Number}} </td>
+                            <td class="text-center"> {{item.Name}} </td>
+                            <td class="text-center"> {{item.OutlateName}} </td>
+                            <td class="text-center"> {{item.GccCode}} </td>
+                            <td class="text-center"> {{item.RetailSellerName}} </td>
+
+                            <td class="text-center"> {{item.MobileNumber}} </td>
+                            <td class="text-center"> {{item.OutlateTypeId}} </td>
+                            <td class="text-center"> {{item.VisitedDate}} </td>
+                            <td class="text-center"> {{item.DistributorName}} </td>
+                            <td class="text-center"> {{item.ASMName}} </td>
+                            <td class="text-center"> {{item.AICName}} </td>
+                            <td class="text-center"> {{item.OutlateAddress}} </td>
+                            <td class="text-center"> {{item.IsKnowenAboutScheme}} </td>
+                            <td class="text-center"> {{item.SchemeDetails}} </td>
+                            <td class="text-center"> {{item.SchemeMediaTypeId}} </td>
+                            <td class="text-center"> {{item.IsFacilitatedByScheme}} </td>
+                            <td class="text-center"> {{item.DateOfScheme}} </td>
+                            <td class="text-center"> {{item.IsWrittenRecordAvailable}} </td>
+                            <td class="text-center"> {{item.LatestChallanDate}}</td>
+                            <td class="text-center"> {{item.ChallanAmount}} </td>
+
+                            <td class="text-center"> {{item.DoesGotAnyChallan}} </td>
+                            <!--                                <td class="text-center"> {{item.ChallanTypeId}} </td>-->
+                            <td class="text-center"> {{item.DoesExpiredProductAvailable}} </td>
+                            <td class="text-center"> {{item.DoesSatisfiedWithSallesOfficer}} </td>
+                            <td class="text-center"> {{item.DoesSatisfiedWithProductOrderAndService}} </td>
+                            <td class="text-center"> {{item.SallesOfficerVisitingDay}} Day</td>
+                            <td class="text-center"> {{item.DoesGotLatestDiscountOffer}} </td>
+                            <td class="text-center"> {{item.WillGetAnyDiscountOfferFromDistributor}} </td>
+                            <td class="text-center"> {{item.DoesCocaColaLabelAvailable}} </td>
+                            <td class="text-center"> {{item.IsGccCodeAvailable}} </td>
+                            <td class="text-center"> {{item.CommentsType}} </td>
+                            <td class="text-center"> {{item.Comments}} </td>
+                            <td class="text-center"> {{item.CommentDetails}} </td>
+                            <td class="text-center"><button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.Number)">Image</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="tbl-outer" style="padding:10px 20px !important">
+                    <dir-pagination-controls pagination-id="cust"
+                                             direction-links="true"
+                                             boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
                 </div>
-               
             </div>
 
-		<!--</div>-->
+        </div>
 
-	</div>
+        <!--</div>-->
+
+    </div>
 </div>

@@ -7,7 +7,9 @@ namespace SurveyEntity
     {
         
         public string Number { get; set; }
-		public string DistributorName { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string DistributorName { get; set; }
 		public Int32 GccCode { get; set; }
 		public string MobileNumber { get; set; }
 		public string OutlateTypeId { get; set; }

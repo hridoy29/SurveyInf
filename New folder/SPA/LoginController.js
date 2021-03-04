@@ -32,11 +32,22 @@
             }
         });
     }
+    function getUserid() {
 
+        $http({
+            url: "/User/GetUserId?email=" + $scope.user.Username + "&passcode=" + $scope.user.Password,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            var id = data[0].Id
+      
+            $cookieStore.put('UserID', id);
+        });
+    }
     function doLogin() {
         $scope.loginFailAlert = false;
 
-        blockUI.start();
+       // blockUI.start();
         $http({
             url: "/Login/GetWebUserForLogin?email=" + $scope.user.Username + "&passcode=" + $scope.user.Password,
             method: 'GET',
@@ -61,12 +72,12 @@
             } else {
                 $scope.loginFailMessage = 'System could not retrive user information';
                 $scope.loginFailAlert = true;
-                blockUI.stop();
+               // blockUI.stop();
             }
         }).error(function (data4) {
             $scope.loginFailMessage = 'Server Error, please refresh page';
             $scope.loginFailAlert = true;
-            blockUI.stop();
+          //  blockUI.stop();
         });
     }
 
@@ -79,8 +90,10 @@
             setTimeout(function () {
                 alertify.prompt('Enter Maintenance Passcode', function (e, val) {
                     if (e) {
-                        if (val === $scope.MaintenancePin)
+                        if (val === $scope.MaintenancePin) {
                             doLogin();
+                            getUserid();
+                        }
                         else
                             alertify.log('Incorrect Maintenance Passcode!', 'error', '3000');
                     }
@@ -89,6 +102,7 @@
         }
         else {
             doLogin();
+            getUserid();
         }
     };  
 });

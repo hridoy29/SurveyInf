@@ -24,6 +24,20 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult GetUserId(string email ,string passcode)
+        {
+            try
+            {
+                var list = Facade.LU_UserDAO.Get();
+                list = list.Where(x => x.Email == email & x.Password == passcode).ToList();
+                string contentType = "application/json";
+                return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
         public JsonResult GetDynamic(string where, string orderBy)
         {
             try

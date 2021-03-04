@@ -11,7 +11,7 @@ namespace WEB.Model
     public class ConvertToDt
     {
         // T is a generic class  
-        public void  ConvertToDataTable<TRN_SurveyReports_get>(List<TRN_SurveyReports_get> models)
+        public DataTable  ConvertToDataTable<TRN_SurveyReports_get>(List<TRN_SurveyReports_get> models)
         {
             // creating a data table instance and typed it as our incoming model   
             // as I make it generic, if you want, you can make it the model typed you want.  
@@ -39,18 +39,21 @@ namespace WEB.Model
                 // Finally add value to datatable    
                 dataTable.Rows.Add(values);
             }
-            string fileName = "UserManager.xlsx";
+            return dataTable;
+            /*string fileName = "UserManager.xlsx";
             Console.WriteLine("Please give a location to save :");
             string location = @"D:";
             string customExcelSavingPath = location + "\\" + fileName;
-            GenerateExcel(dataTable, customExcelSavingPath);
-             
+            GenerateExcel(dataTable, customExcelSavingPath);*/
+
+
+
+
         }
-        public   void GenerateExcel(DataTable dataTable, string path)
+
+        public  void GenerateExcel(DataTable dataTable, string path)
         {
-           
-
-
+          
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add(dataTable);
 
