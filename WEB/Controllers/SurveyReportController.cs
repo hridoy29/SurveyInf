@@ -49,10 +49,11 @@ namespace WEB.Controllers
         }
        
  
-        public void getExport(int userId)
+        public void getExport(int userId,DateTime? fromDate, DateTime? toDate)
         {
+
             List<TRN_SurveyReports_get> tRN_SurveyReports_Get = new List<TRN_SurveyReports_get>();
-            tRN_SurveyReports_Get = Facade.LU_SurveyReportsDAO.GetListByUserid(userId);
+            tRN_SurveyReports_Get = Facade.LU_SurveyReportsDAO.GetListByUserExport(userId, fromDate, toDate);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();

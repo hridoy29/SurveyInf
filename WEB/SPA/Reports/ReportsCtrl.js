@@ -146,9 +146,11 @@
     }
 
     $scope.getExport = function (entityListPaged) {
-       $scope.userId = $cookieStore.get('UserID');
-       var params = JSON.stringify({ userId: $scope.userId });
-       //var params = JSON.stringify({ userId: 1 });
+        $scope.fromDate = document.getElementById("fromDate").value;
+        $scope.toDate = document.getElementById("toDate").value; 
+        $scope.userId = $cookieStore.get('UserID');
+        var params = JSON.stringify({ userId: $scope.userId, fromDate: $scope.fromDate, toDate: $scope.toDate });
+        //var params = JSON.stringify({ userId: 1 });
         $http({
             url: '/SurveyReport/getExport',
             method: "POST",
@@ -162,7 +164,7 @@
             var objectUrl = URL.createObjectURL(blob);
             window.open(objectUrl);
         }).error(function (data, status, headers, config) {
-            
+
         });
     }
     $scope.post = function (trnType) {

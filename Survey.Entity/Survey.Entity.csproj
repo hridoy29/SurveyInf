@@ -66,6 +66,7 @@
     <Compile Include="TRN_Permission.cs" />
     <Compile Include="TRN_PermissionDetail.cs" />
     <Compile Include="TRN_SchemeAuditChild.cs" />
+    <Compile Include="TRN_SurveyReports_Export.cs" />
     <Compile Include="TRN_SurveyReports_get.cs" />
     <Compile Include="TRN_SchemeAuditParent.cs" />
   </ItemGroup>

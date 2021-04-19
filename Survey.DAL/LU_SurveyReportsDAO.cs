@@ -11,72 +11,96 @@ using Survey.Entity;
 
 namespace SurveyDAL
 {
-	public class LU_SurveyReportsDAO : IDisposable
-	{
-		private static volatile LU_SurveyReportsDAO instance;
-		private static readonly object lockObj = new object();
-		public static LU_SurveyReportsDAO GetInstance()
-		{
-			if (instance == null)
-			{
-				instance = new LU_SurveyReportsDAO();
-			}
-			return instance;
-		}
-		public static LU_SurveyReportsDAO GetInstanceThreadSafe
-		{
-			get
-			{
-				if (instance == null)
-				{
-					lock (lockObj)
-					{
-						if (instance == null)
-						{
-							instance = new LU_SurveyReportsDAO();
-						}
-					}
-				}
-				return instance;
-			}
-		}
+    public class LU_SurveyReportsDAO : IDisposable
+    {
+        private static volatile LU_SurveyReportsDAO instance;
+        private static readonly object lockObj = new object();
+        public static LU_SurveyReportsDAO GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new LU_SurveyReportsDAO();
+            }
+            return instance;
+        }
+        public static LU_SurveyReportsDAO GetInstanceThreadSafe
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (lockObj)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new LU_SurveyReportsDAO();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
 
-		public void Dispose()
-		{
-			((IDisposable)GetInstanceThreadSafe).Dispose();
-		}
+        public void Dispose()
+        {
+            ((IDisposable)GetInstanceThreadSafe).Dispose();
+        }
 
-		DBExecutor dbExecutor;
+        DBExecutor dbExecutor;
 
-		public LU_SurveyReportsDAO()
-		{
-			//dbExecutor = DBExecutor.GetInstanceThreadSafe;
-			dbExecutor = new DBExecutor();
-		}
+        public LU_SurveyReportsDAO()
+        {
+            //dbExecutor = DBExecutor.GetInstanceThreadSafe;
+            dbExecutor = new DBExecutor();
+        }
 
-		public List<TRN_SurveyReports_get> Get(Int32? id = null)
-		{
-			try
-			{
-				List<TRN_SurveyReports_get> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_get>();
-				Parameters[] colparameters = new Parameters[1]{
-				new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input)
-				};
-                TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_get>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_bak", colparameters);
-				return TRN_SurveyReports_getLst;
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-		}
-        public List<TRN_SurveyReports_get> GetListByUserid(int id )
+        public List<TRN_SurveyReports_get> Get(Int32? id = null)
         {
             try
             {
                 List<TRN_SurveyReports_get> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_get>();
                 Parameters[] colparameters = new Parameters[1]{
                 new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input)
+                };
+                TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_get>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_bak", colparameters);
+                return TRN_SurveyReports_getLst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<TRN_SurveyReports_get> GetListByUserExport(int id, DateTime? fromDate, DateTime? toDate)
+        {
+            try
+            {
+                if(fromDate==null && toDate==null)
+                {
+                    fromDate = Convert.ToDateTime("1993-01-01");
+                    toDate = Convert.ToDateTime("1993-01-01");
+                }
+                List<TRN_SurveyReports_get> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_get>();
+                Parameters[] colparameters = new Parameters[3]{
+                new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input),
+                 new Parameters("@paramfromDate", fromDate, DbType.DateTime, ParameterDirection.Input),
+                  new Parameters("@paramtoDate", toDate, DbType.DateTime, ParameterDirection.Input)
+                };
+                TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_get>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak_new", colparameters);
+                return TRN_SurveyReports_getLst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<TRN_SurveyReports_get> GetListByUserid(int id)
+        {
+            try
+            {
+                List<TRN_SurveyReports_get> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_get>();
+                Parameters[] colparameters = new Parameters[1]{
+                new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input)
+                  
                 };
                 TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_get>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak", colparameters);
                 return TRN_SurveyReports_getLst;
@@ -86,7 +110,6 @@ namespace SurveyDAL
                 throw ex;
             }
         }
-        
 
         public List<TRN_SchemeAuditChild> GetImageLocation(string number)
         {
@@ -94,8 +117,7 @@ namespace SurveyDAL
             {
                 List<TRN_SchemeAuditChild> GetImageLocation_getList = new List<TRN_SchemeAuditChild>();
                 Parameters[] colparameters = new Parameters[1]{
-                new Parameters("@paramNumber", number, DbType.String, ParameterDirection.Input),
-                
+                new Parameters("@paramNumber", number, DbType.String, ParameterDirection.Input)
                 };
                 GetImageLocation_getList = dbExecutor.FetchData<TRN_SchemeAuditChild>(CommandType.StoredProcedure, "wsp_TRN_SchemeAuditChild_Get", colparameters);
                 return GetImageLocation_getList;
