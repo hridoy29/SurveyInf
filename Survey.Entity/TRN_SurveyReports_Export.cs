@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.ComponentModel;
+ 
 namespace Survey.Entity
 {
     public class TRN_SurveyReports_Export
 
     {
-
+        [DisplayName("Renamed Property")]
         public string Number { get; set; }
         public string Name { get; set; }
         public string DistributorName { get; set; }

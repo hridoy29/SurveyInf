@@ -1,12 +1,14 @@
 using System;
 using System.Text;
+using System.ComponentModel;
 
 namespace SurveyEntity
 {
 	public class TRN_SurveyReports_get
     {
-        
-        public string Number { get; set; }
+		[Description("Demonstrates DisplayNameAttribute.")]
+		[DisplayName("Renamed Property")]
+		public string Number { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; }
         public string DistributorName { get; set; }
