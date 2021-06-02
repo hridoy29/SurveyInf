@@ -2,20 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace Survey.Entity
 {
-    public class TRN_SurveyReports_Export
-
+    public class TRN_SurveyReports_Export_Infinigent_Formate
     {
-
-        [DisplayName("Friendly Column Name")]
-        [Display(Name = "Friendly Column Name")]
-        [Description("Demonstrates DisplayNameAttribute.")]
-        public string Number { get; set; }
+        public string Reference { get; set; }
         public string Name { get; set; }
         public string DistributorName { get; set; }
         public Int32 GccCode { get; set; }
@@ -49,7 +41,5 @@ namespace Survey.Entity
         public string CommentsType { get; set; }
         public string Comments { get; set; }
         public string CommentDetails { get; set; }
-
-
     }
 }

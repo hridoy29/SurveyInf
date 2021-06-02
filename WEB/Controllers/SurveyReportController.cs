@@ -59,6 +59,7 @@ namespace WEB.Controllers
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
+             
             Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
