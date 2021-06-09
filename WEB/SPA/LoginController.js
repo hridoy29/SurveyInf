@@ -40,7 +40,7 @@
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
             var id = data[0].Id
-
+            $cookieStore.remove('UserID')
             $cookieStore.put('UserID', id);
         });
     }
@@ -66,6 +66,9 @@
 
                     $cookieStore.remove('UserData');
                     $cookieStore.put('UserData', $scope.user);
+                     
+                    //$cookieStore.remove('UserID')
+                    getUserid();
 
                     window.location = '/Home/Index#/Home';
                 }
