@@ -35,7 +35,7 @@
                 $scope.imageLocationList = data;
 
                 angular.forEach(data, function (obj) {
-                    window.open('http://202.126.122.85:72' + obj.ImageLocation);
+                    window.open('http://api.infinigentconsulting.com' + obj.ImageLocation);
                 });
                 //window.open('http://202.126.122.85:72/image/201_ICL_100017_1.png');
                 //  window.open('http://api.infinigentconsulting.com' + obj.ImageLocation);
