@@ -26,7 +26,7 @@ namespace SurveyEntity
 		public string SchemeDetails { get; set; }
 		public string SchemeMediaTypeId { get; set; }
 		public string IsFacilitatedByScheme { get; set; }
-		 public string DateOfScheme { get; set; }
+		public string DateOfScheme { get; set; }
 		public string IsWrittenRecordAvailable { get; set; }
 		public string LatestChallanDate { get; set; }
 		public string ChallanAmount { get; set; }
