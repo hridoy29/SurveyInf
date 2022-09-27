@@ -12,6 +12,7 @@
     $scope.dashboardPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Dashboard'").FirstOrDefault();
     $scope.userPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'User'").FirstOrDefault();
     $scope.userGroupPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'User Group'").FirstOrDefault();
+    $scope.departmentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Department'").FirstOrDefault();
     $scope.permissionPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Permission'").FirstOrDefault();
     $scope.changePassPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Change Password'").FirstOrDefault();
     $scope.schemeNumPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Scheme Number'").FirstOrDefault();
@@ -23,7 +24,7 @@
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
     $scope.surveyReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Survey Reports'").FirstOrDefault();
 
-    if (!$scope.userPermission.CanView && !$scope.userGroupPermission.CanView && !$scope.permissionPermission.CanView && !$scope.changePassPermission.CanView) {
+    if (!$scope.userPermission.CanView && !$scope.userGroupPermission.CanView && !$scope.permissionPermission.CanView && !$scope.changePassPermission.CanView && !$scope.departmentPermission.CanView ) {
         $scope.securityMenuView = false;
     }
 
@@ -66,6 +67,7 @@
         $scope.isSecurity = false;
         $scope.isSecurityUser = false;
         $scope.isSecurityUserGroup = false;
+        $scope.isSecurityDepartment = false;
         $scope.isSecurityPermission = false;
         $scope.isSecurityChangePass = false;
 
@@ -96,6 +98,10 @@
         else if (menu === 'userGroup') {
             $scope.isSecurity = true;
             $scope.isSecurityUserGroup = true;
+        }
+        else if (menu === 'department') {
+            $scope.isSecurity = true;
+            $scope.isSecurityDepartment = true;
         }
         else if (menu === 'permission') {
             $scope.isSecurity = true;

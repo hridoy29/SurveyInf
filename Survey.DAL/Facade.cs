@@ -17,6 +17,7 @@ namespace SurveyDAL
         public static LU_ScreenDAO LU_ScreenDAO { get { return new LU_ScreenDAO(); } }
 
         public static LU_UserGroupDAO LU_UserGroupDAO { get { return new LU_UserGroupDAO(); } }
+        public static LU_DepartmentDAO LU_DepartmentDAO { get { return new LU_DepartmentDAO(); } }
         public static LU_UserDAO LU_UserDAO { get { return new LU_UserDAO(); } }
         public static LU_CommnetsDAO LU_CommnetsDAO { get { return new LU_CommnetsDAO(); } }
         

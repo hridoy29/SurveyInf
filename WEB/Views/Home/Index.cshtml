@@ -158,6 +158,14 @@
                                         <span class="title">User Group</span>
                                     </a>
                                 </li>
+
+                                @*department*@
+                                <li class="nav-item " ng-click="setActiveMenu('department')" ng-class="{selectedsubmenu: isSecurityDepartment, unselectedsubmenu: !isSecurityDepartment}" ng-show="departmentPermission.CanView">
+                                    <a href="#/UserGroup" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Department</span>
+                                    </a>
+                                </li>
                                 @*permission*@
                                 <li class="nav-item " ng-click="setActiveMenu('permission')" ng-class="{selectedsubmenu: isSecurityPermission, unselectedsubmenu: !isSecurityPermission}" ng-show="permissionPermission.CanView">
                                     <a href="#/Permission" class="nav-link">

@@ -75,6 +75,7 @@
     <Compile Include="LU_ScreenDetail.cs" />
     <Compile Include="LU_ScreenFunction.cs" />
     <Compile Include="LU_User.cs" />
+    <Compile Include="LU_Department.cs" />
     <Compile Include="LU_UserGroup.cs" />
     <Compile Include="LU_UserLoginIds.cs" />
     <Compile Include="TRN_Permission.cs" />

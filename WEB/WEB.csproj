@@ -147,6 +147,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\UserGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -318,6 +319,8 @@
     <Content Include="SPA\Reports\ReportsCtrl.js" />
     <Content Include="SPA\Permission\Permission.html" />
     <Content Include="SPA\Permission\PermissionCtrl.js" />
+    <Content Include="SPA\Department\Department.html" />
+    <Content Include="SPA\Department\DepartmentCtrl.js" />
     <Content Include="SPA\UserGroup\UserGroup.html" />
     <Content Include="SPA\UserGroup\UserGroupCtrl.js" />
     <Content Include="SPA\SideBarController.js" />
@@ -370,15 +373,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>5</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>1</VersionMajor>

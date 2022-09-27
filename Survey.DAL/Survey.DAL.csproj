@@ -64,6 +64,7 @@
     <Compile Include="LU_ScreenDetailDAO.cs" />
     <Compile Include="LU_ScreenFunctionDAO.cs" />
     <Compile Include="LU_UserDAO.cs" />
+    <Compile Include="LU_DepartmentDAO.cs" />
     <Compile Include="LU_UserGroupDAO.cs" />
     <Compile Include="LU_UserLoginIdsDAO.cs" />
     <Compile Include="Parameters.cs" />

@@ -37,6 +37,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//        }
 			//    }
 			//}
+        })
+		.when('/Department', {
+			templateUrl: '/SPA/Department/Department.html',
+			controller: 'DepartmentCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
 		})
 		.when('/Permission', {
 			templateUrl: '/SPA/Permission/Permission.html',
