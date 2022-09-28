@@ -137,6 +137,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\IssuesController.cs" />
     <Compile Include="Controllers\SurveyReportController.cs" />
     <Compile Include="Controllers\AICController.cs" />
     <Compile Include="Controllers\ASMController.cs" />
@@ -305,6 +306,8 @@
     <Content Include="SPA\CommentType\CommentTypeCtrl.js" />
     <Content Include="SPA\Comment\Comment.html" />
     <Content Include="SPA\Comment\CommentCtrl.js" />
+    <Content Include="SPA\Issues\Issues.html" />
+    <Content Include="SPA\Issues\IssuesCtrl.js" />
     <Content Include="SPA\Distributorlist\DistributorList.html" />
     <Content Include="SPA\Distributorlist\DistributorList.js" />
     <Content Include="SPA\OutletType\OutletType.html" />

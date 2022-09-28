@@ -50,6 +50,19 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+
+		.when('/Issues', {
+			templateUrl: '/SPA/Issues/Issues.html',
+			controller: 'IssuesCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 		.when('/Permission', {
 			templateUrl: '/SPA/Permission/Permission.html',
 			controller: 'PermissionCtrl',

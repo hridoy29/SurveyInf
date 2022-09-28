@@ -5,7 +5,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                       Department
+                       Issue
                     </label>
                 </div>
 
@@ -15,10 +15,10 @@
                 <form name="frm" novalidate>
                     <div class="row">
                         <div class="from-body">
-                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.DeptName.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Department">
-                                <input type="text" class="form-control" id="txtFocus" placeholder="Department" name="DepartmentName" ng-model="entity.DeptName" maxlength="51" ng-maxlength="50" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.DeptName.$error.required && frm.DeptName.$touched">Department name is required!</span>
-                                <span class="help-block" ng-if="frm.DeptName.$error.maxlength">50 Character Max</span>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Issue">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Issue" name="IssueName" ng-model="entity.Name" maxlength="51" ng-maxlength="50" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Issue name is required!</span>
+                                <span class="help-block" ng-if="frm.Name.$error.maxlength">50 Character Max</span>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -39,6 +39,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="form-actions" style="padding: 5px 15px !important" block-ui="entryBlock">
                                 <button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="post('save')">Submit</button>
                                 <button type="button" class="btn btn-lg btn-danger box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-show="entity.Id > 0" ng-click="post('delete')">Delete</button>
@@ -59,7 +61,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Department List
+                        Issue List
                     </label>
                 </div>
             </div>
@@ -74,7 +76,7 @@
                             </tr>
                             <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.DeptName}} </td>
+                                <td class="text-center"> {{item.Name}} </td>
                                 <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
                             </tr>
                         </tbody>

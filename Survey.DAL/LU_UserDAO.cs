@@ -112,9 +112,10 @@ namespace SurveyDAL
 			string ret = string.Empty;
 			try
 			{
-				Parameters[] colparameters = new Parameters[12]{
+				Parameters[] colparameters = new Parameters[13]{
 				new Parameters("@paramId", _LU_User.Id, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@paramUserGroupId", _LU_User.UserGroupId, DbType.Int32, ParameterDirection.Input),
+				new Parameters("@paramDepartmentId", _LU_User.DepartmentId, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@paramName", _LU_User.Name, DbType.String, ParameterDirection.Input),
 				new Parameters("@paramEmail", _LU_User.Email, DbType.String, ParameterDirection.Input),
 				new Parameters("@paramMobileNo", _LU_User.MobileNo, DbType.String, ParameterDirection.Input),

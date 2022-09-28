@@ -10,19 +10,19 @@ using SurveyEntity;
 
 namespace SurveyDAL
 {
-	public class LU_DepartmentDAO : IDisposable
+	public class LU_IssuesDAO : IDisposable
 	{
-		private static volatile LU_DepartmentDAO instance;
+		private static volatile LU_IssuesDAO instance;
 		private static readonly object lockObj = new object();
-		public static LU_DepartmentDAO GetInstance()
+		public static LU_IssuesDAO GetInstance()
 		{
 			if (instance == null)
 			{
-				instance = new LU_DepartmentDAO();
+				instance = new LU_IssuesDAO();
 			}
 			return instance;
 		}
-		public static LU_DepartmentDAO GetInstanceThreadSafe
+		public static LU_IssuesDAO GetInstanceThreadSafe
 		{
 			get
 			{
@@ -32,7 +32,7 @@ namespace SurveyDAL
 					{
 						if (instance == null)
 						{
-							instance = new LU_DepartmentDAO();
+							instance = new LU_IssuesDAO();
 						}
 					}
 				}
@@ -47,22 +47,22 @@ namespace SurveyDAL
 
 		DBExecutor dbExecutor;
 
-		public LU_DepartmentDAO()
+		public LU_IssuesDAO()
 		{
 			//dbExecutor = DBExecutor.GetInstanceThreadSafe;
 			dbExecutor = new DBExecutor();
 		}
 
-		public List<LU_Department> Get(Int32? id = null)
+		public List<LU_Issues> Get(Int32? id = null)
 		{
 			try
 			{
-				List<LU_Department> LU_DepartmentList = new List<LU_Department>();
+				List<LU_Issues> LU_IssuesList = new List<LU_Issues>();
 				Parameters[] colparameters = new Parameters[1]{
-				new Parameters("@DepartmentId", id, DbType.Int32, ParameterDirection.Input)
+				new Parameters("@Id", id, DbType.Int32, ParameterDirection.Input)
 				};
-				LU_DepartmentList = dbExecutor.FetchData<LU_Department>(CommandType.StoredProcedure, "wsp_LU_Department_Get", colparameters);
-				return LU_DepartmentList;
+				LU_IssuesList = dbExecutor.FetchData<LU_Issues>(CommandType.StoredProcedure, "wsp_LU_Issues_Get", colparameters);
+				return LU_IssuesList;
 			}
 			catch (Exception ex)
 			{
@@ -70,28 +70,28 @@ namespace SurveyDAL
 			}
 		}
 
-		public List<LU_Department> GetDynamic(string whereCondition,string orderByExpression)
+		public List<LU_Issues> GetDynamic(string whereCondition,string orderByExpression)
 		{
 			try
 			{
-				List<LU_Department> LU_DepartmentList = new List<LU_Department>();
+				List<LU_Issues> LU_IssuesList = new List<LU_Issues>();
 				Parameters[] colparameters = new Parameters[2]{
 				new Parameters("@paramWhereCondition", whereCondition, DbType.String, ParameterDirection.Input),
 				new Parameters("@paramOrderByExpression", orderByExpression, DbType.String, ParameterDirection.Input),
 				};
-				LU_DepartmentList = dbExecutor.FetchData<LU_Department>(CommandType.StoredProcedure, "wsp_LU_Department_GetDynamic", colparameters);
-				return LU_DepartmentList;
+				LU_IssuesList = dbExecutor.FetchData<LU_Issues>(CommandType.StoredProcedure, "wsp_LU_Issues_GetDynamic", colparameters);
+				return LU_IssuesList;
 			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
 		}
-		public List<LU_Department> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, ref int rows)
+		public List<LU_Issues> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, ref int rows)
 		{
 			try
 			{
-				List<LU_Department> LU_UserGroupLst = new List<LU_Department>();
+				List<LU_Issues> LU_IssuesLst = new List<LU_Issues>();
 				Parameters[] colparameters = new Parameters[5]{
 				new Parameters("@StartRecordNo", startRecordNo, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@RowPerPage", rowPerPage, DbType.Int32, ParameterDirection.Input),
@@ -99,15 +99,15 @@ namespace SurveyDAL
 				new Parameters("@SortColumn", sortColumn, DbType.String, ParameterDirection.Input),
 				new Parameters("@SortOrder", sortOrder, DbType.String, ParameterDirection.Input),
 				};
-				LU_UserGroupLst = dbExecutor.FetchDataRef<LU_Department>(CommandType.StoredProcedure, "wsp_LU_Department_GetPaged", colparameters, ref rows);
-				return LU_UserGroupLst;
+				LU_IssuesLst = dbExecutor.FetchDataRef<LU_Issues>(CommandType.StoredProcedure, "wsp_LU_Issues_GetPaged", colparameters, ref rows);
+				return LU_IssuesLst;
 			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
 		}
-		public string Post(LU_Department _LU_Department, string transactionType)
+		public string Post(LU_Issues _LU_Issues, string transactionType)
 		{
 			string ret = string.Empty;
 			try
@@ -115,14 +115,14 @@ namespace SurveyDAL
 
 			
 				Parameters[] colparameters = new Parameters[5]{
-				new Parameters("@paramId", _LU_Department.Id, DbType.Int32, ParameterDirection.Input),
-				new Parameters("@paramName", _LU_Department.DeptName, DbType.String, ParameterDirection.Input),
-				new Parameters("@paramCreatorId", _LU_Department.CreatorId, DbType.Int32, ParameterDirection.Input),
-				new Parameters("@paramIsActive", _LU_Department.IsActive, DbType.Boolean, ParameterDirection.Input),
+				new Parameters("@paramId", _LU_Issues.Id, DbType.Int32, ParameterDirection.Input),
+				new Parameters("@paramName", _LU_Issues.Name, DbType.String, ParameterDirection.Input),
+				new Parameters("@paramCreatorId", _LU_Issues.CreatorId, DbType.Int32, ParameterDirection.Input),
+				new Parameters("@paramIsActive", _LU_Issues.IsActive, DbType.Boolean, ParameterDirection.Input),
 				new Parameters("@paramTransactionType", transactionType, DbType.String, ParameterDirection.Input)
 				};
 				dbExecutor.ManageTransaction(TransactionType.Open);
-				ret = dbExecutor.ExecuteScalarString(true, CommandType.StoredProcedure, "wsp_LU_Department_Post", colparameters, true);
+				ret = dbExecutor.ExecuteScalarString(true, CommandType.StoredProcedure, "wsp_LU_Issues_Post", colparameters, true);
 				dbExecutor.ManageTransaction(TransactionType.Commit);
 			}
 			catch (DBConcurrencyException except)

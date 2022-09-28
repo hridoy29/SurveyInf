@@ -4,6 +4,7 @@
     $scope.PerPage = $scope.DefaultPerPage;
     $scope.total_count = 0;
     $scope.entityList = [];
+    $scope.user = {};
     $scope.entityListPaged = [];
     $scope.entryBlock = blockUI.instances.get('entryBlock');
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
@@ -12,6 +13,7 @@
 
     function clear() {
         $scope.entity = { Id: 0, IsActive: true };
+       
         $("#txtFocus").focus();
     };
     $scope.onPageChange = function (currentpage) {
@@ -51,6 +53,8 @@
     };
 
     function submitRequest(trnType) {
+        var id = $cookieStore.get('UserID');
+        $scope.entity.CreatorId = id;
         var params = JSON.stringify({ obj: $scope.entity, transactionType: trnType });
 
         $http.post('/Department/Post', params).success(function (data) {
@@ -97,17 +101,17 @@
     }
 
     $scope.post = function (trnType) {
-        var where = "CommentsType = '" + $scope.entity.CommentsType + "'";
+        var where = "DeptName = '" + $scope.entity.DeptName + "'";
         if ($scope.entity.Id > 0)
             where += " AND Id <> " + $scope.entity.Id;
 
         $http({
-            url: '/Department/GetDynamic?where=' + where + '&orderBy=CommentsType',
+            url: '/Department/GetDynamic?where=' + where + '&orderBy=DeptName',
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
             if (data.length > 0) {
-                alertify.log($scope.entity.CommentsType + ' already exists!', 'already', '5000');
+                alertify.log($scope.entity.DeptName + ' already exists!', 'already', '5000');
                 $('#txtFocus').focus();
             } else {
                 if (trnType === 'save') {

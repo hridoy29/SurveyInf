@@ -45,10 +45,7 @@ namespace WEB.Controllers
 
             try
             {
-                obj.CreatorId = 1;
-                obj.ModifierId = 1;
-                obj.CreationDate = DateTime.Now;
-                obj.ModificationDate = DateTime.Now;
+             
                 ret = Facade.LU_DepartmentDAO.Post(obj, transactionType);
                 return ret;
             }

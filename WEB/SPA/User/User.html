@@ -26,6 +26,12 @@
                                 </select>
                                 <span class="help-block" style="display: block;" ng-if="frm.EmployeeType.$error.required && frm.EmployeeType.$touched"> User Group Type is required!</span>
                             </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Department.$touched && frm.Department.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Department">
+                                <select class="form-control" id="txtFocus" name="Department" ng-model="cmbDepartment" ng-options=" department.DeptName for  department in departmentList track by  department.Id" ng-change="entity.DepartmentId = cmbDepartment.Id" required>
+                                    <option value="" selected>{{DeptName}}</option>
+                                </select>
+                                <span class="help-block" style="display: block;" ng-if="frm.Department.$error.required && frm.Department.$touched">Department is required!</span>
+                            </div>
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Email.$touched && frm.Email.$invalid}" data-toggle="tooltip" data-placement="bottom" title="User ID">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="User ID" name="Email" ng-model="entity.Email" maxlength="51" ng-maxlength="50" required autofocus />
                                 <span class="help-block" style="display: block;" ng-if="frm.Email.$error.required && frm.Email.$touched">Email is required!</span>
@@ -93,6 +99,7 @@
                                 <th class="sbold">#</th>
                                 <th class="sbold text-center" data-th="Details"><span>User</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Group Type</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Department</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>User ID</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>MobileNo</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Status</span></th>
@@ -101,6 +108,7 @@
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
                                 <td class="text-center"> {{item.Name}} </td>
                                 <td class="text-center"> {{item.GroupName}} </td>
+                                <td class="text-center"> {{item.DeptName}} </td>
                                 <td class="text-center"> {{item.Email}} </td>
                                 <td class="text-center"> {{item.MobileNo}} </td>
 

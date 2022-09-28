@@ -64,6 +64,7 @@
     <Compile Include="LU_CommentsType.cs" />
     <Compile Include="LU_Commnets.cs" />
     <Compile Include="LU_ConfigarationSettings.cs" />
+    <Compile Include="LU_Issues.cs" />
     <Compile Include="LU_DeviceInfo.cs" />
     <Compile Include="LU_Distributorlist.cs" />
     <Compile Include="LU_Employee.cs" />

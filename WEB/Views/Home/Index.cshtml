@@ -161,7 +161,7 @@
 
                                 @*department*@
                                 <li class="nav-item " ng-click="setActiveMenu('department')" ng-class="{selectedsubmenu: isSecurityDepartment, unselectedsubmenu: !isSecurityDepartment}" ng-show="departmentPermission.CanView">
-                                    <a href="#/UserGroup" class="nav-link">
+                                    <a href="#/Department" class="nav-link">
                                         <i class="icon-star"></i>
                                         <span class="title">Department</span>
                                     </a>
@@ -209,11 +209,11 @@
                             <ul class="sub-menu">
                                 @*outletType*@
                                 @*<li class="nav-item " ng-click="setActiveMenu('outletType')" ng-class="{selectedsubmenu: isSetupOutletType, unselectedsubmenu: !isSetupOutletType}" ng-show="outletTypePermission.CanView">
-                                    <a href="#/OutletType" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Outlet Type</span>
-                                    </a>
-                                </li>*@
+            <a href="#/OutletType" class="nav-link">
+                <i class="icon-star"></i>
+                <span class="title">Outlet Type</span>
+            </a>
+        </li>*@
                                 @*commentType*@
                                 <li class="nav-item " ng-click="setActiveMenu('commentType')" ng-class="{selectedsubmenu: isSetupCommentType, unselectedsubmenu: !isSetupCommentType}" ng-show="commentTypePermission.CanView">
                                     <a href="#/CommentType" class="nav-link">
@@ -247,6 +247,14 @@
                                     <a href="#/Distributorlist" class="nav-link">
                                         <i class="icon-star"></i>
                                         <span class="title">Distributorlist</span>
+                                    </a>
+                                </li>
+
+                                @*issues*@
+                                <li class="nav-item " ng-click="setActiveMenu('issues')" ng-class="{selectedsubmenu: isSetupIssues, unselectedsubmenu: !isSetupIssues}" ng-show="issuesPermission.CanView">
+                                    <a href="#/Issues" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Issues</span>
                                     </a>
                                 </li>
                             </ul>
@@ -388,6 +396,8 @@
     <script src="~/SPA/Home/HomeController.js"></script>
     <script src="~/SPA/User/UserCtrl.js"></script>
     <script src="~/SPA/UserGroup/UserGroupCtrl.js"></script>
+    <script src="~/SPA/Department/DepartmentCtrl.js"></script>
+    <script src="~/SPA/Issues/IssuesCtrl.js"></script>
     <script src="~/SPA/Permission/PermissionCtrl.js"></script>
     <script src="~/SPA/ChangePassword/ChangePasswordCtrl.js"></script>
     <script src="~/SPA/SchemeNumber/SchemeNumberCtrl.js"></script>

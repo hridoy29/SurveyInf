@@ -10,6 +10,7 @@ namespace SurveyDAL
         public static LU_AICDAO LU_AICDAO { get { return new LU_AICDAO(); } }
         public static LU_ASMDAO LU_ASMDAO { get { return new LU_ASMDAO(); } }
         public static LU_DistributorlistDAO LU_DistributorlistDAO { get { return new LU_DistributorlistDAO(); } }
+        public static LU_IssuesDAO LU_IssuesDAO { get { return new LU_IssuesDAO(); } }
         public static LU_SurveyReportsDAO LU_SurveyReportsDAO { get { return new LU_SurveyReportsDAO(); } }
 
         public static LU_ScreenDetailDAO LU_ScreenDetailDAO { get { return new LU_ScreenDetailDAO(); } }
