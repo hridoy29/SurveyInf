@@ -149,6 +149,7 @@
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\ItemGroupController.cs" />
     <Compile Include="Controllers\UserGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -310,6 +311,8 @@
     <Content Include="SPA\Issues\IssuesCtrl.js" />
     <Content Include="SPA\Distributorlist\DistributorList.html" />
     <Content Include="SPA\Distributorlist\DistributorList.js" />
+    <Content Include="SPA\Category\Category.html" />
+    <Content Include="SPA\Category\CategoryCtrl.js" />
     <Content Include="SPA\OutletType\OutletType.html" />
     <Content Include="SPA\OutletType\OutletTypeCtrl.js" />
     <Content Include="SPA\ChangePassword\ChangePassword.html" />
@@ -324,6 +327,8 @@
     <Content Include="SPA\Permission\PermissionCtrl.js" />
     <Content Include="SPA\Department\Department.html" />
     <Content Include="SPA\Department\DepartmentCtrl.js" />
+    <Content Include="SPA\ItemGroup\ItemGroup.html" />
+    <Content Include="SPA\ItemGroup\ItemGroupCtrl.js" />
     <Content Include="SPA\UserGroup\UserGroup.html" />
     <Content Include="SPA\UserGroup\UserGroupCtrl.js" />
     <Content Include="SPA\SideBarController.js" />

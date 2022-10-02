@@ -68,6 +68,7 @@
     <Compile Include="LU_DeviceInfo.cs" />
     <Compile Include="LU_Distributorlist.cs" />
     <Compile Include="LU_Employee.cs" />
+    <Compile Include="LU_Category.cs" />
     <Compile Include="LU_Module.cs" />
     <Compile Include="LU_OutletType.cs" />
     <Compile Include="LU_SchemeMediaType.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="LU_ScreenFunction.cs" />
     <Compile Include="LU_User.cs" />
     <Compile Include="LU_Department.cs" />
+    <Compile Include="LU_ItemGroup.cs" />
     <Compile Include="LU_UserGroup.cs" />
     <Compile Include="LU_UserLoginIds.cs" />
     <Compile Include="TRN_Permission.cs" />

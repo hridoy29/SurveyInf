@@ -63,6 +63,20 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+
+
+		.when('/ItemGroup', {
+			templateUrl: '/SPA/ItemGroup/ItemGroup.html',
+			controller: 'ItemGroupCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 		.when('/Permission', {
 			templateUrl: '/SPA/Permission/Permission.html',
 			controller: 'PermissionCtrl',

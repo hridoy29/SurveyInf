@@ -257,6 +257,21 @@
                                         <span class="title">Issues</span>
                                     </a>
                                 </li>
+                                @*Category*@
+                                <li class="nav-item " ng-click="setActiveMenu('category')" ng-class="{selectedsubmenu: isSetupCategory, unselectedsubmenu: !isSetupCategory}" ng-show="categoryPermission.CanView">
+                                    <a href="#/Category" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Category</span>
+                                    </a>
+                                </li>
+                                @*ItemGroup*@
+                                <li class="nav-item " ng-click="setActiveMenu('itemGroup')" ng-class="{selectedsubmenu: isSetupItemGroup, unselectedsubmenu: !isSetupItemGroup}" ng-show="itemGroupPermission.CanView">
+                                    <a href="#/ItemGroup" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Item Group</span>
+                                    </a>
+                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item " ng-class="{ 'active' : isReports}" ng-show="reportMenuView">
@@ -398,6 +413,8 @@
     <script src="~/SPA/UserGroup/UserGroupCtrl.js"></script>
     <script src="~/SPA/Department/DepartmentCtrl.js"></script>
     <script src="~/SPA/Issues/IssuesCtrl.js"></script>
+    <script src="~/SPA/ItemGroup/ItemGroupCtrl.js"></script>
+    <script src="~/SPA/Category/CategoryCtrl.js"></script>
     <script src="~/SPA/Permission/PermissionCtrl.js"></script>
     <script src="~/SPA/ChangePassword/ChangePasswordCtrl.js"></script>
     <script src="~/SPA/SchemeNumber/SchemeNumberCtrl.js"></script>

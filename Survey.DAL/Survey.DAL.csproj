@@ -48,6 +48,7 @@
     <Compile Include="DBUtility.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="LU_IssuesDAO.cs" />
+    <Compile Include="LU_CategoryDAO.cs" />
     <Compile Include="LU_SurveyReportsDAO.cs" />
     <Compile Include="LU_AICDAO.cs" />
     <Compile Include="LU_ASMDAO.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="LU_ScreenFunctionDAO.cs" />
     <Compile Include="LU_UserDAO.cs" />
     <Compile Include="LU_DepartmentDAO.cs" />
+    <Compile Include="LU_ItemGroupDAO.cs" />
     <Compile Include="LU_UserGroupDAO.cs" />
     <Compile Include="LU_UserLoginIdsDAO.cs" />
     <Compile Include="Parameters.cs" />

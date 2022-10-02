@@ -22,6 +22,8 @@
     $scope.ASMPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'ASM'").FirstOrDefault();
     $scope.DistributorlistPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Distributor list'").FirstOrDefault();
     $scope.issuesPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Issues'").FirstOrDefault();
+    $scope.categoryPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Category'").FirstOrDefault();
+    $scope.itemGroupPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Item Group'").FirstOrDefault();
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
     $scope.surveyReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Survey Reports'").FirstOrDefault();
 
@@ -33,7 +35,7 @@
         $scope.settingMenuView = false;
     }
 
-    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.issuesPermission.CanView ) {
+    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView  ) {
         $scope.setupMenuView = false;
     }
 
@@ -82,6 +84,8 @@
         $scope.isSetupASM = false;
         $scope.isSetupDistributorlist = false;
         $scope.isSetupIssues = false;
+        $scope.isSetupCategory = false;
+        $scope.isSetupItemGroup = false;
         $scope.isSetupComment  = false;
         $scope.isReports = false;
         $scope.isReportsSurveyReports = false;
@@ -142,6 +146,14 @@
         else if (menu === 'issues') {
             $scope.isSetup = true;
             $scope.isSetupIssues = true;
+        }
+        else if (menu === 'itemGroup') {
+            $scope.isSetup = true;
+            $scope.isSetupItemGroup = true;
+        }
+        else if (menu === 'category') {
+            $scope.isSetup = true;
+            $scope.isSetupCategory = true;
         }
         else if (menu === 'comment') {
             $scope.isSetup = true;
