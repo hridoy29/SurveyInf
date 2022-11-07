@@ -47,6 +47,11 @@
     <Compile Include="DBExecutor.cs" />
     <Compile Include="DBUtility.cs" />
     <Compile Include="Facade.cs" />
+    <Compile Include="LU_DistributorDAO.cs" />
+    <Compile Include="LU_ItemDAO.cs" />
+    <Compile Include="LU_ObservationDAO.cs" />
+    <Compile Include="LU_IdentityDAO.cs" />
+    <Compile Include="LU_BBDDAO.cs" />
     <Compile Include="LU_IssuesDAO.cs" />
     <Compile Include="LU_CategoryDAO.cs" />
     <Compile Include="LU_SurveyReportsDAO.cs" />

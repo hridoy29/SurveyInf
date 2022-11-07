@@ -22,6 +22,11 @@
     $scope.ASMPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'ASM'").FirstOrDefault();
     $scope.DistributorlistPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Distributor list'").FirstOrDefault();
     $scope.issuesPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Issues'").FirstOrDefault();
+    $scope.itemsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Item'").FirstOrDefault();
+    $scope.distributorsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Distributor'").FirstOrDefault();
+    $scope.observationsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Observation'").FirstOrDefault();
+    $scope.bbdsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'BBD'").FirstOrDefault();
+    $scope.identitiesPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Identity'").FirstOrDefault();
     $scope.categoryPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Category'").FirstOrDefault();
     $scope.itemGroupPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Item Group'").FirstOrDefault();
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
@@ -35,7 +40,7 @@
         $scope.settingMenuView = false;
     }
 
-    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView  ) {
+    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.itemsPermission  && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView && !$scope.bbdsPermission && !$scope.identitiesPermission && !$scope.observationsPermission && !$scope.distributorsPermission ) {
         $scope.setupMenuView = false;
     }
 
@@ -83,7 +88,12 @@
         $scope.isSetupAIC = false;
         $scope.isSetupASM = false;
         $scope.isSetupDistributorlist = false;
+        $scope.isSetupBBDs = false;
+        $scope.isSetupIdentity = false;
+        $scope.isSetupItems = false;
         $scope.isSetupIssues = false;
+        $scope.isSetupDistributors = false;
+        $scope.isSetupObservations = false;
         $scope.isSetupCategory = false;
         $scope.isSetupItemGroup = false;
         $scope.isSetupComment  = false;
@@ -143,9 +153,30 @@
             $scope.isSetup = true;
             $scope.isSetupDistributorlist = true;
         }
+
+        else if (menu === 'items') {
+            $scope.isSetup = true;
+            $scope.isSetupItems = true;
+        }
+        else if (menu === 'distributors') {
+            $scope.isSetup = true;
+            $scope.isSetupDistributors = true;
+        }
         else if (menu === 'issues') {
             $scope.isSetup = true;
             $scope.isSetupIssues = true;
+        }
+        else if (menu === 'observations') {
+            $scope.isSetup = true;
+            $scope.isSetupObservations = true;
+        }
+        else if (menu === 'bbds') {
+            $scope.isSetup = true;
+            $scope.isSetupBBDs = true;
+        }
+        else if (menu === 'identities') {
+            $scope.isSetup = true;
+            $scope.isSetupIdentity = true;
         }
         else if (menu === 'itemGroup') {
             $scope.isSetup = true;

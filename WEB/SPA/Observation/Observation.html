@@ -5,7 +5,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category
+                        Observation
                     </label>
                 </div>
 
@@ -15,10 +15,10 @@
                 <form name="frm" novalidate>
                     <div class="row">
                         <div class="from-body">
-                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Description.$touched && frm.Description.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Description">
-                                <input type="text" class="form-control" id="txtFocus" placeholder="Description" name="Description" ng-model="entity.Description" maxlength="51" ng-maxlength="50" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Description.$error.required && frm.Description.$touched">Description is required!</span>
-                                <span class="help-block" ng-if="frm.Description.$error.maxlength">50 Character Max</span>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Observation">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Name" name="Name" ng-model="entity.Name" maxlength="151" ng-maxlength="150" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.BBDName.$touched">Observation is required!</span>
+                                <span class="help-block" ng-if="frm.Name.$error.maxlength">150 Character Max</span>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -33,6 +33,27 @@
                                             </label>
                                             <label class="mt-radio">
                                                 <input type="radio" name="optionsRadios" ng-value="false" ng-model="entity.IsActive"> Inactive
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                   
+                                    <div class="col-md-3">
+                                        <label class="sbold" style="margin-top: 10px;">Comment Status:</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mt-radio-inline">
+                                            <label class="mt-radio">
+                                                <input type="radio" name="optionsRadioss" ng-value="true" ng-model="entity.IsPositiveComments"> Positive
+                                                <span></span>
+                                            </label>
+                                            <label class="mt-radio">
+                                                <input type="radio" name="optionsRadioss" ng-value="false" ng-model="entity.IsPositiveComments"> Negative
                                                 <span></span>
                                             </label>
                                         </div>
@@ -59,7 +80,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category List
+                        Observation List
                     </label>
                 </div>
             </div>
@@ -69,13 +90,15 @@
                         <tbody>
                             <tr class="t-head" style="font-size: 14px !important">
                                 <th class="sbold">#</th>
-                                <th class="sbold text-center" data-th="Details"><span>Description</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Name</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Status</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Comments Status</span></th>
                             </tr>
                             <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.Description}} </td>
+                                <td class="text-center"> {{item.Name}} </td>
                                 <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
+                                <td class="text-center"> {{item.IsPositiveComments ? 'Positive' : 'Negative' }} </td>
                             </tr>
                         </tbody>
                     </table>

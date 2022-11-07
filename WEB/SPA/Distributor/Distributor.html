@@ -5,7 +5,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category
+                        Distributor
                     </label>
                 </div>
 
@@ -15,10 +15,25 @@
                 <form name="frm" novalidate>
                     <div class="row">
                         <div class="from-body">
-                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Description.$touched && frm.Description.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Description">
-                                <input type="text" class="form-control" id="txtFocus" placeholder="Description" name="Description" ng-model="entity.Description" maxlength="51" ng-maxlength="50" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Description.$error.required && frm.Description.$touched">Description is required!</span>
-                                <span class="help-block" ng-if="frm.Description.$error.maxlength">50 Character Max</span>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.DbCode.$touched && frm.DbCode.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Distributor Code" name="DbCode" ng-model="entity.DbCode" maxlength="11" ng-maxlength="10" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.DbCode.$error.required && frm.DbCode.$touched">Distributor Code is required!</span>
+                                <span class="help-block" ng-if="frm.DbCode.$error.maxlength">10 Character Max</span>
+                            </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Distributor" name="Name" ng-model="entity.Name" maxlength="101" ng-maxlength="100" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Distributor Name is required!</span>
+                                <span class="help-block" ng-if="frm.Name.$error.maxlength">100 Character Max</span>
+                            </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Mobile.$touched && frm.Mobile.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Mobile" name="Mobile" ng-model="entity.Mobile" maxlength="16" ng-maxlength="15" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Mobile.$error.required && frm.Name.$touched">Distributor Mobile is required!</span>
+                                <span class="help-block" ng-if="frm.Mobile.$error.maxlength">15 Character Max</span>
+                            </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.GccCode.$touched && frm.GccCode.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="GccCode" name="GccCode" ng-model="entity.GccCode" maxlength="11" ng-maxlength="10" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.GccCode.$error.required && frm.GccCode.$touched">Distributor GccCode is required!</span>
+                                <span class="help-block" ng-if="frm.GccCode.$error.maxlength">10 Character Max</span>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -39,6 +54,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="form-actions" style="padding: 5px 15px !important" block-ui="entryBlock">
                                 <button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="post('save')">Submit</button>
                                 <button type="button" class="btn btn-lg btn-danger box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-show="entity.Id > 0" ng-click="post('delete')">Delete</button>
@@ -59,7 +76,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category List
+                        Distributor List
                     </label>
                 </div>
             </div>
@@ -69,12 +86,18 @@
                         <tbody>
                             <tr class="t-head" style="font-size: 14px !important">
                                 <th class="sbold">#</th>
-                                <th class="sbold text-center" data-th="Details"><span>Description</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Distributor Code</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Name</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Mobile</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>GccCode</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Status</span></th>
                             </tr>
                             <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.Description}} </td>
+                                <td class="text-center"> {{item.DbCode}} </td>
+                                <td class="text-center"> {{item.Name}} </td>
+                                <td class="text-center"> {{item.Mobile}} </td>
+                                <td class="text-center"> {{item.GccCode}} </td>
                                 <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
                             </tr>
                         </tbody>

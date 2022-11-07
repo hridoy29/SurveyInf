@@ -250,6 +250,21 @@
                                     </a>
                                 </li>
 
+                                @*items*@
+                                <li class="nav-item " ng-click="setActiveMenu('items')" ng-class="{selectedsubmenu: isSetupItems, unselectedsubmenu: !isSetupItems}" ng-show="itemsPermission.CanView">
+                                    <a href="#/Item" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Item</span>
+                                    </a>
+                                </li>
+                                @*distributors*@
+                                <li class="nav-item " ng-click="setActiveMenu('distributors')" ng-class="{selectedsubmenu: isSetupDistributors, unselectedsubmenu: !isSetupDistributors}" ng-show="distributorsPermission.CanView">
+                                    <a href="#/Distributors" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Distributor</span>
+                                    </a>
+                                </li>
+
                                 @*issues*@
                                 <li class="nav-item " ng-click="setActiveMenu('issues')" ng-class="{selectedsubmenu: isSetupIssues, unselectedsubmenu: !isSetupIssues}" ng-show="issuesPermission.CanView">
                                     <a href="#/Issues" class="nav-link">
@@ -257,22 +272,44 @@
                                         <span class="title">Issues</span>
                                     </a>
                                 </li>
-                                @*Category*@
-                                <li class="nav-item " ng-click="setActiveMenu('category')" ng-class="{selectedsubmenu: isSetupCategory, unselectedsubmenu: !isSetupCategory}" ng-show="categoryPermission.CanView">
-                                    <a href="#/Category" class="nav-link">
+                                @*bbds*@
+                                <li class="nav-item " ng-click="setActiveMenu('bbds')" ng-class="{selectedsubmenu: isSetupBBDS, unselectedsubmenu: !isSetupBBDS}" ng-show="bbdsPermission.CanView">
+                                    <a href="#/BBD" class="nav-link">
                                         <i class="icon-star"></i>
-                                        <span class="title">Category</span>
+                                        <span class="title">BBD</span>
                                     </a>
                                 </li>
-                                @*ItemGroup*@
-                                <li class="nav-item " ng-click="setActiveMenu('itemGroup')" ng-class="{selectedsubmenu: isSetupItemGroup, unselectedsubmenu: !isSetupItemGroup}" ng-show="itemGroupPermission.CanView">
-                                    <a href="#/ItemGroup" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Item Group</span>
-                                    </a>
-                                </li>
+</li>
+                        @*observations*@
+                        <li class="nav-item " ng-click="setActiveMenu('observations')" ng-class="{selectedsubmenu: isSetupObservations, unselectedsubmenu: !isSetupObservations}" ng-show="observationsPermission.CanView">
+                            <a href="#/Observation" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Observation</span>
+                            </a>
+                        </li>
+                        @*identities*@
+                        <li class="nav-item " ng-click="setActiveMenu('identities')" ng-class="{selectedsubmenu: isSetupIdentity, unselectedsubmenu: !isSetupIdentity}" ng-show="identitiesPermission.CanView">
+                            <a href="#/Identity" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Identity</span>
+                            </a>
+                        </li>
+                        @*Category*@
+                        <li class="nav-item " ng-click="setActiveMenu('category')" ng-class="{selectedsubmenu: isSetupCategory, unselectedsubmenu: !isSetupCategory}" ng-show="categoryPermission.CanView">
+                            <a href="#/Category" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Category</span>
+                            </a>
+                        </li>
+                        @*ItemGroup*@
+                        <li class="nav-item " ng-click="setActiveMenu('itemGroup')" ng-class="{selectedsubmenu: isSetupItemGroup, unselectedsubmenu: !isSetupItemGroup}" ng-show="itemGroupPermission.CanView">
+                            <a href="#/ItemGroup" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Item Group</span>
+                            </a>
+                        </li>
 
-                            </ul>
+                    </ul>
                         </li>
                         <li class="nav-item " ng-class="{ 'active' : isReports}" ng-show="reportMenuView">
                             <a href="javascript:;" class="nav-link nav-toggle">
@@ -412,7 +449,12 @@
     <script src="~/SPA/User/UserCtrl.js"></script>
     <script src="~/SPA/UserGroup/UserGroupCtrl.js"></script>
     <script src="~/SPA/Department/DepartmentCtrl.js"></script>
+    <script src="~/SPA/Item/ItemCtrl.js"></script>
     <script src="~/SPA/Issues/IssuesCtrl.js"></script>
+    <script src="~/SPA/Distributor/DistributorCtrl.js"></script>
+    <script src="~/SPA/BBD/BBDCtrl.js"></script>
+    <script src="~/SPA/Observation/ObservationCtrl.js"></script>
+    <script src="~/SPA/Identity/IdentityCtrl.js"></script>
     <script src="~/SPA/ItemGroup/ItemGroupCtrl.js"></script>
     <script src="~/SPA/Category/CategoryCtrl.js"></script>
     <script src="~/SPA/Permission/PermissionCtrl.js"></script>

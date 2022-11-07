@@ -11,7 +11,13 @@ namespace SurveyDAL
         public static LU_ASMDAO LU_ASMDAO { get { return new LU_ASMDAO(); } }
         public static LU_DistributorlistDAO LU_DistributorlistDAO { get { return new LU_DistributorlistDAO(); } }
         public static LU_IssuesDAO LU_IssuesDAO { get { return new LU_IssuesDAO(); } }
+        public static LU_ItemDAO LU_ItemDAO { get { return new LU_ItemDAO(); } }
+        public static LU_DistributorDAO LU_DistributorDAO { get { return new LU_DistributorDAO(); } }
+        public static LU_ObservationDAO LU_ObservationDAO { get { return new LU_ObservationDAO(); } }
         public static LU_ItemGroupDAO LU_ItemGroupDAO { get { return new LU_ItemGroupDAO(); } }
+        public static LU_CategoryDAO LU_CategoryDAO { get { return new LU_CategoryDAO(); } }
+        public static LU_BBDDAO LU_BBDDAO { get { return new LU_BBDDAO(); } }
+        public static LU_IdentityDAO LU_IdentityDAO { get { return new LU_IdentityDAO(); } }
         public static LU_SurveyReportsDAO LU_SurveyReportsDAO { get { return new LU_SurveyReportsDAO(); } }
 
         public static LU_ScreenDetailDAO LU_ScreenDetailDAO { get { return new LU_ScreenDetailDAO(); } }

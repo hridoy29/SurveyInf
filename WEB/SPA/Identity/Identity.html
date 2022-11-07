@@ -5,7 +5,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category
+                        Identity
                     </label>
                 </div>
 
@@ -15,10 +15,10 @@
                 <form name="frm" novalidate>
                     <div class="row">
                         <div class="from-body">
-                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Description.$touched && frm.Description.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Description">
-                                <input type="text" class="form-control" id="txtFocus" placeholder="Description" name="Description" ng-model="entity.Description" maxlength="51" ng-maxlength="50" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Description.$error.required && frm.Description.$touched">Description is required!</span>
-                                <span class="help-block" ng-if="frm.Description.$error.maxlength">50 Character Max</span>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.BBDName.$touched && frm.BBDName.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Designation">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Designation" name="Designation" ng-model="entity.Designation" maxlength="51" ng-maxlength="50" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Designation.$error.required && frm.Designation.$touched">Designation is required!</span>
+                                <span class="help-block" ng-if="frm.Designation.$error.maxlength">50 Character Max</span>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -59,7 +59,7 @@
             <div class="portlet-title sbold">
                 <div class="caption">
                     <label>
-                        Category List
+                        Identity List
                     </label>
                 </div>
             </div>
@@ -69,12 +69,12 @@
                         <tbody>
                             <tr class="t-head" style="font-size: 14px !important">
                                 <th class="sbold">#</th>
-                                <th class="sbold text-center" data-th="Details"><span>Description</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Designation</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Status</span></th>
                             </tr>
                             <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.Description}} </td>
+                                <td class="text-center"> {{item.Designation}} </td>
                                 <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
                             </tr>
                         </tbody>

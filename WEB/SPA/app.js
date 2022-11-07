@@ -51,6 +51,19 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//}
 		})
 
+
+		.when('/Item', {
+			templateUrl: '/SPA/Item/Item.html',
+			controller: 'ItemCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 		.when('/Issues', {
 			templateUrl: '/SPA/Issues/Issues.html',
 			controller: 'IssuesCtrl',
@@ -63,6 +76,72 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+
+		.when('/Category', {
+			templateUrl: '/SPA/Category/Category.html',
+			controller: 'CategoryCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+
+		.when('/BBD', {
+			templateUrl: '/SPA/BBD/BBD.html',
+			controller: 'BBDCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+		.when('/Distributor', {
+			templateUrl: '/SPA/Distributor/Distributor.html',
+			controller: 'DistributorCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+
+		.when('/Observation', {
+			templateUrl: '/SPA/Observation/Observation.html',
+			controller: 'ObservationCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+
+		.when('/Identity', {
+			templateUrl: '/SPA/Identity/Identity.html',
+			controller: 'IdentityCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+
+
 
 
 		.when('/ItemGroup', {

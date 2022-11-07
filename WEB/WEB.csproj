@@ -137,7 +137,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DistributorController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\ObservationController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
+    <Compile Include="Controllers\BBDController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\SurveyReportController.cs" />
     <Compile Include="Controllers\AICController.cs" />
     <Compile Include="Controllers\ASMController.cs" />
@@ -303,6 +309,14 @@
     <Content Include="SPA\app.js" />
     <Content Include="SPA\ASM\ASM.html" />
     <Content Include="SPA\ASM\ASMCtrl.js" />
+    <Content Include="SPA\Distributor\Distributor.html" />
+    <Content Include="SPA\Distributor\DistributorCtrl.js" />
+    <Content Include="SPA\Observation\Observation.html" />
+    <Content Include="SPA\Observation\ObservationCtrl.js" />
+    <Content Include="SPA\Identity\Identity.html" />
+    <Content Include="SPA\Identity\IdentityCtrl.js" />
+    <Content Include="SPA\BBD\BBD.html" />
+    <Content Include="SPA\BBD\BBDCtrl.js" />
     <Content Include="SPA\CommentType\CommentType.html" />
     <Content Include="SPA\CommentType\CommentTypeCtrl.js" />
     <Content Include="SPA\Comment\Comment.html" />
@@ -329,6 +343,8 @@
     <Content Include="SPA\Department\DepartmentCtrl.js" />
     <Content Include="SPA\ItemGroup\ItemGroup.html" />
     <Content Include="SPA\ItemGroup\ItemGroupCtrl.js" />
+    <Content Include="SPA\Item\Item.html" />
+    <Content Include="SPA\Item\ItemCtrl.js" />
     <Content Include="SPA\UserGroup\UserGroup.html" />
     <Content Include="SPA\UserGroup\UserGroupCtrl.js" />
     <Content Include="SPA\SideBarController.js" />

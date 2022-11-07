@@ -1,4 +1,4 @@
-﻿app.controller("UserCtrl", function ($scope, $cookieStore, $window, $location, $http, blockUI) {
+﻿app.controller("ItemCtrl", function ($scope, $cookieStore, $window, $location, $http, blockUI) {
     $scope.DefaultPerPage = 10;
     $scope.currentPage = 1;
     $scope.PerPage = $scope.DefaultPerPage;
@@ -9,14 +9,14 @@
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
     clear();
     getList();
-    getUserGroup();
-    getDepartment();
+    getItemGroup();
+    getCategory();
 
     function clear() {
         $scope.entity = { Id: 0, IsActive: true };
         $("#txtFocus").focus();
-        $scope.Name = '-- Select Type --';
-        $scope.DeptName = '-- Select Department --';
+        $scope.GroupName = '-- Select Item Group --';
+        $scope.CategoryName = '-- Select Category --';
     };
 
     $scope.onPageChange = function (currentpage) {
@@ -27,37 +27,37 @@
         $scope.entityListPaged = $scope.entityList.slice(begin, end);
     }
 
-    function getUserGroup() {
+    function getItemGroup() {
 
 
         $http({
-            url: "/UserGroup/Get",
+            url: "/ItemGroup/Get",
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
             if (data.length) {
-                $scope.userGroupList = data;
+                $scope.itemGroupList = data;
             }
         });
     }
 
-    function getDepartment() {
+    function getCategory() {
 
 
         $http({
-            url: "/Department/Get",
+            url: "/Category/Get",
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
             if (data.length) {
-                $scope.departmentList = data;
+                $scope.categoryList = data;
             }
         });
     }
     function getList() {
         $scope.lsitBlock.start();
         $http({
-            url: "/User/Get",
+            url: "/Item/Get",
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
@@ -89,64 +89,32 @@
         var id = $cookieStore.get('UserID');
         $scope.entity.CreatorId = id;
         $scope.entity.ModifierId = id;
-
-        if ($scope.entity.Password == "") {
-            $scope.entity.Password = "1234";
-            var params = JSON.stringify({ obj: $scope.entity, transactionType: trnType });
-
-            $http.post('/User/Post', params).success(function (data) {
-                $scope.entryBlock.start();
-                if (data != '') {
-                    if (data.indexOf('successfully') > -1) {
-                        $scope.entryBlock.stop();
-                        $scope.resetForm();
-                        getList();
-                        alertify.log(data, 'success', '5000');
-                    }
-                    else {
-                        $scope.entryBlock.stop();
-                        alertify.log('System could not execute the operation. ' + data, 'error', '10000');
-                    }
-                }
-                else {
-                    $scope.entryBlock.stop();
-                    alertify.log('System could not execute the operation.', 'error', '10000');
-                }
-            }).error(function () {
-                $scope.entryBlock.stop();
-                alertify.log('Unknown server error', 'error', '10000');
-            });
-        }
-        else if (trnType == "INSERT") {
             
-            var params = JSON.stringify({ obj: $scope.entity, transactionType: trnType });
+        var params = JSON.stringify({ obj: $scope.entity, transactionType: trnType });
 
-            $http.post('/User/Post', params).success(function (data) {
-                $scope.entryBlock.start();
-                if (data != '') {
-                    if (data.indexOf('successfully') > -1) {
-                        $scope.entryBlock.stop();
-                        $scope.resetForm();
-                        getList();
-                        alertify.log(data, 'success', '5000');
-                    }
-                    else {
-                        $scope.entryBlock.stop();
-                        alertify.log('System could not execute the operation. ' + data, 'error', '10000');
-                    }
+        $http.post('/Item/Post', params).success(function (data) {
+            $scope.entryBlock.start();
+            if (data != '') {
+                if (data.indexOf('successfully') > -1) {
+                    $scope.entryBlock.stop();
+                    $scope.resetForm();
+                    getList();
+                    alertify.log(data, 'success', '5000');
                 }
                 else {
                     $scope.entryBlock.stop();
-                    alertify.log('System could not execute the operation.', 'error', '10000');
+                    alertify.log('System could not execute the operation. ' + data, 'error', '10000');
                 }
-            }).error(function () {
+            }
+            else {
                 $scope.entryBlock.stop();
-                alertify.log('Unknown server error', 'error', '10000');
-            });
-        }
-        else {
-            alertify.log('Changing Password not allowed.', 'error', '10000');
-        }
+                alertify.log('System could not execute the operation.', 'error', '10000');
+            }
+        }).error(function () {
+            $scope.entryBlock.stop();
+            alertify.log('Unknown server error', 'error', '10000');
+        });
+       
     };
 
     $scope.GetPaged = function (curPage) {
@@ -174,7 +142,7 @@
             where += " AND Id <> " + $scope.entity.Id;
 
         $http({
-            url: '/User/GetDynamic?where=' + where + '&orderBy=Name',
+            url: '/Item/GetDynamic?where=' + where + '&orderBy=Name',
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
@@ -183,7 +151,7 @@
                 $('#txtFocus').focus();
             } else {
                 if (trnType === 'save') {
-                    trnType = $scope.entity.Id === 0 ? "INSERT" : "UPDATE_WITH_OUT_PASSWORD";
+                    trnType = $scope.entity.Id === 0 ? "INSERT" : "UPDATE";
                     submitRequest(trnType);
                 }
 
@@ -211,19 +179,19 @@
 
     $scope.rowClick = function (obj) {
         $scope.entity = obj;
-        var a = $scope.userGroupList
-        var d = $scope.departmentList
+        var a = $scope.itemGroupList
+        var d = $scope.categoryList
         var i
         for (i = 0; i <= a.length; i++) {
-            if (a[i].Id == obj.UserGroupId) {
-                $scope.cmbModuleType = a[i].Name
-                $scope.Name = a[i].Name
-                $scope.cmbDepartment = d[i].DeptName
-                $scope.DeptName = d[i].DeptName
+            if (a[i].Id == obj.ItemGroupId) {
+                $scope.cmbGroupType = a[i].GroupName
+                $scope.GroupName = a[i].GroupName
+                $scope.cmbCategory = d[i].Description
+                $scope.CategoryName = d[i].Description
             }
-            if (d[i].Id == obj.DepartmentId) {
-                $scope.cmbDepartment = d[i].DeptName
-                $scope.DeptName = d[i].DeptName
+            if (d[i].Id == obj.CategoryId) {
+                $scope.cmbCategory = d[i].Description
+                $scope.CategoryName = d[i].Description
             }
         }
         $('#txtFocus').focus();

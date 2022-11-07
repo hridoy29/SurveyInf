@@ -60,6 +60,11 @@
   <ItemGroup>
     <Compile Include="LU_AIC.cs" />
     <Compile Include="LU_ASM.cs" />
+    <Compile Include="LU_Distributor.cs" />
+    <Compile Include="LU_Item.cs" />
+    <Compile Include="LU_Observation.cs" />
+    <Compile Include="LU_Identity.cs" />
+    <Compile Include="LU_BBD.cs" />
     <Compile Include="LU_ChallanType.cs" />
     <Compile Include="LU_CommentsType.cs" />
     <Compile Include="LU_Commnets.cs" />
