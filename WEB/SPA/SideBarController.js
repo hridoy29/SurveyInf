@@ -31,6 +31,8 @@
     $scope.itemGroupPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Item Group'").FirstOrDefault();
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
     $scope.surveyReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Survey Reports'").FirstOrDefault();
+    $scope.questionnaireReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Reports'").FirstOrDefault();
+    $scope.questionnaireDetailsReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Details Reports'").FirstOrDefault();
 
     if (!$scope.userPermission.CanView && !$scope.userGroupPermission.CanView && !$scope.permissionPermission.CanView && !$scope.changePassPermission.CanView && !$scope.departmentPermission.CanView ) {
         $scope.securityMenuView = false;
@@ -44,7 +46,7 @@
         $scope.setupMenuView = false;
     }
 
-    if (!$scope.surveyReportsPermission.CanView) {
+    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView) {
         $scope.reportMenuView = false;
     }
 
@@ -99,6 +101,8 @@
         $scope.isSetupComment  = false;
         $scope.isReports = false;
         $scope.isReportsSurveyReports = false;
+        $scope.isQuestionnaireReports = false;
+        $scope.isQuestionnaireDetailsReports = false;
     };
 
     $scope.setActiveMenu = function (menu) {
@@ -193,7 +197,15 @@
 
         else if (menu === 'surveyReports') {
             $scope.isReports = true;
-            $scope.isReportsSurveyReports = true;
+            $scope.isReportsSurveyReports = true; 
         }
+        else if (menu === 'questionnaireReports') {
+            $scope.isReports = true;
+            $scope.isQuestionnaireReports = true;
+        }
+        else if (menu === 'questionnaireDetailsReports') {
+            $scope.isReports = true;
+            $scope.isQuestionnaireDetailsReports = true;
+        } 
     };
 });

@@ -86,6 +86,8 @@
     <Compile Include="LU_ItemGroup.cs" />
     <Compile Include="LU_UserGroup.cs" />
     <Compile Include="LU_UserLoginIds.cs" />
+    <Compile Include="QuestionnaireDetailsReport.cs" />
+    <Compile Include="QuestionnaireReport.cs" />
     <Compile Include="TRN_Permission.cs" />
     <Compile Include="TRN_PermissionDetail.cs" />
     <Compile Include="TRN_SchemeAuditChild.cs" />

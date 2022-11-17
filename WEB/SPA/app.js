@@ -274,6 +274,31 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+	
+		.when('/QuestionnaireReports', {
+			templateUrl: '/SPA/QuestionnaireReports/QuestionnaireReports.html',
+			controller: 'QuestionnaireReportsCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+		.when('/QuestionnaireDetailsReports', {
+			templateUrl: '/SPA/QuestionnaireDetailsReports/QuestionnaireDetailsReports.html',
+			controller: 'QuestionnaireDetailsReportsCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
         .when('/', {
             templateUrl: '/SPA/Home/Home.html',
             controller: 'HomeController',

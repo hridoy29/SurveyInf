@@ -19,6 +19,8 @@ namespace SurveyDAL
         public static LU_BBDDAO LU_BBDDAO { get { return new LU_BBDDAO(); } }
         public static LU_IdentityDAO LU_IdentityDAO { get { return new LU_IdentityDAO(); } }
         public static LU_SurveyReportsDAO LU_SurveyReportsDAO { get { return new LU_SurveyReportsDAO(); } }
+        public static QuestionnaireReportDAO QuestionnaireReportDAO { get { return new QuestionnaireReportDAO(); } }
+        public static QuestionnaireDetailsReportDAO QuestionnaireDetailsReportDAO { get { return new QuestionnaireDetailsReportDAO(); } }
 
         public static LU_ScreenDetailDAO LU_ScreenDetailDAO { get { return new LU_ScreenDetailDAO(); } }
         public static TRN_PermissionDAO TRN_PermissionDAO { get { return new TRN_PermissionDAO(); } }

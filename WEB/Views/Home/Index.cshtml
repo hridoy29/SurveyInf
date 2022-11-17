@@ -326,6 +326,21 @@
                                         <span class="title">Survey Reports</span>
                                     </a>
                                 </li>
+                                @*questionnaireReports*@
+                                <li class="nav-item " ng-click="setActiveMenu('questionnaireReports')" ng-class="{selectedsubmenu: isQuestionnaireReports, unselectedsubmenu: !isQuestionnaireReports}" ng-show="questionnaireReportsPermission.CanView">
+                                    <a href="#/QuestionnaireReports" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Questionnaire Reports</span>
+                                    </a>
+                                </li>
+
+                                @*questionnaireDetailsReports*@
+                                <li class="nav-item " ng-click="setActiveMenu('questionnaireDetailsReports')" ng-class="{selectedsubmenu: isQuestionnaireDetailsReports, unselectedsubmenu: !isQuestionnaireDetailsReports}" ng-show="questionnaireDetailsReportsPermission.CanView">
+                                    <a href="#/QuestionnaireDetailsReports" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Questionnaire Details Reports</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -467,5 +482,7 @@
     <script src="~/SPA/Distributorlist/Distributorlist.js"></script>
     <script src="~/SPA/Comment/CommentCtrl.js"></script>
     <script src="~/SPA/Reports/ReportsCtrl.js"></script>
+    <script src="~/SPA/QuestionnaireReports/QuestionnaireReportsCtrl.js"></script>
+    <script src="~/SPA/QuestionnaireDetailsReports/QuestionnaireDetailsReportsCtrl.js"></script>
 </body>
 </html>

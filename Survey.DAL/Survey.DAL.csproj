@@ -54,6 +54,8 @@
     <Compile Include="LU_BBDDAO.cs" />
     <Compile Include="LU_IssuesDAO.cs" />
     <Compile Include="LU_CategoryDAO.cs" />
+    <Compile Include="QuestionnaireReportDAO.cs" />
+    <Compile Include="QuestionnaireDetailsReportDAO.cs" />
     <Compile Include="LU_SurveyReportsDAO.cs" />
     <Compile Include="LU_AICDAO.cs" />
     <Compile Include="LU_ASMDAO.cs" />
