@@ -17,7 +17,7 @@
                         <div class="from-body">
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.GroupName.$touched && frm.GroupName.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Item Group">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="Item Group" name="ItemGroupName" ng-model="entity.GroupName" maxlength="51" ng-maxlength="50" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.CommentName.$error.required && frm.CommentName.$touched">Item Group is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.GroupName.$error.required && frm.GroupName.$touched">Item Group is required!</span>
                                 <span class="help-block" ng-if="frm.GroupName.$error.maxlength">50 Character Max</span>
                             </div>
                             <div class="form-group">

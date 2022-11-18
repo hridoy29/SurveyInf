@@ -162,13 +162,13 @@
     }
 
     $scope.getExport = function (entityListPaged) {
-        $scope.fromDate = document.getElementById("fromDate").value;
+     
         $scope.toDate = document.getElementById("toDate").value; 
         $scope.userId = $cookieStore.get('UserID');
-        var params = JSON.stringify({ userId: $scope.userId, fromDate: $scope.fromDate, toDate: $scope.toDate });
+        var params = JSON.stringify({ toDate: $scope.toDate });
         //var params = JSON.stringify({ userId: 1 });
         $http({
-            url: '/SurveyReport/getExport',
+            url: '/QuestionnaireDetailsReports/getExport',
             method: "POST",
             data: params, //this is your json data string
             headers: {

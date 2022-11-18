@@ -17,7 +17,7 @@
                         <div class="from-body">
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Observation">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="Name" name="Name" ng-model="entity.Name" maxlength="151" ng-maxlength="150" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.BBDName.$touched">Observation is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Observation is required!</span>
                                 <span class="help-block" ng-if="frm.Name.$error.maxlength">150 Character Max</span>
                             </div>
                             <div class="form-group">

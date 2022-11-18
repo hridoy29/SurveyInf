@@ -70,23 +70,21 @@ namespace SurveyDAL
                 throw ex;
             }
         }
-        public List<TRN_SurveyReports_Export_Infinigent_Formate> GetListByUserExport(int id, DateTime? fromDate, DateTime? toDate)
+        public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime? toDate)
         {
             try
             {
-                if(fromDate==null && toDate==null)
+                if(toDate==null)
                 {
-                    fromDate = Convert.ToDateTime("1993-01-01");
+                   
                     toDate = Convert.ToDateTime("1993-01-01");
                 }
-                List<TRN_SurveyReports_Export_Infinigent_Formate> TRN_SurveyReports_getLst = new List<TRN_SurveyReports_Export_Infinigent_Formate>();
-                Parameters[] colparameters = new Parameters[3]{
-                new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input),
-                 new Parameters("@paramfromDate", fromDate, DbType.DateTime, ParameterDirection.Input),
-                  new Parameters("@paramtoDate", toDate, DbType.DateTime, ParameterDirection.Input)
+                List<QuestionnaireDetailsReport> TRN_SurveyReports_getLst = new List<QuestionnaireDetailsReport>();
+                Parameters[] colparameters = new Parameters[1]{
+                  new Parameters("@paramDate", toDate, DbType.DateTime, ParameterDirection.Input)
                 };
                  //TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_Export_Infinigent_Formate>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak_new", colparameters);
-                TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_Export_Infinigent_Formate>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak_new_Infinigent_Formate", colparameters);
+                TRN_SurveyReports_getLst = dbExecutor.FetchData<QuestionnaireDetailsReport>(CommandType.StoredProcedure, "wsp_QuestionnaireDetailsReport_Get", colparameters);
 
                 return TRN_SurveyReports_getLst;
             }

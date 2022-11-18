@@ -49,18 +49,18 @@ namespace WEB.Controllers
         }
        
  
-        public void getExport(int userId,DateTime? fromDate, DateTime? toDate)
+        public void getExport(DateTime? toDate)
         {
 
-            List<TRN_SurveyReports_Export_Infinigent_Formate> tRN_SurveyReports_Get = new List<TRN_SurveyReports_Export_Infinigent_Formate>();
-            tRN_SurveyReports_Get = Facade.LU_SurveyReportsDAO.GetListByUserExport(userId, fromDate, toDate);
+            List<QuestionnaireDetailsReport> tRN_SurveyReports_Get = new List<QuestionnaireDetailsReport>();
+            tRN_SurveyReports_Get = Facade.QuestionnaireDetailsReportDAO.GetListByUserExport(toDate);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
              
-            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.AddHeader("content-disposition", "attachment; filename=QuestionnaireDetailsReportExcel.xls");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();
