@@ -299,6 +299,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+		.when('/QuestionnairePhysicalStocksReport', {
+			templateUrl: '/SPA/QuestionnairePhysicalStocksReport/QuestionnairePhysicalStocksReport.html',
+			controller: 'QuestionnairePhysicalStocksReportCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
         .when('/', {
             templateUrl: '/SPA/Home/Home.html',
             controller: 'HomeController',

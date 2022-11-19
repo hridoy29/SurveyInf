@@ -64,13 +64,13 @@
                               
                                 <td class="text-center"> {{item.DistributorName}} </td>
                                 <td class="text-center"> {{item.DbCode}} </td>
-                                <td class="text-center"> {{item.LogoOfTheTCC}} </td>
-                                <td class="text-center"> {{item.StorageOfMemoForLastYear}} </td>
-                                <td class="text-center"> {{item.GitInIdasAvailable}} </td>
-                                <td class="text-center"> {{item.DayClosePending}} </td>
-                                <td class="text-center"> {{item.StorageCondition}} </td>
-                                <td class="text-center"> {{item.MarketReturnedProductAdjusted}} </td>
-                                <td class="text-center"> {{item.FreeSchemeProductAvailable}} </td>
+                                <td class="text-center"> {{item.LogoOfTheTCC?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.StorageOfMemoForLastYear?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.GitInIdasAvailable?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.DayClosePending?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.StorageCondition?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.MarketReturnedProductAdjusted?'Yes':'No'}} </td>
+                                <td class="text-center"> {{item.FreeSchemeProductAvailable?'Yes':'No'}} </td>
                                 <td class="text-center"> {{item.BBDName}} </td>
 
                             </tr>
