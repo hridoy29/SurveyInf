@@ -11,19 +11,19 @@ using Survey.Entity;
 
 namespace SurveyDAL
 {
-    public class QuestionnaireReportDAO : IDisposable
+    public class QuestionnaireObservationReportDAO : IDisposable
     {
-        private static volatile QuestionnaireReportDAO instance;
+        private static volatile QuestionnaireObservationReportDAO instance;
         private static readonly object lockObj = new object();
-        public static QuestionnaireReportDAO GetInstance()
+        public static QuestionnaireObservationReportDAO GetInstance()
         {
             if (instance == null)
             {
-                instance = new QuestionnaireReportDAO();
+                instance = new QuestionnaireObservationReportDAO();
             }
             return instance;
         }
-        public static QuestionnaireReportDAO GetInstanceThreadSafe
+        public static QuestionnaireObservationReportDAO GetInstanceThreadSafe
         {
             get
             {
@@ -33,7 +33,7 @@ namespace SurveyDAL
                     {
                         if (instance == null)
                         {
-                            instance = new QuestionnaireReportDAO();
+                            instance = new QuestionnaireObservationReportDAO();
                         }
                     }
                 }
@@ -48,44 +48,44 @@ namespace SurveyDAL
 
         DBExecutor dbExecutor;
 
-        public QuestionnaireReportDAO()
+        public QuestionnaireObservationReportDAO()
         {
             //dbExecutor = DBExecutor.GetInstanceThreadSafe;
             dbExecutor = new DBExecutor();
         }
 
-        public List<QuestionnaireReport> Get(DateTime toDate,int distributorId)
+        public List<QuestionnaireObservationReport> Get(DateTime toDate,int distributorid)
         {
             try
             {
-                List<QuestionnaireReport> QuestionnaireReport_getLst = new List<QuestionnaireReport>();
+                List<QuestionnaireObservationReport> QuestionnaireObservationReport_getLst = new List<QuestionnaireObservationReport>();
                 Parameters[] colparameters = new Parameters[2]{
-                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input),
-                new Parameters("@distributorId", distributorId, DbType.Int32, ParameterDirection.Input)
+                new Parameters("@reportdate", toDate, DbType.Date, ParameterDirection.Input),
+                new Parameters("@distributorid", distributorid, DbType.Int32, ParameterDirection.Input)
                 };
-                QuestionnaireReport_getLst = dbExecutor.FetchData<QuestionnaireReport>(CommandType.StoredProcedure, "wsp_QuestionnaireReport_Get", colparameters);
-                return QuestionnaireReport_getLst;
+                QuestionnaireObservationReport_getLst = dbExecutor.FetchData<QuestionnaireObservationReport>(CommandType.StoredProcedure, "wsp_GetQuestionnaire_Observation_Report", colparameters);
+                return QuestionnaireObservationReport_getLst;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public List<QuestionnaireReport> GetListByUserExport( DateTime? toDate)
+        public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime? toDate)
         {
             try
             {
                 if(toDate==null)
                 {
-                  
+                   
                     toDate = Convert.ToDateTime("1993-01-01");
                 }
-                List<QuestionnaireReport> TRN_SurveyReports_getLst = new List<QuestionnaireReport>();
+                List<QuestionnaireDetailsReport> TRN_SurveyReports_getLst = new List<QuestionnaireDetailsReport>();
                 Parameters[] colparameters = new Parameters[1]{
-                  new Parameters("@paramtoDate", toDate, DbType.DateTime, ParameterDirection.Input)
+                  new Parameters("@paramDate", toDate, DbType.DateTime, ParameterDirection.Input)
                 };
                  //TRN_SurveyReports_getLst = dbExecutor.FetchData<TRN_SurveyReports_Export_Infinigent_Formate>(CommandType.StoredProcedure, "wsp_SurveyReports_Get_By_Userid_bak_new", colparameters);
-                TRN_SurveyReports_getLst = dbExecutor.FetchData<QuestionnaireReport>(CommandType.StoredProcedure, "wsp_QuestionnaireReportsExport", colparameters);
+                TRN_SurveyReports_getLst = dbExecutor.FetchData<QuestionnaireDetailsReport>(CommandType.StoredProcedure, "wsp_QuestionnaireDetailsReport_Get", colparameters);
 
                 return TRN_SurveyReports_getLst;
             }
@@ -112,22 +112,22 @@ namespace SurveyDAL
             }
         }
 
-        public List<TRN_SchemeAuditChild> GetImageLocation(string number)
-        {
-            try
-            {
-                List<TRN_SchemeAuditChild> GetImageLocation_getList = new List<TRN_SchemeAuditChild>();
-                Parameters[] colparameters = new Parameters[1]{
-                new Parameters("@paramNumber", number, DbType.String, ParameterDirection.Input)
-                };
-                GetImageLocation_getList = dbExecutor.FetchData<TRN_SchemeAuditChild>(CommandType.StoredProcedure, "wsp_TRN_SchemeAuditChild_Get", colparameters);
-                return GetImageLocation_getList;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public List<TRN_SchemeAuditChild> GetImageLocation(string number)
+        //{
+        //    try
+        //    {
+        //        List<TRN_SchemeAuditChild> GetImageLocation_getList = new List<TRN_SchemeAuditChild>();
+        //        Parameters[] colparameters = new Parameters[1]{
+        //        new Parameters("@paramNumber", number, DbType.String, ParameterDirection.Input)
+        //        };
+        //        GetImageLocation_getList = dbExecutor.FetchData<TRN_SchemeAuditChild>(CommandType.StoredProcedure, "wsp_TRN_SchemeAuditChild_Get", colparameters);
+        //        return GetImageLocation_getList;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         //public List<LU_AIC> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, ref int rows)
         //{

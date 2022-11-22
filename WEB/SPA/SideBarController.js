@@ -34,6 +34,7 @@
     $scope.questionnaireReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Reports'").FirstOrDefault();
     $scope.questionnaireDetailsReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Details Reports'").FirstOrDefault();
     $scope.questionnairePhysicalStocksReportPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Physical Stocks Reports'").FirstOrDefault();
+    $scope.questionnaireObservationReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Observation Reports'").FirstOrDefault();
 
     if (!$scope.userPermission.CanView && !$scope.userGroupPermission.CanView && !$scope.permissionPermission.CanView && !$scope.changePassPermission.CanView && !$scope.departmentPermission.CanView ) {
         $scope.securityMenuView = false;
@@ -47,7 +48,7 @@
         $scope.setupMenuView = false;
     }
 
-    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView) {
+    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView && !$scope.questionnaireObservationReports.CanView) {
         $scope.reportMenuView = false;
     }
 
@@ -105,6 +106,7 @@
         $scope.isQuestionnaireReports = false;
         $scope.isQuestionnaireDetailsReports = false;
         $scope.isQuestionnairePhysicalStocksReport = false;
+        $scope.isQuestionnaireObservationReports = false;
     };
 
     $scope.setActiveMenu = function (menu) {
@@ -212,6 +214,10 @@
         else if (menu === 'questionnairePhysicalStocksReport') {
             $scope.isReports = true;
             $scope.isQuestionnairePhysicalStocksReport = true;
-        }
+        } 
+        else if (menu === 'questionnaireObservationReports') {
+            $scope.isReports = true;
+            $scope.isQuestionnaireObservationReports = true;
+        } 
     };
 });

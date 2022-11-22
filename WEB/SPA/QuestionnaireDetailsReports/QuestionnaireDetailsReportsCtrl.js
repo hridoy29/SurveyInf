@@ -10,6 +10,7 @@
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
     //getProgramHead();
     clear();
+    getDistributorList();
   //  getList();
     //function getProgramHead() {
 
@@ -47,6 +48,7 @@
 
     function clear() {
         $scope.entity = { ProgramId: 0, IsActive: true };
+        $scope.DistributorName = '-- Select Distributor --';
         $("#txtFocus").focus();
     };
 
@@ -61,47 +63,83 @@
     $scope.getList= function () {
         $scope.lsitBlock.start();
         $scope.toDate = document.getElementById("toDate").value;
-        var params = JSON.stringify({ todate: $scope.toDate });
+
+        if ($scope.toDate == undefined || $scope.toDate == null) {
+
+            alertify.log('Please Select Valid Date !', 'error', '10000');
+
+        }
+        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+
+            alertify.log('Please Select Distributor!', 'error', '10000');
+        }
+        else {
+            var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
+            $http({
+                url: "/QuestionnaireDetailsReports/Get",
+                method: 'Get',
+                params: { todate: $scope.toDate, distributorId: $scope.distributorId },
+                headers: { 'Content-Type': 'application/json' }
+
+            }).success(function (data) {
+
+                if (data.length) {
+                    $scope.lsitBlock.stop();
+                    /* angular.forEach(data, function (obj) {
+                        var res = obj.Date.substring(0, 5);
+                        if (res == "/Date") {
+                            var parsedDate = new Date(parseInt(obj.Date.substr(6)));
+                            var date = ($filter('date')(parsedDate, 'MMM dd, yyyy')).toString();
+                            obj.Date = date;
+                        }
+    
+    
+                    })*/
+                    $scope.entityList = data;
+
+                    angular.forEach($scope.entityList, function (aData) {
+                        if (aData.LastVisitedDate != null) {
+                            var res1 = aData.LastVisitedDate.substring(0, 5);
+                            if (res1 == "/Date") {
+                                var parsedDate1 = new Date(parseInt(aData.LastVisitedDate.substr(6)));
+                                var date1 = ($filter('date')(parsedDate1, 'MMM dd, yyyy')).toString();
+                                aData.LastVisitedDate = date1;
+                            }
+                        }
+
+                    })
+
+                    $scope.total_count = data.length;
+                    var begin = ($scope.PerPage * ($scope.currentPage - 1));
+                    var end = begin + $scope.PerPage;
+                    $scope.entityListPaged = $scope.entityList.slice(begin, end);
+                }
+                else {
+                    $scope.lsitBlock.stop();
+                    //alertify.log('System could not retrive information, please refresh page', 'error', '10000');
+                }
+
+            }).error(function (data2) {
+                $scope.lsitBlock.stop();
+                alertify.log('Unknown server error', 'error', '10000');
+            });
+        }
+    };
+
+
+    function getDistributorList() {
+        $scope.lsitBlock.start();
         $http({
-            url: "/QuestionnaireDetailsReports/Get",
-            method: 'Get',
-            params: { todate: $scope.toDate},
+            url: "/Distributor/Get",
+            method: 'GET',
             headers: { 'Content-Type': 'application/json' }
-           
         }).success(function (data) {
 
             if (data.length) {
                 $scope.lsitBlock.stop();
-                /* angular.forEach(data, function (obj) {
-                    var res = obj.Date.substring(0, 5);
-                    if (res == "/Date") {
-                        var parsedDate = new Date(parseInt(obj.Date.substr(6)));
-                        var date = ($filter('date')(parsedDate, 'MMM dd, yyyy')).toString();
-                        obj.Date = date;
-                    }
 
+                $scope.distributorList = data;
 
-                })*/
-                $scope.entityList = data;
-              
-                angular.forEach($scope.entityList, function (aData) {
-                    if (aData.Date != null) {
-                        var res1 = aData.Date.substring(0, 5);
-                        if (res1 == "/Date") {
-                            var parsedDate1 = new Date(parseInt(aData.Date.substr(6)));
-                            var date1 = ($filter('date')(parsedDate1, 'MMM dd, yyyy')).toString();
-                            aData.Date = date1;
-                        }
-                    }
-                   
-
-
-                })
-
-                $scope.total_count = data.length;
-                var begin = ($scope.PerPage * ($scope.currentPage - 1));
-                var end = begin + $scope.PerPage;
-                $scope.entityListPaged = $scope.entityList.slice(begin, end);
             }
             else {
                 $scope.lsitBlock.stop();
@@ -113,6 +151,7 @@
             alertify.log('Unknown server error', 'error', '10000');
         });
     };
+
 
 
     function submitRequest(trnType) {
@@ -165,23 +204,34 @@
      
         $scope.toDate = document.getElementById("toDate").value; 
         $scope.userId = $cookieStore.get('UserID');
-        var params = JSON.stringify({ toDate: $scope.toDate });
+        var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
         //var params = JSON.stringify({ userId: 1 });
-        $http({
-            url: '/QuestionnaireDetailsReports/getExport',
-            method: "POST",
-            data: params, //this is your json data string
-            headers: {
-                'Content-type': 'application/json'
-            },
-            responseType: 'blob'
-        }).success(function (data, status, headers, config) {
-            var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
-            var objectUrl = URL.createObjectURL(blob);
-            window.open(objectUrl);
-        }).error(function (data, status, headers, config) {
+        if ($scope.toDate == undefined || $scope.toDate == null) {
 
-        });
+            alertify.log('Please Select Valid Date !', 'error', '10000');
+
+        }
+        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+          
+            alertify.log('Please Select Distributor!', 'error', '10000');
+        }
+        else {
+            $http({
+                url: '/QuestionnaireDetailsReports/getExport',
+                method: "POST",
+                data: params, //this is your json data string
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                responseType: 'blob'
+            }).success(function (data, status, headers, config) {
+                var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+                var objectUrl = URL.createObjectURL(blob);
+                window.open(objectUrl);
+            }).error(function (data, status, headers, config) {
+
+            });
+        }
     }
     $scope.post = function (trnType) {
         var where = "ProgramCode = '" + $scope.entity.ProgramCode + "'";

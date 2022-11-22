@@ -18,7 +18,8 @@ namespace Survey.Entity
         public bool MarketReturnedProductAdjusted { get; set; }
         public bool FreeSchemeProductAvailable { get; set; }
         public string BBDName { get; set; }
+        public DateTime? LastVisitedDate { get; set; }
 
-      
+
     }
 }

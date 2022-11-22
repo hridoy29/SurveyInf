@@ -311,6 +311,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+		.when('/QuestionnaireObservationReports', {
+			templateUrl: '/SPA/QuestionnaireObservationReports/QuestionnaireObservationReports.html',
+			controller: 'QuestionnaireObservationReportsCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}QuestionnaireObservationReports
+		})
         .when('/', {
             templateUrl: '/SPA/Home/Home.html',
             controller: 'HomeController',

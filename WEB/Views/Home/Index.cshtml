@@ -343,11 +343,18 @@
                                 </li>
 
 
-                                @*questionnaireDetailsReports*@
+                                @*questionnairePhysicalStocksReports*@
                                 <li class="nav-item " ng-click="setActiveMenu('questionnairePhysicalStocksReport')" ng-class="{selectedsubmenu: isQuestionnairePhysicalStocksReport, unselectedsubmenu: !isQuestionnairePhysicalStocksReport}" ng-show="questionnairePhysicalStocksReportPermission.CanView">
                                     <a href="#/QuestionnairePhysicalStocksReport" class="nav-link">
                                         <i class="icon-star"></i>
                                         <span class="title">Questionnaire Physical Stocks Reports</span>
+                                    </a>
+                                </li>
+                                @*questionnaireObservationReports*@
+                                <li class="nav-item " ng-click="setActiveMenu('questionnaireObservationReports')" ng-class="{selectedsubmenu: isQuestionnaireObservationReports, unselectedsubmenu: !isQuestionnaireObservationReports}" ng-show="questionnaireObservationReportsPermission.CanView">
+                                    <a href="#/QuestionnaireObservationReports" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Questionnaire Observation Reports</span>
                                     </a>
                                 </li>
                             </ul>
@@ -494,5 +501,6 @@
     <script src="~/SPA/QuestionnaireReports/QuestionnaireReportsCtrl.js"></script>
     <script src="~/SPA/QuestionnaireDetailsReports/QuestionnaireDetailsReportsCtrl.js"></script>
     <script src="~/SPA/QuestionnairePhysicalStocksReport/QuestionnairePhysicalStocksReportCtrl.js"></script>
+    <script src="~/SPA/QuestionnaireObservationReports/QuestionnaireObservationReportsCtrl.js"></script>
 </body>
 </html>

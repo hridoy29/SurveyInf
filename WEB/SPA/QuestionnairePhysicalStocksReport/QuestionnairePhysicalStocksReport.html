@@ -1,115 +1,140 @@
 ﻿
 
 </p>
-    <div class="row">
+<div class="row">
 
-        <!--<label for="fromDateReport">From Date:</label>
-        <input type="date" id="fromDate" name="namefromDate">-->
-        <label for="toDateReport">Month :</label>
-        <input type="date" id="toDate" name="tofromDate">
-        <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
-       
-        </p>
-        <div class="col-md-12">
-            <div class="portlet box purple">
-                <div class="portlet-title sbold">
-                    <div class="caption">
-                        <label>
-                            List of Questionnaire Physical Stocks Reports Details
-                        </label>
+    <!--<label for="fromDateReport">From Date:</label>
+    <input type="date" id="fromDate" name="namefromDate">-->
+    <div class="col">
+        <label for="toDateReport">Select Month</label>
+        <div class='input-group date datepicker' id='table3'>
+            <input type='text' name="tgl" class="form-control" id="toDate" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
+        </div>
+
+    </div>
+    </p>
+    <div class="col-md-12">
+        <div class="portlet box purple">
+            <div class="portlet-title sbold">
+                <div class="caption">
+                    <label>
+                        List of Questionnaire Physical Stocks Reports Details
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="portlet-body">
+                <div class="tbl-outer">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="t-head" style="font-size: 14px !important" ng-class-even="'even'" ng-class-odd="'odd'">
+                                <th></th>
+                                <th class="sbold">SL No.</th>
+                                <!--<th class="sbold text-center" data-th="Details"><span>DB Code</span></th>-->
+                                <th class="sbold text-center">Distributor's' Name</th>
+                                <th class="sbold text-center">DB Code</th>
+                                <th class="sbold text-center">Item Group</th>
+                                <th class="sbold text-center">Total System Stock</th>
+                                <th class="sbold text-center">Total Physical Stock</th>
+                                <th class="sbold text-center">Total BBD & Damage</th>
+                                <th class="sbold text-center">Total Difference</th>
+
+                            </tr>
+                        </thead>
+                        <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
+                            <tr ng-class-even="'even'" ng-class-odd="'odd'">
+
+                                <td>
+                                    <button type="button" ng-click="expanded = !expanded" class="btn btn-default">
+                                        <span ng-bind="expanded ? '-' : '+'"></span>
+                                    </button>
+                                </td>
+                                <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
+
+                                <td class="text-center"> {{item.DistributorName}} </td>
+                                <td class="text-center"> {{item.DbCode}} </td>
+                                <td class="text-center"> {{item.ItemGroup}} </td>
+                                <td class="text-center"> {{item.SystemStockSum}} </td>
+                                <td class="text-center"> {{item.PhysicalStockSum}} </td>
+                                <td class="text-center"> {{item.BBDDamageSum}} </td>
+                                <td class="text-center"> {{item.DifferenceSum}} </td>
+
+                            </tr>
+
+                            <tr class="sub" ng-show="expanded">
+
+                                <td colspan="10">
+
+                                    <table class="table table-responsive table-striped" border="1" cellpadding="0" cellspacing="0" style=" width:100%; border-collapse:collapse;">
+                                        <thead>
+                                            <tr>
+
+
+                                                <th>#</th>
+                                                <th class="sbold text-center">Item Name</th>
+                                                <th class="sbold text-center">System Stock</th>
+                                                <th class="sbold text-center">Physical Stock</th>
+                                                <th class="sbold text-center">BBD & Damage</th>
+                                                <th class="sbold text-center">Difference</th>
+                                                <th class="sbold text-center">Any Issues</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr dir-paginate="subItem in  item.ItemGroupWisePhysicalStockList|orderBy:sortKey:reverse|filter:search|itemsPerPage:10"
+                                                ng-class-even="'even'" ng-class-odd="'odd'">
+
+                                                <td class="text-center">{{$index  + 1}}</td>
+                                                <td class="text-center"> {{subItem.ItemName}} </td>
+                                                <td class="text-center"> {{subItem.SystemStock}} </td>
+                                                <td class="text-center"> {{subItem.PhysicalStock}} </td>
+                                                <td class="text-center"> {{subItem.BBDDamage}} </td>
+                                                <td class="text-center"> {{subItem.Difference}} </td>
+                                                <td class="text-center"> {{subItem.Issue}} </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="tbl-outer" style="padding:10px 20px !important">
+                        <dir-pagination-controls pagination-id="cust"
+                                                 direction-links="true"
+                                                 boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
                     </div>
                 </div>
-          
-
-                <div class="portlet-body">
-                    <div class="tbl-outer">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr class="t-head" style="font-size: 14px !important" ng-class-even="'even'" ng-class-odd="'odd'">
-                                    <th></th>
-                                    <th class="sbold">SL No.</th>
-                                    <!--<th class="sbold text-center" data-th="Details"><span>DB Code</span></th>-->
-                                    <th class="sbold text-center">Distributor's' Name</th>
-                                    <th class="sbold text-center">DB Code</th>
-                                    <th class="sbold text-center">Item Group</th>
-                                    <th class="sbold text-center">Total System Stock</th>
-                                    <th class="sbold text-center">Total Physical Stock</th>
-                                    <th class="sbold text-center">Total BBD & Damage</th>
-                                    <th class="sbold text-center">Total Difference</th>
-
-                                </tr>
-                            </thead>
-                            <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
-                                <tr ng-class-even="'even'" ng-class-odd="'odd'">
-                                  
-                                    <td>
-                                        <button type="button" ng-click="expanded = !expanded" class="btn btn-default">
-                                            <span ng-bind="expanded ? '-' : '+'"></span>
-                                        </button>
-                                    </td>
-                                    <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-
-                                    <td class="text-center"> {{item.DistributorName}} </td>
-                                    <td class="text-center"> {{item.DbCode}} </td>
-                                    <td class="text-center"> {{item.ItemGroup}} </td>
-                                    <td class="text-center"> {{item.SystemStockSum}} </td>
-                                    <td class="text-center"> {{item.PhysicalStockSum}} </td>
-                                    <td class="text-center"> {{item.BBDDamageSum}} </td>
-                                    <td class="text-center"> {{item.DifferenceSum}} </td>
-
-                                </tr>
-                             
-                                <tr class="sub" ng-show="expanded">
-                                    
-                                    <td colspan="10">
-
-                                        <table  class="table table-responsive table-striped"  border="1" cellpadding="0" cellspacing="0" style=" width:100%; border-collapse:collapse;">
-                                            <thead>
-                                                <tr>
-                                                 
-                                                    
-                                                    <th>#</th>
-                                                    <th class="sbold text-center">Item Name</th>
-                                                    <th class="sbold text-center">System Stock</th>
-                                                    <th class="sbold text-center">Physical Stock</th>
-                                                    <th class="sbold text-center">BBD & Damage</th>
-                                                    <th class="sbold text-center">Difference</th>
-                                                    <th class="sbold text-center">Any Issues</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                              
-                                                <tr dir-paginate="subItem in  item.ItemGroupWisePhysicalStockList|orderBy:sortKey:reverse|filter:search|itemsPerPage:10"
-                                                    ng-class-even="'even'" ng-class-odd="'odd'">
-
-                                                    <td class="text-center">{{$index  + 1}}</td>
-                                                    <td class="text-center"> {{subItem.ItemName}} </td>
-                                                    <td class="text-center"> {{subItem.SystemStock}} </td>
-                                                    <td class="text-center"> {{subItem.PhysicalStock}} </td>
-                                                    <td class="text-center"> {{subItem.BBDDamage}} </td>
-                                                    <td class="text-center"> {{subItem.Difference}} </td>
-                                                    <td class="text-center"> {{subItem.Issue}} </td>
-
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="tbl-outer" style="padding:10px 20px !important">
-                            <dir-pagination-controls pagination-id="cust"
-                                                     direction-links="true"
-                                                     boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!--</div>-->
 
             </div>
-    </div>
 
-     
+            <!--</div>-->
+
+        </div>
+    </div>
+    <script>
+        $('#table3').datepicker({
+            format: 'MM/yyyy',
+            icons: {
+                time: 'fa fa-time',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            },
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>

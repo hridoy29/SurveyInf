@@ -53,7 +53,7 @@ namespace WEB.Controllers
         {
 
             List<QuestionnaireDetailsReport> tRN_SurveyReports_Get = new List<QuestionnaireDetailsReport>();
-            tRN_SurveyReports_Get = Facade.QuestionnaireDetailsReportDAO.GetListByUserExport(toDate);
+            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.GetListByUserExport(toDate);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();

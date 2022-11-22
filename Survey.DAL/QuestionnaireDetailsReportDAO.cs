@@ -54,13 +54,14 @@ namespace SurveyDAL
             dbExecutor = new DBExecutor();
         }
 
-        public List<QuestionnaireDetailsReport> Get(DateTime toDate)
+        public List<QuestionnaireDetailsReport> Get(DateTime toDate, int distributorId)
         {
             try
             {
                 List<QuestionnaireDetailsReport> QuestionnaireDetailsReport_getLst = new List<QuestionnaireDetailsReport>();
-                Parameters[] colparameters = new Parameters[1]{
-                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input)
+                Parameters[] colparameters = new Parameters[2]{
+                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input),
+                new Parameters("@distributorid", distributorId, DbType.Int32, ParameterDirection.Input)
                 };
                 QuestionnaireDetailsReport_getLst = dbExecutor.FetchData<QuestionnaireDetailsReport>(CommandType.StoredProcedure, "wsp_QuestionnaireDetailsReport_Get", colparameters);
                 return QuestionnaireDetailsReport_getLst;
@@ -70,7 +71,7 @@ namespace SurveyDAL
                 throw ex;
             }
         }
-        public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime? toDate)
+        public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime toDate, int distributorId)
         {
             try
             {

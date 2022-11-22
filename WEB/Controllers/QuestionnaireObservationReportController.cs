@@ -18,13 +18,13 @@ using Microsoft.Office.Interop.Excel;
 
 namespace WEB.Controllers
 {
-    public class QuestionnaireReportsController : Controller
+    public class QuestionnaireObservationReportController : Controller
     {
         public JsonResult Get(DateTime todate,int distributorId)
         {
             try
             {
-                var list = Facade.QuestionnaireReportDAO.Get(todate, distributorId);
+                var list = Facade.QuestionnaireObservationReportDAO.Get(todate, distributorId);
                 string contentType = "application/json";
                 return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
             }
@@ -33,20 +33,34 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-     
+        public JsonResult GetImageLocation(string number)
+        {
+            try
+            {
+
+                var list = Facade.LU_SurveyReportsDAO.GetImageLocation(number);
+                string contentType = "application/json";
+                return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
+       
  
-        public void getExport( DateTime todate, int distributorId)
+        public void getExport(DateTime todate, int distributorId)
         {
 
-            List<QuestionnaireReport> tRN_SurveyReports_Get = new List<QuestionnaireReport>();
-            tRN_SurveyReports_Get = Facade.QuestionnaireReportDAO.Get(todate, distributorId);
+            List<QuestionnaireObservationReport> tRN_SurveyReports_Get = new List<QuestionnaireObservationReport>();
+            tRN_SurveyReports_Get = Facade.QuestionnaireObservationReportDAO.Get(todate, distributorId);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
              
-            Response.AddHeader("content-disposition", "attachment; filename=QuestionnaireExcel.xls");
+            Response.AddHeader("content-disposition", "attachment; filename=QuestionnaireObservationReportExcel.xls");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();

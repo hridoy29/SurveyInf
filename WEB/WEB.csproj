@@ -144,6 +144,7 @@
     <Compile Include="Controllers\BBDController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\QuestionnaireObservationReportController.cs" />
     <Compile Include="Controllers\QuestionnairePhysicalStocksReportController.cs" />
     <Compile Include="Controllers\QuestionnaireDetailsReportsController.cs" />
     <Compile Include="Controllers\QuestionnaireReportsController.cs" />
@@ -334,6 +335,8 @@
     <Content Include="SPA\OutletType\OutletTypeCtrl.js" />
     <Content Include="SPA\ChangePassword\ChangePassword.html" />
     <Content Include="SPA\ChangePassword\ChangePasswordCtrl.js" />
+    <Content Include="SPA\QuestionnaireObservationReports\QuestionnaireObservationReports.html" />
+    <Content Include="SPA\QuestionnaireObservationReports\QuestionnaireObservationReportsCtrl.js" />
     <Content Include="SPA\QuestionnairePhysicalStocksReport\QuestionnairePhysicalStocksReport.html" />
     <Content Include="SPA\QuestionnairePhysicalStocksReport\QuestionnairePhysicalStocksReportCtrl.js" />
     <Content Include="SPA\QuestionnaireDetailsReports\QuestionnaireDetailsReports.html" />
