@@ -54,14 +54,15 @@ namespace SurveyDAL
             dbExecutor = new DBExecutor();
         }
 
-        public List<ExpandableQuestionnairePhysicalStocksReport> Get(DateTime toDate)
+        public List<ExpandableQuestionnairePhysicalStocksReport> Get(DateTime toDate,int distributorId)
         {
             try
             {
                 List<ExpandableQuestionnairePhysicalStocksReport> QuestionnaireDetailsReport_getLst = new List<ExpandableQuestionnairePhysicalStocksReport>();
                 List<QuestionnairePhysicalStocksReport> QuestionnairePhysicalStocksReport_getLst = new List<QuestionnairePhysicalStocksReport>();
-                Parameters[] colparameters = new Parameters[1]{
-                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input)
+                Parameters[] colparameters = new Parameters[2]{
+                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input),
+                new Parameters("@distributorId", distributorId, DbType.Int32, ParameterDirection.Input)
                 };
                 QuestionnairePhysicalStocksReport_getLst = dbExecutor.FetchData<QuestionnairePhysicalStocksReport>(CommandType.StoredProcedure, "wsp_QuestionnairePhysicalStockReport_Get", colparameters);
 

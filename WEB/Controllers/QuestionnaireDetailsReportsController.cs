@@ -54,6 +54,7 @@ namespace WEB.Controllers
 
             List<QuestionnaireDetailsReport> tRN_SurveyReports_Get = new List<QuestionnaireDetailsReport>();
             tRN_SurveyReports_Get = Facade.QuestionnaireDetailsReportDAO.Get(toDate, distributorId);
+            
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();

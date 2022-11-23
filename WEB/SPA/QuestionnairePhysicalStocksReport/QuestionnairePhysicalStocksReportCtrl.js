@@ -10,6 +10,7 @@
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
     //getProgramHead();
     clear();
+    getDistributorList();
   //  getList();
     //function getProgramHead() {
 
@@ -47,6 +48,7 @@
 
     function clear() {
         $scope.entity = { ProgramId: 0, IsActive: true };
+        $scope.DistributorName = '-- Select Distributor --';
         $("#txtFocus").focus();
     };
 
@@ -61,43 +63,54 @@
     $scope.getList= function () {
         $scope.lsitBlock.start();
         $scope.toDate = document.getElementById("toDate").value;
-        var params = JSON.stringify({ todate: $scope.toDate });
-        $http({
-            url: "/QuestionnairePhysicalStocksReport/Get",
-            method: 'Get',
-            params: { todate: $scope.toDate},
-            headers: { 'Content-Type': 'application/json' }
-           
-        }).success(function (data) {
+        var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
+        if ($scope.toDate == undefined || $scope.toDate == null) {
 
-            if (data.length) {
+            alertify.log('Please Select Valid Date !', 'error', '10000');
+
+        }
+        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+
+            alertify.log('Please Select Distributor!', 'error', '10000');
+        }
+        else {
+            $http({
+                url: "/QuestionnairePhysicalStocksReport/Get",
+                method: 'Get',
+                params: { todate: $scope.toDate, distributorId: $scope.distributorId },
+                headers: { 'Content-Type': 'application/json' }
+
+            }).success(function (data) {
+
+                if (data.length) {
+                    $scope.lsitBlock.stop();
+                    /* angular.forEach(data, function (obj) {
+                        var res = obj.Date.substring(0, 5);
+                        if (res == "/Date") {
+                            var parsedDate = new Date(parseInt(obj.Date.substr(6)));
+                            var date = ($filter('date')(parsedDate, 'MMM dd, yyyy')).toString();
+                            obj.Date = date;
+                        }
+    
+    
+                    })*/
+                    $scope.entityList = data;
+
+                    $scope.total_count = data.length;
+                    var begin = ($scope.PerPage * ($scope.currentPage - 1));
+                    var end = begin + $scope.PerPage;
+                    $scope.entityListPaged = $scope.entityList.slice(begin, end);
+                }
+                else {
+                    $scope.lsitBlock.stop();
+                    //alertify.log('System could not retrive information, please refresh page', 'error', '10000');
+                }
+
+            }).error(function (data2) {
                 $scope.lsitBlock.stop();
-                /* angular.forEach(data, function (obj) {
-                    var res = obj.Date.substring(0, 5);
-                    if (res == "/Date") {
-                        var parsedDate = new Date(parseInt(obj.Date.substr(6)));
-                        var date = ($filter('date')(parsedDate, 'MMM dd, yyyy')).toString();
-                        obj.Date = date;
-                    }
-
-
-                })*/
-                $scope.entityList = data;
-
-                $scope.total_count = data.length;
-                var begin = ($scope.PerPage * ($scope.currentPage - 1));
-                var end = begin + $scope.PerPage;
-                $scope.entityListPaged = $scope.entityList.slice(begin, end);
-            }
-            else {
-                $scope.lsitBlock.stop();
-                //alertify.log('System could not retrive information, please refresh page', 'error', '10000');
-            }
-
-        }).error(function (data2) {
-            $scope.lsitBlock.stop();
-            alertify.log('Unknown server error', 'error', '10000');
-        });
+                alertify.log('Unknown server error', 'error', '10000');
+            });
+        }
     };
 
 
@@ -151,24 +164,64 @@
      
         $scope.toDate = document.getElementById("toDate").value; 
         $scope.userId = $cookieStore.get('UserID');
-        var params = JSON.stringify({ toDate: $scope.toDate });
-        //var params = JSON.stringify({ userId: 1 });
-        $http({
-            url: '/QuestionnaireDetailsReports/getExport',
-            method: "POST",
-            data: params, //this is your json data string
-            headers: {
-                'Content-type': 'application/json'
-            },
-            responseType: 'blob'
-        }).success(function (data, status, headers, config) {
-            var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
-            var objectUrl = URL.createObjectURL(blob);
-            window.open(objectUrl);
-        }).error(function (data, status, headers, config) {
+        var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
+        if ($scope.toDate == undefined || $scope.toDate == null) {
 
-        });
+            alertify.log('Please Select Valid Date !', 'error', '10000');
+
+        }
+        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+
+            alertify.log('Please Select Distributor!', 'error', '10000');
+        }
+        else {
+            //var params = JSON.stringify({ userId: 1 });
+
+            $http({
+                url: '/QuestionnairePhysicalStocksReport/getExport',
+                method: "POST",
+                data: params, //this is your json data string
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                responseType: 'blob'
+            }).success(function (data, status, headers, config) {
+                var blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+                var objectUrl = URL.createObjectURL(blob);
+                window.open(objectUrl);
+            }).error(function (data, status, headers, config) {
+
+            });
+        }
     }
+
+
+    function getDistributorList() {
+        $scope.lsitBlock.start();
+        $http({
+            url: "/Distributor/Get",
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+
+            if (data.length) {
+                $scope.lsitBlock.stop();
+
+                $scope.distributorList = data;
+
+            }
+            else {
+                $scope.lsitBlock.stop();
+                //alertify.log('System could not retrive information, please refresh page', 'error', '10000');
+            }
+
+        }).error(function (data2) {
+            $scope.lsitBlock.stop();
+            alertify.log('Unknown server error', 'error', '10000');
+        });
+    };
+
+
     $scope.post = function (trnType) {
         var where = "ProgramCode = '" + $scope.entity.ProgramCode + "'";
         if ($scope.entity.ProgramId > 0)

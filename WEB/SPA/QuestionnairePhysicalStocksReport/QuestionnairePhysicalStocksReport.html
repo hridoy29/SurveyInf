@@ -3,20 +3,34 @@
 </p>
 <div class="row">
 
-    <!--<label for="fromDateReport">From Date:</label>
-    <input type="date" id="fromDate" name="namefromDate">-->
-    <div class="col">
+    <div class="col-md-2">
         <label for="toDateReport">Select Month</label>
-        <div class='input-group date datepicker' id='table3'>
+
+    </div>
+    <div class="col-md-3">
+
+        <div class='input-group date datepicker' id='questionnairePhysicalStock'>
             <input type='text' name="tgl" class="form-control" id="toDate" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
         </div>
-        <div>
-            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
-        </div>
 
+
+    </div>
+    <div class="col-md-3">
+        <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Distributor.$touched && frm.Distributor.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+            <select class="form-control" id="txtFocus" name="Distributor" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id" ng-change="distributorId= cmbDistributor.Id" required>
+                <option value="" selected>{{DistributorName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="">
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
+
+        </div>
     </div>
     </p>
     <div class="col-md-12">
@@ -121,7 +135,7 @@
         </div>
     </div>
     <script>
-        $('#table3').datepicker({
+        $('#questionnairePhysicalStock').datepicker({
             format: 'MM/yyyy',
             icons: {
                 time: 'fa fa-time',

@@ -20,11 +20,11 @@ namespace WEB.Controllers
 {
     public class QuestionnairePhysicalStocksReportController : Controller
     {
-        public JsonResult Get(DateTime todate)
+        public JsonResult Get(DateTime todate, int distributorId)
         {
             try
             {
-                var list = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate);
+                var list = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate, distributorId);
                 string contentType = "application/json";
                 return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
             }
@@ -49,11 +49,11 @@ namespace WEB.Controllers
         }
        
  
-        public void getExport(DateTime? toDate)
+        public void getExport(DateTime todate,int distributorId)
         {
 
-            List<QuestionnaireDetailsReport> tRN_SurveyReports_Get = new List<QuestionnaireDetailsReport>();
-            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.GetListByUserExport(toDate);
+            List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_Get = new List<ExpandableQuestionnairePhysicalStocksReport>();
+            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate,distributorId);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();
