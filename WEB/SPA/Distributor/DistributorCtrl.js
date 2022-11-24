@@ -34,7 +34,7 @@
             if (data.length) {
                 $scope.lsitBlock.stop();
 
-                $scope.entityList = data;
+                k$scope.entityList = data;
                 $scope.total_count = data.length;
 
                 var begin = ($scope.PerPage * ($scope.currentPage - 1));

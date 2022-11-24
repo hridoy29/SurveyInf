@@ -17,22 +17,32 @@
                         <div class="from-body">
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.DbCode.$touched && frm.DbCode.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="Distributor Code" name="DbCode" ng-model="entity.DbCode" maxlength="11" ng-maxlength="10" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.DbCode.$error.required && frm.DbCode.$touched">Distributor Code is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.DbCode.$error.required && frm.DbCode.$touched">Distributor's' Code is required!</span>
                                 <span class="help-block" ng-if="frm.DbCode.$error.maxlength">10 Character Max</span>
                             </div>
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="Distributor" name="Name" ng-model="entity.Name" maxlength="101" ng-maxlength="100" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Distributor Name is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Distributor's' Name is required!</span>
                                 <span class="help-block" ng-if="frm.Name.$error.maxlength">100 Character Max</span>
                             </div>
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Mobile.$touched && frm.Mobile.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="Mobile" name="Mobile" ng-model="entity.Mobile" maxlength="16" ng-maxlength="15" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.Mobile.$error.required && frm.Name.$touched">Distributor Mobile is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.Mobile.$error.required && frm.Name.$touched">Distributor's' Mobile is required!</span>
                                 <span class="help-block" ng-if="frm.Mobile.$error.maxlength">15 Character Max</span>
+                            </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Address.$touched && frm.Address.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Address" name="Address" ng-model="entity.Address" maxlength="151" ng-maxlength="150" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.Address.$error.required && frm.Address.$touched">Distributor's' Address is required!</span>
+                                <span class="help-block" ng-if="frm.Address.$error.maxlength">150 Character Max</span>
+                            </div>
+                            <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.ContactPersonName.$touched && frm.ContactPersonName.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Contact Person's Name" name="ContactPersonName" ng-model="entity.ContactPersonName" maxlength="101" ng-maxlength="100" required autofocus />
+                                <span class="help-block" style="display: block;" ng-if="frm.ContactPersonName.$error.required && frm.ContactPersonName.$touched">Distributor's' Contact Person's' Name is required!</span>
+                                <span class="help-block" ng-if="frm.ContactPersonName.$error.maxlength">100 Character Max</span>
                             </div>
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.GccCode.$touched && frm.GccCode.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
                                 <input type="text" class="form-control" id="txtFocus" placeholder="GccCode" name="GccCode" ng-model="entity.GccCode" maxlength="11" ng-maxlength="10" required autofocus />
-                                <span class="help-block" style="display: block;" ng-if="frm.GccCode.$error.required && frm.GccCode.$touched">Distributor GccCode is required!</span>
+                                <span class="help-block" style="display: block;" ng-if="frm.GccCode.$error.required && frm.GccCode.$touched">Distributor's' GccCode is required!</span>
                                 <span class="help-block" ng-if="frm.GccCode.$error.maxlength">10 Character Max</span>
                             </div>
                             <div class="form-group">
@@ -89,6 +99,8 @@
                                 <th class="sbold text-center" data-th="Details"><span>Distributor Code</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Name</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Mobile</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Address</span></th>
+                                <th class="sbold text-center" data-th="Details"><span>Contact Person's Name</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>GccCode</span></th>
                                 <th class="sbold text-center" data-th="Details"><span>Status</span></th>
                             </tr>
@@ -97,6 +109,8 @@
                                 <td class="text-center"> {{item.DbCode}} </td>
                                 <td class="text-center"> {{item.Name}} </td>
                                 <td class="text-center"> {{item.Mobile}} </td>
+                                <td class="text-center"> {{item.Address}} </td>
+                                <td class="text-center"> {{item.ContactPersonName}} </td>
                                 <td class="text-center"> {{item.GccCode}} </td>
                                 <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
                             </tr>

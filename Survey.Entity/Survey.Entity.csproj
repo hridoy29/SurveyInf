@@ -87,6 +87,7 @@
     <Compile Include="LU_UserGroup.cs" />
     <Compile Include="LU_UserLoginIds.cs" />
     <Compile Include="QuestionnaireObservationReport.cs" />
+    <Compile Include="HygeinePhysicalStocksReport.cs" />
     <Compile Include="QuestionnairePhysicalStocksReport.cs" />
     <Compile Include="QuestionnaireDetailsReport.cs" />
     <Compile Include="QuestionnaireReport.cs" />
