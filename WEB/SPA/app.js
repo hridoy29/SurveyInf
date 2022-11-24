@@ -323,6 +323,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}QuestionnaireObservationReports
 		})
+		.when('/HygienePhysicalStockReport', {
+			templateUrl: '/SPA/HygienePhysicalStockReport/HygienePhysicalStockReport.html',
+			controller: 'HygienePhysicalStockReportCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
         .when('/', {
             templateUrl: '/SPA/Home/Home.html',
             controller: 'HomeController',

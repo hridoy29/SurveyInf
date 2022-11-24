@@ -138,6 +138,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
+    <Compile Include="Controllers\HygienePhysicalStockReportController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ObservationController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
@@ -315,6 +316,8 @@
     <Content Include="SPA\ASM\ASMCtrl.js" />
     <Content Include="SPA\Distributor\Distributor.html" />
     <Content Include="SPA\Distributor\DistributorCtrl.js" />
+    <Content Include="SPA\HygienePhysicalStockReport\HygienePhysicalStockReport.html" />
+    <Content Include="SPA\HygienePhysicalStockReport\HygienePhysicalStockReportCtrl.js" />
     <Content Include="SPA\Observation\Observation.html" />
     <Content Include="SPA\Observation\ObservationCtrl.js" />
     <Content Include="SPA\Identity\Identity.html" />

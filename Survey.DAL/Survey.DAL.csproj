@@ -47,6 +47,7 @@
     <Compile Include="DBExecutor.cs" />
     <Compile Include="DBUtility.cs" />
     <Compile Include="Facade.cs" />
+    <Compile Include="HygienePhysicalStockDAO.cs" />
     <Compile Include="LU_DistributorDAO.cs" />
     <Compile Include="LU_ItemDAO.cs" />
     <Compile Include="LU_ObservationDAO.cs" />

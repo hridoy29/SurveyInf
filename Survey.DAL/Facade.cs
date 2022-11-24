@@ -23,6 +23,8 @@ namespace SurveyDAL
         public static QuestionnaireDetailsReportDAO QuestionnaireDetailsReportDAO { get { return new QuestionnaireDetailsReportDAO(); } }
         public static QuestionnairePhysicalStocksReportDAO QuestionnairePhysicalStocksReportDAO { get { return new QuestionnairePhysicalStocksReportDAO(); } }
         public static QuestionnaireObservationReportDAO QuestionnaireObservationReportDAO { get { return new QuestionnaireObservationReportDAO(); } }
+        
+        public static HygienePhysicalStockDAO HygienePhysicalStockDAO { get { return new HygienePhysicalStockDAO(); } }
 
         public static LU_ScreenDetailDAO LU_ScreenDetailDAO { get { return new LU_ScreenDetailDAO(); } }
         public static TRN_PermissionDAO TRN_PermissionDAO { get { return new TRN_PermissionDAO(); } }

@@ -1,0 +1,152 @@
+﻿
+
+</p>
+<div class="row">
+
+    <div class="col-md-2">
+        <label for="toDateReport">Select Month</label>
+
+    </div>
+    <div class="col-md-3">
+
+        <div class='input-group date datepicker' id='questionnairePhysicalStock'>
+            <input type='text' name="tgl" class="form-control" id="toDate" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+        <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Distributor.$touched && frm.Distributor.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+            <select class="form-control" id="txtFocus" name="Distributor" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id" ng-change="distributorId= cmbDistributor.Id" required>
+                <option value="" selected>{{DistributorName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="">
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
+
+        </div>
+    </div>
+    </p>
+    <div class="col-md-12">
+        <div class="portlet-title sbold">
+            <div class="caption">
+                <h5 class="text-left bold block">
+                    Distributor's Name : {{entityListPaged[0].DistributorName}}
+                </h5>
+                <h5 class="text-left bold block">
+                    Distributor's Code :  {{entityListPaged[0].DbCode}}
+                </h5>
+                <h5 class="text-left bold block">
+                    Distributor's Address :  {{entityListPaged[0].Address}}
+                </h5>
+                <h5 class="text-left bold block">
+                    Distributor's Mobile :  {{entityListPaged[0].Mobile}}
+                </h5>
+                <h5 class="text-left bold block">
+                    Distributor's Contact Person :  {{entityListPaged[0].ContactPersonName}}
+                </h5>
+            </div>
+        </div>
+        <div class="portlet box purple">
+            <div class="portlet-title sbold">
+                <div class="caption">
+                    <label>
+                        List of Hygiene Physical Stocks Reports Details
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="portlet-body">
+                <div class="tbl-outer">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="t-head" style="font-size: 14px !important" ng-class-even="'even'" ng-class-odd="'odd'">
+                                
+                                <th class="bold text-center">Issue</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
+                            <tr ng-class-even="'even'" ng-class-odd="'odd'">
+
+                                <td class="text-center"> {{item.Issue}} </td>
+
+
+                            </tr>
+
+                            <tr class="sub">
+
+                                <td colspan="10">
+
+                                    <table class="table table-responsive table-striped" border="1" cellpadding="0" cellspacing="0" style=" width:100%; border-collapse:collapse;">
+                                        <thead>
+                                            <tr>
+
+
+                                                <th>#</th>
+                                                <th class="sbold text-center">Item Name</th>
+                                                <th class="sbold text-center">System Stock</th>
+                                                <th class="sbold text-center">Physical Stock</th>
+                                                <th class="sbold text-center">BBD & Damage</th>
+                                                <th class="sbold text-center">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr dir-paginate="subItem in  item.IssueWisePhysicalStockList|orderBy:sortKey:reverse|filter:search|itemsPerPage:10"
+                                                ng-class-even="'even'" ng-class-odd="'odd'">
+
+                                                <td class="text-center">{{$index  + 1}}</td>
+                                                <td class="text-center"> {{subItem.ItemName}} </td>
+                                                <td class="text-center"> {{subItem.SystemStock}} </td>
+                                                <td class="text-center"> {{subItem.PhysicalStock}} </td>
+                                                <td class="text-center"> {{subItem.BBDDamage}} </td>
+                                                <td class="text-center"> {{subItem.Difference}} </td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="tbl-outer" style="padding:10px 20px !important">
+                        <dir-pagination-controls pagination-id="cust"
+                                                 direction-links="true"
+                                                 boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--</div>-->
+
+        </div>
+    </div>
+    <script>
+        $('#questionnairePhysicalStock').datepicker({
+            format: 'MM/yyyy',
+            icons: {
+                time: 'fa fa-time',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            },
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>

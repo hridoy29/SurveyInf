@@ -31,9 +31,9 @@ namespace Survey.Entity
         public string DbCode { get; set; }
         public string DistributorName { get; set; }
         public string ItemGroup { get; set; }
-        public decimal SystemStockSum { get; set; }
-        public decimal PhysicalStockSum { get; set; }
-        public decimal BBDDamageSum { get; set; }
-        public decimal DifferenceSum { get; set; }
+         public string Issue { get; set; }
+        public string Mobile { get; set; }
+        public string Address { get; set; }
+        public string ContactPersonName { get; set; }
     }
 }

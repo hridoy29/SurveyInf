@@ -357,6 +357,13 @@
                                         <span class="title">Questionnaire Observation Reports</span>
                                     </a>
                                 </li>
+                                @*hygienePhysicalStocksReports*@
+                                <li class="nav-item " ng-click="setActiveMenu('hygienePhysicalStocksReports')" ng-class="{selectedsubmenu: isHygienePhysicalStocksReport, unselectedsubmenu: !isHygienePhysicalStocksReport}" ng-show="hygienePhysicalStocksReportPermission.CanView">
+                                    <a href="#/HygienePhysicalStockReport" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Hygiene Physical Stocks Reports</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -501,6 +508,7 @@
     <script src="~/SPA/QuestionnaireReports/QuestionnaireReportsCtrl.js"></script>
     <script src="~/SPA/QuestionnaireDetailsReports/QuestionnaireDetailsReportsCtrl.js"></script>
     <script src="~/SPA/QuestionnairePhysicalStocksReport/QuestionnairePhysicalStocksReportCtrl.js"></script>
+    <script src="~/SPA/HygienePhysicalStockReport/HygienePhysicalStockReportCtrl.js"></script>
     <script src="~/SPA/QuestionnaireObservationReports/QuestionnaireObservationReportsCtrl.js"></script>
 </body>
 </html>
