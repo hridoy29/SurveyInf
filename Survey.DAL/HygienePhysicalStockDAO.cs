@@ -78,6 +78,7 @@ namespace SurveyDAL
                     IssueWisePhysicalStocksReport expandable = new IssueWisePhysicalStocksReport();
                     expandable.ItemGroup = item[0].ItemGroup;
                     expandable.Issue = item[0].Issue;
+                    expandable.Date = item[0].Date;
                     expandable.DistributorName = item[0].DistributorName;
                     expandable.DbCode = item[0].DbCode;
                     expandable.Mobile = item[0].Mobile;

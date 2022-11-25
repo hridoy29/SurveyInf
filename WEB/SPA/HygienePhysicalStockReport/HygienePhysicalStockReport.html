@@ -28,36 +28,41 @@
     <div class="col-md-3">
         <div class="">
             <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
-            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="Export2Word('exportContent',  entityListPaged[0].DistributorName)">Export</button>
 
         </div>
     </div>
     </p>
-    <div class="col-md-12">
+    <div class="col-md-12" id="exportContent">
         <div class="portlet-title sbold">
-            <div class="caption">
-                <h5 class="text-left bold block">
-                    Distributor's Name : {{entityListPaged[0].DistributorName}}
+            <div class="caption" ng-show="entityListPaged.length">
+                <h4 class="text-left bold block">
+                    {{entityListPaged[0].DistributorName}}
+                </h4>
+                <h5 class="text-left  block">
+                    Address :  {{entityListPaged[0].Address}}
                 </h5>
-                <h5 class="text-left bold block">
-                    Distributor's Code :  {{entityListPaged[0].DbCode}}
+                <h5 class="text-left  block">
+                    Contact Person's Name :  {{entityListPaged[0].ContactPersonName}}
                 </h5>
-                <h5 class="text-left bold block">
-                    Distributor's Address :  {{entityListPaged[0].Address}}
+                <h5 class="text-left  block">
+                    DB Code :  {{entityListPaged[0].DbCode}}
                 </h5>
-                <h5 class="text-left bold block">
-                    Distributor's Mobile :  {{entityListPaged[0].Mobile}}
+
+                <h5 class="text-left  block">
+                    Contact No:  {{entityListPaged[0].Mobile}}
                 </h5>
-                <h5 class="text-left bold block">
-                    Distributor's Contact Person :  {{entityListPaged[0].ContactPersonName}}
+
+                <h5 class="text-left  block">
+                    Date :  {{entityListPaged[0].Date}}
                 </h5>
             </div>
         </div>
         <div class="portlet box purple">
             <div class="portlet-title sbold">
                 <div class="caption">
-                    <label>
-                        List of Hygiene Physical Stocks Reports Details
+                    <label class="">
+                        <u>Observation of physical verification:</u>
                     </label>
                 </div>
             </div>
@@ -66,18 +71,18 @@
             <div class="portlet-body">
                 <div class="tbl-outer">
                     <table class="table table-striped">
-                        <thead>
+                        <!--<thead>
                             <tr class="t-head" style="font-size: 14px !important" ng-class-even="'even'" ng-class-odd="'odd'">
                                 
                                 <th class="bold text-center">Issue</th>
 
 
                             </tr>
-                        </thead>
+                        </thead>-->
                         <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
                             <tr ng-class-even="'even'" ng-class-odd="'odd'">
 
-                                <td class="text-center"> {{item.Issue}} </td>
+                                <td class="text-center">{{$index  + 1}}. {{item.Issue}} </td>
 
 
                             </tr>
@@ -91,7 +96,7 @@
                                             <tr>
 
 
-                                                <th>#</th>
+                                                <th>Sl.</th>
                                                 <th class="sbold text-center">Item Name</th>
                                                 <th class="sbold text-center">System Stock</th>
                                                 <th class="sbold text-center">Physical Stock</th>
@@ -101,7 +106,7 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr dir-paginate="subItem in  item.IssueWisePhysicalStockList|orderBy:sortKey:reverse|filter:search|itemsPerPage:10"
+                                            <tr dir-paginate="subItem in  item.IssueWisePhysicalStockList|orderBy:sortKey:reverse|filter:search|itemsPerPage:5"
                                                 ng-class-even="'even'" ng-class-odd="'odd'">
 
                                                 <td class="text-center">{{$index  + 1}}</td>

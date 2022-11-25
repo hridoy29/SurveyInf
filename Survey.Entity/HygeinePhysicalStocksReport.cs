@@ -21,7 +21,7 @@ namespace Survey.Entity
         public decimal PhysicalStock { get; set; }
         public decimal BBDDamage { get; set; }
         public decimal Difference { get; set; }
-       
+        public DateTime Date { get; set; }
         public string Issue { get; set; }
 
     }
@@ -34,6 +34,7 @@ namespace Survey.Entity
          public string Issue { get; set; }
         public string Mobile { get; set; }
         public string Address { get; set; }
+        public DateTime Date { get; set; }
         public string ContactPersonName { get; set; }
     }
 }
