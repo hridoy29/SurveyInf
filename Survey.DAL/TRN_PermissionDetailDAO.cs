@@ -125,7 +125,7 @@ namespace SurveyDAL
 				throw ex;
 			}
 		}
-		public string Post(TRN_PermissionDetail _TRN_PermissionDetail, string transactionType)
+		public string Post(TRN_PermissionDetail1 _TRN_PermissionDetail, string transactionType)
 		{
 			string ret = string.Empty;
 			try

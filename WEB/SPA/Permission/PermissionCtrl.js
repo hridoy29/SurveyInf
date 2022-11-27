@@ -67,7 +67,7 @@
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
             $scope.Screenlist = data;
-            //     GetScreenDetail();
+              //   GetScreenDetail();
         });
     }
 
@@ -169,16 +169,32 @@
         roleId = roleId.Id;
         var PermissionLst = [];
         var DetailList = [];
+    
+
+
         angular.forEach($scope.Screenlist, function (aScreen) {
             $scope.s_Permission = new Object();
-            $scope.s_Permission.RoleId = roleId;
+            $scope.s_Permission.PermissionId = aScreen.PermissionId;
+            $scope.s_Permission.UserGroupId = roleId;
             $scope.s_Permission.ScreenId = aScreen.ScreenId;
             $scope.s_Permission.CanView = aScreen.selected;
             $scope.s_Permission.CreatorId = "1"//$scope.UserId;
-            $scope.s_Permission.UpdatorId = "1";//$scope.UserId;
+            //$scope.s_Permission.UpdatorId = "1";//$scope.UserId;
             PermissionLst.push($scope.s_Permission);
+           
             angular.forEach(aScreen.DetailList, function (screenDetail) {
-                DetailList.push(screenDetail);
+              
+                var PermissionDetail = new Object();
+                PermissionDetail.PermissionDetailId = 0;
+                PermissionDetail.PermissionId = screenDetail.PermissionId;
+                PermissionDetail.ScreenDetailId = screenDetail.ScreenDetailId;
+                PermissionDetail.ScreenId = screenDetail.ScreenId;
+                PermissionDetail.CanExecute = screenDetail.CanExecute;
+
+                DetailList.push(PermissionDetail);
+                   
+               
+               
                 //if (screenDetail.ScreenId == aScreen.ScreenId) {
                 //    $scope.s_PermissionDetail = new Object();
                 //    $scope.s_PermissionDetail.ScreenId = aScreen.ScreenId;
@@ -188,22 +204,41 @@
                 //    DetailList.push($scope.s_PermissionDetail);
                 //}
             })
+           
         });
+      
+       var parms = JSON.stringify({ roleId: roleId, PermissionLst: PermissionLst, DetailList: DetailList});
+        //var parms = JSON.stringify({   PermissionLst: PermissionLst, DetailList: DetailList });
+        var sss = "fdsfsd";
         $.ajax({
-            url: "/Permission/SavePermissionWithDetails",
-            dataType: "json",
-            contentType: "application/json;charset=utf-8",
             type: "POST",
-            data: JSON.stringify({ roleId: roleId, PermissionLst: PermissionLst, DetailList: DetailList }),
+            url: "/Permission/SavePermissionWithDetails",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            traditional: true,
+            data: parms,
+          
             success: function (data) {
                 if (data > 0) {
                     alertify.log('Permission Saved Successfully', 'success', '100000');
                     Clear(true);
                 } else { alertify.log('Server Save Errors!', 'error', '10000'); }
             }, error: function (msg) {
-                alertify.log('Server Save Errors!', 'error', '10000');
+                alertify.log(msg, 'error', '10000');
             }
         });
+        //$http.post('/Permission/SavePermissionWithDetails', parms).success(function (data) {
+        //    if (data > 0) {
+
+        //        alertify.log('Permission Saved Successfully', 'success', '100000');
+        //         Clear(true);
+        //    } else {
+        //        alertify.log('Server Save Errors!', 'error', '10000');
+        //    }
+        //}).error(function (data) {
+        //    alertify.log('Server Save Errors!', 'error', '10000');
+        //});
+      
     };
 
  //   ScreenLock();

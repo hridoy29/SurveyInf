@@ -14,4 +14,13 @@ namespace SurveyEntity
 		public Int32 UpdatorId { get; set; }
 		public DateTime UpdateDate { get; set; }
 	}
+
+	public class TRN_Permission1
+	{
+		public Int64 PermissionId { get; set; }
+		public Int32 UserGroupId { get; set; }
+		public Int32 ScreenId { get; set; }
+		public bool CanView { get; set; }
+	 
+	}
 }

@@ -107,22 +107,22 @@ namespace SurveyDAL
 				throw ex;
 			}
 		}
-		public Int64 Post(TRN_Permission _TRN_Permission, string transactionType)
+		public Int64 Post(TRN_Permission1 _TRN_Permission, string transactionType)
 		{
 			
 			Int64 ret = 0;
 			try
 			{
 				//@PermissionId
-				Parameters[] colparameters = new Parameters[8]{
+				Parameters[] colparameters = new Parameters[4]{
 				new Parameters("@PermissionId", _TRN_Permission.PermissionId, DbType.Int64, ParameterDirection.Input),
 				new Parameters("@UserGroupId", _TRN_Permission.UserGroupId, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@ScreenId", _TRN_Permission.ScreenId, DbType.Int32, ParameterDirection.Input),
-				new Parameters("@CanView", _TRN_Permission.CanView, DbType.Boolean, ParameterDirection.Input),
-				new Parameters("@CreatorId", _TRN_Permission.CreatorId, DbType.Int32, ParameterDirection.Input),
-				new Parameters("@CreateDate", _TRN_Permission.CreateDate, DbType.DateTime, ParameterDirection.Input),
-				new Parameters("@UpdatorId", _TRN_Permission.UpdatorId, DbType.Int32, ParameterDirection.Input),
-				new Parameters("@UpdateDate", _TRN_Permission.UpdateDate, DbType.DateTime, ParameterDirection.Input)
+				new Parameters("@CanView", _TRN_Permission.CanView, DbType.Boolean, ParameterDirection.Input)
+				//new Parameters("@CreatorId", _TRN_Permission.CreatorId, DbType.Int32, ParameterDirection.Input),
+				//new Parameters("@CreateDate", _TRN_Permission.CreateDate, DbType.DateTime, ParameterDirection.Input),
+				//new Parameters("@UpdatorId", _TRN_Permission.UpdatorId, DbType.Int32, ParameterDirection.Input),
+				//new Parameters("@UpdateDate", _TRN_Permission.UpdateDate, DbType.DateTime, ParameterDirection.Input)
 				};
 				dbExecutor.ManageTransaction(TransactionType.Open);
 				ret = dbExecutor.ExecuteScalar64(true, CommandType.StoredProcedure, "s_Permission_Create", colparameters, true);

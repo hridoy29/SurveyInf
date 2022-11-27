@@ -54,6 +54,7 @@ namespace Security.UI.Controllers
             }
 
         }
+
         public JsonResult GetDetailByScreenId(int screenId)
         {
             try
@@ -167,8 +168,9 @@ namespace Security.UI.Controllers
         */
 
         [HttpPost]
-        public int SavePermissionWithDetails(int roleId, List<TRN_Permission> PermissionLst, List<TRN_PermissionDetail> DetailList)
+        public int SavePermissionWithDetails(int roleId, List<TRN_Permission1> PermissionLst, List<TRN_PermissionDetail1> DetailList)
         {
+      
             int ret = 0;
             Int64 ret1 = 0;
             using (System.Transactions.TransactionScope ts = new System.Transactions.TransactionScope())
@@ -177,14 +179,14 @@ namespace Security.UI.Controllers
                 try
                 {
                     ret = Facade.TRN_PermissionDAO.DeleteByRoleId(roleId);
-                    foreach (TRN_Permission aPermission in PermissionLst)
+                    foreach (TRN_Permission1 aPermission in PermissionLst)
                     {
                         aPermission.UserGroupId = roleId;
-                        aPermission.CreateDate = DateTime.Now;
-                        aPermission.UpdateDate = DateTime.Now;
+                        //aPermission.CreateDate = DateTime.Now;
+                        //aPermission.UpdateDate = DateTime.Now;
                         ret1 = Facade.TRN_PermissionDAO.Post(aPermission, "INSERT");
 
-                        foreach (TRN_PermissionDetail aPermissionDetail in DetailList)
+                        foreach (TRN_PermissionDetail1 aPermissionDetail in DetailList)
                         {
                             if (aPermission.ScreenId == aPermissionDetail.ScreenId)
                             {
@@ -203,7 +205,7 @@ namespace Security.UI.Controllers
                 return ret;
 
             }
-            //Screen Lock
+       
 
         }
 
