@@ -346,6 +346,8 @@
     <Content Include="SPA\QuestionnaireDetailsReports\QuestionnaireDetailsReportsCtrl.js" />
     <Content Include="SPA\QuestionnaireReports\QuestionnaireReports.html" />
     <Content Include="SPA\QuestionnaireReports\QuestionnaireReportsCtrl.js" />
+    <Content Include="SPA\AssetConfig\AssetConfig.html" />
+    <Content Include="SPA\AssetConfig\AssetConfigCtrl.js" />
     <Content Include="SPA\SchemeNumber\SchemeNumber.html" />
     <Content Include="SPA\SchemeNumber\SchemeNumberCtrl.js" />
     <Content Include="SPA\Home\Home.html" />

@@ -16,6 +16,7 @@
     $scope.permissionPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Permission'").FirstOrDefault();
     $scope.changePassPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Change Password'").FirstOrDefault();
     $scope.schemeNumPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Scheme Number'").FirstOrDefault();
+    $scope.assetConfigPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Asset Config'").FirstOrDefault();
     $scope.outletTypePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Outlet Type'").FirstOrDefault();
     $scope.commentTypePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment Type'").FirstOrDefault();
     $scope.AICPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'AIC'").FirstOrDefault();
@@ -41,7 +42,7 @@
         $scope.securityMenuView = false;
     }
 
-    if (!$scope.schemeNumPermission.CanView) {
+    if (!$scope.schemeNumPermission.CanView && !$scope.assetConfigPermission.CanView) {
         $scope.settingMenuView = false;
     }
 
@@ -86,6 +87,7 @@
 
         $scope.isSettings = false;
 		$scope.isSettingsSchemeNumber = false;
+        $scope.isSettingsAssetConfig = false;
 
         $scope.isSetup = false;
         $scope.isSetupOutletType = false;
@@ -141,6 +143,10 @@
         else if (menu === 'schemeNumber') {
             $scope.isSettings = true;
             $scope.isSettingsSchemeNumber = true;
+        }
+        else if (menu === 'assetConfig') {
+            $scope.isSettings = true;
+            $scope.isSettingsAssetConfig = true;
         }
 
         else if (menu === 'outletType') {

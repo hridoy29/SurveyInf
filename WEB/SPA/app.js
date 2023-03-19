@@ -191,7 +191,19 @@ app.config(function ($routeProvider, blockUIConfig) {
             //        }
             //    }
             //}
-        })
+		})
+		.when('/AssetConfig', {
+			templateUrl: '/SPA/AssetConfig/AssetConfig.html',
+			controller: 'AssetConfigCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 		.when('/OutletType', {
 			templateUrl: '/SPA/OutletType/OutletType.html',
 			controller: 'OutletTypeCtrl',

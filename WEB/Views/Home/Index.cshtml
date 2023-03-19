@@ -197,6 +197,13 @@
                                         <span class="title">Scheme Number</span>
                                     </a>
                                 </li>
+                                @*schemeNumber*@
+                                <li class="nav-item " ng-click="setActiveMenu('assetConfig')" ng-class="{selectedsubmenu: isSettingsAssetConfig, unselectedsubmenu: !isSettingsAssetConfig}" ng-show="assetConfigPermission.CanView">
+                                    <a href="#/AssetConfig" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">Asset Config</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item " ng-class="{ 'active' : isSetup }" ng-show="setupMenuView">
@@ -498,6 +505,7 @@
     <script src="~/SPA/Permission/PermissionCtrl.js"></script>
     <script src="~/SPA/ChangePassword/ChangePasswordCtrl.js"></script>
     <script src="~/SPA/SchemeNumber/SchemeNumberCtrl.js"></script>
+    <script src="~/SPA/AssetConfig/AssetConfigCtrl.js"></script>
     <script src="~/SPA/OutletType/OutletTypeCtrl.js"></script>
     <script src="~/SPA/CommentType/CommentTypeCtrl.js"></script>
     <script src="~/SPA/AIC/AICCtrl.js"></script>
