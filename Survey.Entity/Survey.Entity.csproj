@@ -60,6 +60,10 @@
   <ItemGroup>
     <Compile Include="LU_AIC.cs" />
     <Compile Include="LU_ASM.cs" />
+    <Compile Include="LU_ShortNote - Copy %282%29.cs" />
+    <Compile Include="LU_MDO.cs" />
+    <Compile Include="LU_ShortNote.cs" />
+    <Compile Include="LU_Cooler.cs" />
     <Compile Include="LU_Distributor.cs" />
     <Compile Include="LU_Item.cs" />
     <Compile Include="LU_Observation.cs" />

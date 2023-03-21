@@ -216,11 +216,11 @@
                             <ul class="sub-menu">
                                 @*outletType*@
                                 @*<li class="nav-item " ng-click="setActiveMenu('outletType')" ng-class="{selectedsubmenu: isSetupOutletType, unselectedsubmenu: !isSetupOutletType}" ng-show="outletTypePermission.CanView">
-            <a href="#/OutletType" class="nav-link">
-                <i class="icon-star"></i>
-                <span class="title">Outlet Type</span>
-            </a>
-        </li>*@
+                    <a href="#/OutletType" class="nav-link">
+                        <i class="icon-star"></i>
+                        <span class="title">Outlet Type</span>
+                    </a>
+                </li>*@
                                 @*commentType*@
                                 <li class="nav-item " ng-click="setActiveMenu('commentType')" ng-class="{selectedsubmenu: isSetupCommentType, unselectedsubmenu: !isSetupCommentType}" ng-show="commentTypePermission.CanView">
                                     <a href="#/CommentType" class="nav-link">
@@ -286,7 +286,7 @@
                                         <span class="title">BBD</span>
                                     </a>
                                 </li>
-</li>
+                        </li>
                         @*observations*@
                         <li class="nav-item " ng-click="setActiveMenu('observations')" ng-class="{selectedsubmenu: isSetupObservations, unselectedsubmenu: !isSetupObservations}" ng-show="observationsPermission.CanView">
                             <a href="#/Observation" class="nav-link">
@@ -313,6 +313,30 @@
                             <a href="#/ItemGroup" class="nav-link">
                                 <i class="icon-star"></i>
                                 <span class="title">Item Group</span>
+                            </a>
+                        </li>
+
+                        @*Cooler*@
+                        <li class="nav-item " ng-click="setActiveMenu('cooler')" ng-class="{selectedsubmenu: isSetupCooler, unselectedsubmenu: !isSetupCooler}" ng-show="coolerPermission.CanView">
+                            <a href="#/Cooler" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Cooler</span>
+                            </a>
+                        </li>
+
+                        @*ShortNote*@
+                        <li class="nav-item " ng-click="setActiveMenu('shortNote')" ng-class="{selectedsubmenu: isSetupShortNote, unselectedsubmenu: !isSetupShortNote}" ng-show="shortNotePermission.CanView">
+                            <a href="#/ShortNote" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">Short Note</span>
+                            </a>
+                        </li>
+
+                        @*MDO*@
+                        <li class="nav-item " ng-click="setActiveMenu('mdo')" ng-class="{selectedsubmenu: isSetupMDO, unselectedsubmenu: !isSetupMDO}" ng-show="mdoPermission.CanView">
+                            <a href="#/MDO" class="nav-link">
+                                <i class="icon-star"></i>
+                                <span class="title">MDO</span>
                             </a>
                         </li>
 
@@ -498,6 +522,9 @@
     <script src="~/SPA/Issues/IssuesCtrl.js"></script>
     <script src="~/SPA/Distributor/DistributorCtrl.js"></script>
     <script src="~/SPA/BBD/BBDCtrl.js"></script>
+    <script src="~/SPA/Cooler/CoolerCtrl.js"></script>
+    <script src="~/SPA/MDO/MDOCtrl.js"></script>
+    <script src="~/SPA/ShortNote/ShortNoteCtrl.js"></script>
     <script src="~/SPA/Observation/ObservationCtrl.js"></script>
     <script src="~/SPA/Identity/IdentityCtrl.js"></script>
     <script src="~/SPA/ItemGroup/ItemGroupCtrl.js"></script>

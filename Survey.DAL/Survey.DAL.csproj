@@ -48,6 +48,9 @@
     <Compile Include="DBUtility.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="HygienePhysicalStockDAO.cs" />
+    <Compile Include="LU_MDODAO.cs" />
+    <Compile Include="LU_ShortNoteDAO.cs" />
+    <Compile Include="LU_CoolerDAO.cs" />
     <Compile Include="LU_DistributorDAO.cs" />
     <Compile Include="LU_ItemDAO.cs" />
     <Compile Include="LU_ObservationDAO.cs" />

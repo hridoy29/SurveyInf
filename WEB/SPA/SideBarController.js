@@ -30,6 +30,9 @@
     $scope.identitiesPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Identity'").FirstOrDefault();
     $scope.categoryPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Category'").FirstOrDefault();
     $scope.itemGroupPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Item Group'").FirstOrDefault();
+    $scope.coolerPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Cooler'").FirstOrDefault();
+    $scope.mdoPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'MDO'").FirstOrDefault();
+    $scope.shortNotePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Short Note'").FirstOrDefault();
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
     $scope.surveyReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Survey Reports'").FirstOrDefault();
     $scope.questionnaireReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Reports'").FirstOrDefault();
@@ -46,7 +49,7 @@
         $scope.settingMenuView = false;
     }
 
-    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.itemsPermission  && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView && !$scope.bbdsPermission && !$scope.identitiesPermission && !$scope.observationsPermission && !$scope.distributorsPermission ) {
+    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.itemsPermission.CanView && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView && !$scope.bbdsPermission.CanView && !$scope.identitiesPermission.CanView && !$scope.observationsPermission.CanView && !$scope.distributorsPermission.CanView && !$scope.coolerPermission.CanView && !$scope.shortNotePermission.CanView && !$scope.mdoPermission.CanView) {
         $scope.setupMenuView = false;
     }
 
@@ -103,6 +106,9 @@
         $scope.isSetupObservations = false;
         $scope.isSetupCategory = false;
         $scope.isSetupItemGroup = false;
+        $scope.isSetupCooler = false;
+        $scope.isSetupMDO = false;
+        $scope.isSetupShortNote = false;
         $scope.isSetupComment  = false;
         $scope.isReports = false;
         $scope.isReportsSurveyReports = false;
@@ -197,6 +203,18 @@
         else if (menu === 'itemGroup') {
             $scope.isSetup = true;
             $scope.isSetupItemGroup = true;
+        }
+        else if (menu === 'cooler') {
+            $scope.isSetup = true;
+            $scope.isSetupCooler = true;
+        }
+        else if (menu === 'shortNote') {
+            $scope.isSetup = true;
+            $scope.isSetupShortNote = true;
+        }
+        else if (menu === 'mdo') {
+            $scope.isSetup = true;
+            $scope.isSetupMDO = true;
         }
         else if (menu === 'category') {
             $scope.isSetup = true;

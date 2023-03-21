@@ -102,6 +102,43 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+
+		.when('/Cooler', {
+			templateUrl: '/SPA/Cooler/Cooler.html',
+			controller: 'CoolerCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+		.when('/ShortNote', {
+			templateUrl: '/SPA/ShortNote/ShortNote.html',
+			controller: 'ShortNoteCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+		.when('/MDO', {
+			templateUrl: '/SPA/MDO/MDO.html',
+			controller: 'MDOCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 		.when('/Distributor', {
 			templateUrl: '/SPA/Distributor/Distributor.html',
 			controller: 'DistributorCtrl',

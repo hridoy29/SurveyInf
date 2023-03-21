@@ -137,6 +137,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\MDOController.cs" />
+    <Compile Include="Controllers\ShortNoteController.cs" />
+    <Compile Include="Controllers\CoolerController.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HygienePhysicalStockReportController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -314,6 +317,12 @@
     <Content Include="SPA\app.js" />
     <Content Include="SPA\ASM\ASM.html" />
     <Content Include="SPA\ASM\ASMCtrl.js" />
+    <Content Include="SPA\MDO\MDO.html" />
+    <Content Include="SPA\MDO\MDOCtrl.js" />
+    <Content Include="SPA\ShortNote\ShortNote.html" />
+    <Content Include="SPA\ShortNote\ShortNoteCtrl.js" />
+    <Content Include="SPA\Cooler\Cooler.html" />
+    <Content Include="SPA\Cooler\CoolerCtrl.js" />
     <Content Include="SPA\Distributor\Distributor.html" />
     <Content Include="SPA\Distributor\DistributorCtrl.js" />
     <Content Include="SPA\HygienePhysicalStockReport\HygienePhysicalStockReport.html" />

@@ -34,6 +34,9 @@ namespace SurveyDAL
         public static LU_DepartmentDAO LU_DepartmentDAO { get { return new LU_DepartmentDAO(); } }
         public static LU_UserDAO LU_UserDAO { get { return new LU_UserDAO(); } }
         public static LU_CommnetsDAO LU_CommnetsDAO { get { return new LU_CommnetsDAO(); } }
+        public static LU_CoolerDAO LU_CoolerDAO { get { return new LU_CoolerDAO(); } }
+        public static LU_ShortNoteDAO LU_ShortNoteDAO { get { return new LU_ShortNoteDAO(); } }
+        public static LU_MDODAO LU_MDODAO { get { return new LU_MDODAO(); } }
         
     }
 }
