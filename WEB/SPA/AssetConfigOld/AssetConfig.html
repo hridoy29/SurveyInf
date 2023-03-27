@@ -1,0 +1,170 @@
+﻿<p />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-bar-chart"></i>
+            <span>MSE</span>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Asset Info</span>
+        </li>
+    </ul>
+</div>
+<p />
+<div class="row">
+    <div class="col-md-4">
+        <div class="portlet box purple">
+            <div class="portlet-title sbold">
+                <div class="caption">Asset Info Entry</div>
+            </div>
+            <div class="portlet-body">
+                <form name="frm" novalidate>
+                    <div class="form-body">
+                        <div class="form-group" ng-class="{ 'has-error' : frm.AssetNumber.$touched && frm.AssetNumber.$invalid }" data-toggle="tooltip" data-placement="bottom" title="Program Name">
+                            <div class="input-group">
+                                <input type="text" id="txtFocus" class="form-control" placeholder="Asset Number" name="AssetNumber" ng-model="entity.AssetNumber" maxlength="51" ng-maxlength="50" required autofocus>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user font-red"></i>
+                                </span>
+                            </div>
+                            <span class="help-block" style="display: block;" ng-if="frm.AssetNumber.$error.required && frm.AssetNumber.$touched">Asset Number is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : frm.SerialNumber.$touched && frm.SerialNumber.$invalid }" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Serial Number" name="SerialNumber" ng-model="entity.SerialNumber" maxlength="51" ng-maxlength="50" required>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user font-red"></i>
+                                </span>
+                            </div>
+                            <span class="help-block" style="display: block;" ng-if="frm.SerialNumber.$error.required && frm.SerialNumber.$touched">Serial Number is required</span>
+
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.DistributorType.$invalid && frm.DistributorType.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="DistributorType" style="width: 100%" required ng-model="cmbdistributor" ng-options="distributorType.Name for distributorType in distributorList " ng-change="entity.DistributorId=cmbdistributor.Id">
+                                <option value="">{{distributorType}}</option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.DistributorType.$error.required && frm.DistributorType.$touched">Distributor Type is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.AIC.$invalid && frm.AIC.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="AIC" style="width: 100%" required ng-model="cmbAIC" ng-options="AICType.Name for AICType in AICList " ng-change="entity.AICId=cmbAIC.Id">
+                                <option value="">--AIC-- </option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.AIC.$error.required && frm.AIC.$touched">ASM is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.ASM.$invalid && frm.ASM.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="ASM" style="width: 100%" required ng-model="cmbASM" ng-options="ASMType.Name for ASMType in ASMList " ng-change="entity.ASMId=cmbASM.Id">
+                                <option value="">--ASM-- </option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.ASM.$error.required && frm.ASM.$touched">MDO is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.MDO.$invalid && frm.MDO.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="MDO" style="width: 100%" required ng-model="cmbMDO" ng-options="MDOType.Name for MDOType in MDOList " ng-change="entity.MDOId=cmbMDO.Id">
+                                <option value="">--MDO-- </option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.MDO.$error.required && frm.MDO.$touched">Outlet is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.Outlet.$invalid && frm.Outlet.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="Outlet" style="width: 100%" required ng-model="cmbOutlet" ng-options="OutletType.Name for OutletType in OutletList " ng-change="entity.OutletId=cmbOutlet.Id">
+                                <option value="">--Outlet-- </option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.Outlet.$error.required && frm.Outlet.$touched">Outlet is required</span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':frm.Cooler.$invalid && frm.Cooler.$touched}" data-toggle="tooltip" data-placement="bottom" title="Semester">
+                            <select class="bs-select form-control" id="txtFocus" name="Cooler" style="width: 100%" required ng-model="cmbCooler" ng-options="CoolerType.Name for CoolerType in CoolerList " ng-change="entity.CoolerId=cmbCooler.Id">
+                                <option value="">--Cooler--</option>
+                            </select>
+
+                            <span class="help-block" style="display:block;" ng-if="frm.Cooler.$error.required && frm.Cooler.$touched">Cooler is required</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="col-md-3">
+                                    <label class="sbold" style="margin-top: 10px;">Status:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mt-radio-inline">
+                                        <label class="mt-radio">
+                                            <input type="radio" name="optionsRadios" ng-value="false" ng-model="entity.IsCancelled"> Active
+                                            <span></span>
+                                        </label>
+                                        <label class="mt-radio">
+                                            <input type="radio" name="optionsRadios" ng-value="true" ng-model="entity.IsCancelled"> Inactive
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>Ok 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions" style="margin-top: 10px;" block-ui="entryBlock">
+                        <button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="post('save')">Submit</button>
+                       <!-- <button type="button" class="btn btn-lg btn-danger box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-show="entity.Id > 0" ng-click="post('delete')">Delete</button>-->
+                        <button type="button" class="btn btn-lg btn-default box-shadow--8dp" style="min-width:90px !important; margin-bottom: 5px" ng-click="resetForm()">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="portlet box purple">
+            <div class="portlet-title sbold">
+                <div class="caption">Asset Info List</div>
+            </div>
+            <div class="portlet-body">
+                <div class="tbl-outer">
+                    <table class="responstable table-hover" >
+                        <tbody>
+                            <tr class="t-head" style="font-size: 14px !important">
+                                <th class="sbold">#</th>
+                                <th class="sbold text-center">AssetNumber</th>
+                                <th class="sbold text-center">SerialNumber</th>
+                                <th class="sbold text-center">Distributor</th>
+                                <th class="sbold text-center">AIC</th>
+                                <th class="sbold text-center">ASM</th>
+                                <th class="sbold text-center">MDO</th>
+                                <th class="sbold text-center">Outlet</th>
+                                <th class="sbold text-center">Cooler</th>
+                                <th class="sbold text-center">Status</th>
+                            </tr>
+                            <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: PerPage" current-page="currentPage" total-items="total_count" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
+                                <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
+                                <td class="text-center"> {{item.AssetNumber}} </td>
+                                <td class="text-center"> {{item.SerialNumber}} </td>
+                                <td class="text-center"> {{item.DistributorName}} </td>
+                                <td class="text-center"> {{item.AICName}} </td>
+                                <td class="text-center"> {{item.ASMName}} </td>
+                                <td class="text-center"> {{item.MDOName}} </td>
+                                <td class="text-center"> {{item.OutletName}} </td>
+                                <td class="text-center"> {{item.CoolerName}} </td>
+                                <td class="text-center"> {{item.IsCancelled ? 'Inactive' : 'Active' }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row pagination-control" ng-show="total_count>PerPage">
+                        <span style="display: inline-block; vertical-align: middle; margin-top: -7px; font-weight: bold;">
+                            <dir-pagination-controls max-size="8"
+                                                     direction-links="true"
+                                                     boundary-links="true"
+                                                     on-page-change="GetPaged(newPageNumber)" style="text-align:center; margin-top:0px !important">
+                            </dir-pagination-controls>
+                        </span>
+                    </div>
+                    <div class="row pagination-footer">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input class="input-pagesize" type="number" min="1" max="100" ng-model="PerPage"> <span>Records Per Page</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <span class="pull-right">Showing {{((currentPage-1)*PerPage)+1}} to {{((currentPage-1)*PerPage)+entityListPaged.length}} of {{total_count}} Records</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

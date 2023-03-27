@@ -51,6 +51,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//}
 		})
 
+		.when('/Outlet', {
+			templateUrl: '/SPA/Outlet/Outlet.html',
+			controller: 'OutLetCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
 
 		.when('/Item', {
 			templateUrl: '/SPA/Item/Item.html',
@@ -130,6 +142,18 @@ app.config(function ($routeProvider, blockUIConfig) {
 		.when('/MDO', {
 			templateUrl: '/SPA/MDO/MDO.html',
 			controller: 'MDOCtrl',
+			//resolve: {
+			//    "check": function ($cookieStore) {
+			//        var login = $cookieStore.get('UserData');
+			//        if (angular.isUndefined(login) || login == null) {
+			//            //window.location = '/Home/Login';
+			//        }
+			//    }
+			//}
+		})
+		.when('/AssetReport', {
+			templateUrl: '/SPA/AssetConfigReports/AssetConfigReports.html',
+			controller: 'AssetConfigReportsCtrl',
 			//resolve: {
 			//    "check": function ($cookieStore) {
 			//        var login = $cookieStore.get('UserData');

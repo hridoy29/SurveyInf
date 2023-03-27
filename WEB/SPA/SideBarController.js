@@ -19,6 +19,7 @@
     $scope.assetConfigPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Asset Config'").FirstOrDefault();
     $scope.outletTypePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Outlet Type'").FirstOrDefault();
     $scope.commentTypePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment Type'").FirstOrDefault();
+    $scope.OutLetPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'outlet'").FirstOrDefault();
     $scope.AICPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'AIC'").FirstOrDefault();
     $scope.ASMPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'ASM'").FirstOrDefault();
     $scope.DistributorlistPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Distributor list'").FirstOrDefault();
@@ -35,6 +36,7 @@
     $scope.shortNotePermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Short Note'").FirstOrDefault();
     $scope.commentPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Comment'").FirstOrDefault();
     $scope.surveyReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Survey Reports'").FirstOrDefault();
+    $scope.AssetConfigReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Asset Config Reports'").FirstOrDefault();
     $scope.questionnaireReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Reports'").FirstOrDefault();
     $scope.questionnaireDetailsReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Details Reports'").FirstOrDefault();
     $scope.questionnairePhysicalStocksReportPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Physical Stocks Reports'").FirstOrDefault();
@@ -49,7 +51,7 @@
         $scope.settingMenuView = false;
     }
 
-    if (!$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.itemsPermission.CanView && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView && !$scope.bbdsPermission.CanView && !$scope.identitiesPermission.CanView && !$scope.observationsPermission.CanView && !$scope.distributorsPermission.CanView && !$scope.coolerPermission.CanView && !$scope.shortNotePermission.CanView && !$scope.mdoPermission.CanView) {
+    if (!$scope.OutLetPermission.CanView && !$scope.outletTypePermission.CanView && !$scope.commentTypePermission.CanView && !$scope.commentPermission.CanView && !$scope.AICPermission.CanView && !$scope.ASMPermission.CanView && !$scope.DistributorlistPermission.CanView && !$scope.itemsPermission.CanView && !$scope.issuesPermission.CanView && !$scope.itemGroupPermission.CanView && !$scope.categoryPermission.CanView && !$scope.bbdsPermission.CanView && !$scope.identitiesPermission.CanView && !$scope.observationsPermission.CanView && !$scope.distributorsPermission.CanView && !$scope.coolerPermission.CanView && !$scope.shortNotePermission.CanView && !$scope.mdoPermission.CanView) {
         $scope.setupMenuView = false;
     }
 
@@ -109,6 +111,7 @@
         $scope.isSetupCooler = false;
         $scope.isSetupMDO = false;
         $scope.isSetupShortNote = false;
+        $scope.isAssetConfigReports = false;
         $scope.isSetupComment  = false;
         $scope.isReports = false;
         $scope.isReportsSurveyReports = false;
@@ -117,6 +120,7 @@
         $scope.isQuestionnairePhysicalStocksReport = false;
         $scope.isHygienePhysicalStocksReport = false;
         $scope.isQuestionnaireObservationReports = false;
+        $scope.isSetupOutLet = false;
     };
 
     $scope.setActiveMenu = function (menu) {
@@ -128,6 +132,10 @@
         else if (menu === 'user') {
             $scope.isSecurity = true;
             $scope.isSecurityUser = true;
+        }
+        else if (menu === 'outlet') {
+            $scope.isSetup = true;
+            $scope.isSetupOutLet = true;
         }
         else if (menu === 'userGroup') {
             $scope.isSecurity = true;
@@ -212,7 +220,11 @@
             $scope.isSetup = true;
             $scope.isSetupShortNote = true;
         }
-        else if (menu === 'mdo') {
+        else if (menu === 'AssetConfigReports') {
+            $scope.isReports = true;
+            $scope.isAssetConfigReports = true;
+        }
+        else if (menu === 'MDO') {
             $scope.isSetup = true;
             $scope.isSetupMDO = true;
         }

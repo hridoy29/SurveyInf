@@ -137,7 +137,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssetConfigController.cs" />
+    <Compile Include="Controllers\AssetConfigReportController.cs" />
+    <Compile Include="Controllers\AssetInfoController.cs" />
     <Compile Include="Controllers\MDOController.cs" />
+    <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\ShortNoteController.cs" />
     <Compile Include="Controllers\CoolerController.cs" />
     <Compile Include="Controllers\DistributorController.cs" />
@@ -317,8 +321,14 @@
     <Content Include="SPA\app.js" />
     <Content Include="SPA\ASM\ASM.html" />
     <Content Include="SPA\ASM\ASMCtrl.js" />
+    <Content Include="SPA\AssetConfigReports\AssetConfigReports.html" />
+    <Content Include="SPA\AssetConfigReports\AssetConfigReportsCtrl.js" />
+    <Content Include="SPA\AssetConfig\AssetConfig.html" />
+    <Content Include="SPA\AssetConfig\AssetConfigCtrl.js" />
     <Content Include="SPA\MDO\MDO.html" />
     <Content Include="SPA\MDO\MDOCtrl.js" />
+    <Content Include="SPA\Outlet\Outlet.html" />
+    <Content Include="SPA\Outlet\OutletCtrl.js" />
     <Content Include="SPA\ShortNote\ShortNote.html" />
     <Content Include="SPA\ShortNote\ShortNoteCtrl.js" />
     <Content Include="SPA\Cooler\Cooler.html" />
@@ -355,8 +365,8 @@
     <Content Include="SPA\QuestionnaireDetailsReports\QuestionnaireDetailsReportsCtrl.js" />
     <Content Include="SPA\QuestionnaireReports\QuestionnaireReports.html" />
     <Content Include="SPA\QuestionnaireReports\QuestionnaireReportsCtrl.js" />
-    <Content Include="SPA\AssetConfig\AssetConfig.html" />
-    <Content Include="SPA\AssetConfig\AssetConfigCtrl.js" />
+    <Content Include="SPA\AssetConfigOld\AssetConfig.html" />
+    <Content Include="SPA\AssetConfigOld\AssetConfigCtrl.js" />
     <Content Include="SPA\SchemeNumber\SchemeNumber.html" />
     <Content Include="SPA\SchemeNumber\SchemeNumberCtrl.js" />
     <Content Include="SPA\Home\Home.html" />
@@ -395,7 +405,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AssetConfigReport\" />
+    <Folder Include="Views\AssetConfig\" />
+    <Folder Include="Views\AssetInfo\" />
     <Folder Include="Views\CommentType\" />
+    <Folder Include="Views\Outlet\" />
     <Folder Include="Views\UserGroup\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

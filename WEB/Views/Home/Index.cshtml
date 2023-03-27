@@ -216,11 +216,25 @@
                             <ul class="sub-menu">
                                 @*outletType*@
                                 @*<li class="nav-item " ng-click="setActiveMenu('outletType')" ng-class="{selectedsubmenu: isSetupOutletType, unselectedsubmenu: !isSetupOutletType}" ng-show="outletTypePermission.CanView">
-                    <a href="#/OutletType" class="nav-link">
-                        <i class="icon-star"></i>
-                        <span class="title">Outlet Type</span>
-                    </a>
-                </li>*@
+                                        <a href="#/OutletType" class="nav-link">
+                                            <i class="icon-star"></i>
+                                            <span class="title">Outlet Type</span>
+                                        </a>
+                                    </li>*@
+                                @*Outlet*@
+                                <li class="nav-item " ng-click="setActiveMenu('outLet')" ng-class="{selectedsubmenu: isSetupOutLet, unselectedsubmenu: !isSetupOutLet}" ng-show="OutLetPermission.CanView">
+                                    <a href="#/Outlet" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">OutLet</span>
+                                    </a>
+                                </li>
+                                @*Outlet*@
+                                <li class="nav-item " ng-click="setActiveMenu('MDO')" ng-class="{selectedsubmenu: isSetupMDO, unselectedsubmenu: !isSetupMDO}" ng-show="mdoPermission.CanView">
+                                    <a href="#/MDO" class="nav-link">
+                                        <i class="icon-star"></i>
+                                        <span class="title">MDO</span>
+                                    </a>
+                                </li>
                                 @*commentType*@
                                 <li class="nav-item " ng-click="setActiveMenu('commentType')" ng-class="{selectedsubmenu: isSetupCommentType, unselectedsubmenu: !isSetupCommentType}" ng-show="commentTypePermission.CanView">
                                     <a href="#/CommentType" class="nav-link">
@@ -341,62 +355,68 @@
                         </li>
 
                     </ul>
-                        </li>
-                        <li class="nav-item " ng-class="{ 'active' : isReports}" ng-show="reportMenuView">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-question"></i>
-                                <span class="title">Reports</span>
-                                <span class="arrow"></span>
-                                <span class="myselected" ng-show="isReports"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                @*surveyReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('surveyReports')" ng-class="{selectedsubmenu: isReportsSurveyReports, unselectedsubmenu: !isReportsSurveyReports}" ng-show="surveyReportsPermission.CanView">
-                                    <a href="#/SurveyReports" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Survey Reports</span>
-                                    </a>
-                                </li>
-                                @*questionnaireReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('questionnaireReports')" ng-class="{selectedsubmenu: isQuestionnaireReports, unselectedsubmenu: !isQuestionnaireReports}" ng-show="questionnaireReportsPermission.CanView">
-                                    <a href="#/QuestionnaireReports" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Questionnaire Reports</span>
-                                    </a>
-                                </li>
+                    </li>
+                    <li class="nav-item " ng-class="{ 'active' : isReports}" ng-show="reportMenuView">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-question"></i>
+                            <span class="title">Reports</span>
+                            <span class="arrow"></span>
+                            <span class="myselected" ng-show="isReports"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            @*surveyReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('surveyReports')" ng-class="{selectedsubmenu: isReportsSurveyReports, unselectedsubmenu: !isReportsSurveyReports}" ng-show="surveyReportsPermission.CanView">
+                                <a href="#/SurveyReports" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Survey Reports</span>
+                                </a>
+                            </li>
+                            <li class="nav-item " ng-click="setActiveMenu('AssetConfigReports')" ng-class="{selectedsubmenu: isAssetConfigReports, unselectedsubmenu: !isAssetConfigReports}" ng-show="AssetConfigReportsPermission.CanView">
+                                <a href="#/AssetReport" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Asset Config Reports</span>
+                                </a>
+                            </li>
+                            @*questionnaireReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('questionnaireReports')" ng-class="{selectedsubmenu: isQuestionnaireReports, unselectedsubmenu: !isQuestionnaireReports}" ng-show="questionnaireReportsPermission.CanView">
+                                <a href="#/QuestionnaireReports" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Questionnaire Reports</span>
+                                </a>
+                            </li>
 
-                                @*questionnaireDetailsReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('questionnaireDetailsReports')" ng-class="{selectedsubmenu: isQuestionnaireDetailsReports, unselectedsubmenu: !isQuestionnaireDetailsReports}" ng-show="questionnaireDetailsReportsPermission.CanView">
-                                    <a href="#/QuestionnaireDetailsReports" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Questionnaire Details Reports</span>
-                                    </a>
-                                </li>
+                            @*questionnaireDetailsReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('questionnaireDetailsReports')" ng-class="{selectedsubmenu: isQuestionnaireDetailsReports, unselectedsubmenu: !isQuestionnaireDetailsReports}" ng-show="questionnaireDetailsReportsPermission.CanView">
+                                <a href="#/QuestionnaireDetailsReports" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Questionnaire Details Reports</span>
+                                </a>
+                            </li>
 
 
-                                @*questionnairePhysicalStocksReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('questionnairePhysicalStocksReport')" ng-class="{selectedsubmenu: isQuestionnairePhysicalStocksReport, unselectedsubmenu: !isQuestionnairePhysicalStocksReport}" ng-show="questionnairePhysicalStocksReportPermission.CanView">
-                                    <a href="#/QuestionnairePhysicalStocksReport" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Questionnaire Physical Stocks Reports</span>
-                                    </a>
-                                </li>
-                                @*questionnaireObservationReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('questionnaireObservationReports')" ng-class="{selectedsubmenu: isQuestionnaireObservationReports, unselectedsubmenu: !isQuestionnaireObservationReports}" ng-show="questionnaireObservationReportsPermission.CanView">
-                                    <a href="#/QuestionnaireObservationReports" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Questionnaire Observation Reports</span>
-                                    </a>
-                                </li>
-                                @*hygienePhysicalStocksReports*@
-                                <li class="nav-item " ng-click="setActiveMenu('hygienePhysicalStocksReports')" ng-class="{selectedsubmenu: isHygienePhysicalStocksReport, unselectedsubmenu: !isHygienePhysicalStocksReport}" ng-show="hygienePhysicalStocksReportPermission.CanView">
-                                    <a href="#/HygienePhysicalStockReport" class="nav-link">
-                                        <i class="icon-star"></i>
-                                        <span class="title">Hygiene Physical Stocks Reports</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            @*questionnairePhysicalStocksReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('questionnairePhysicalStocksReport')" ng-class="{selectedsubmenu: isQuestionnairePhysicalStocksReport, unselectedsubmenu: !isQuestionnairePhysicalStocksReport}" ng-show="questionnairePhysicalStocksReportPermission.CanView">
+                                <a href="#/QuestionnairePhysicalStocksReport" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Questionnaire Physical Stocks Reports</span>
+                                </a>
+                            </li>
+                            @*questionnaireObservationReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('questionnaireObservationReports')" ng-class="{selectedsubmenu: isQuestionnaireObservationReports, unselectedsubmenu: !isQuestionnaireObservationReports}" ng-show="questionnaireObservationReportsPermission.CanView">
+                                <a href="#/QuestionnaireObservationReports" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Questionnaire Observation Reports</span>
+                                </a>
+                            </li>
+                            @*hygienePhysicalStocksReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('hygienePhysicalStocksReports')" ng-class="{selectedsubmenu: isHygienePhysicalStocksReport, unselectedsubmenu: !isHygienePhysicalStocksReport}" ng-show="hygienePhysicalStocksReportPermission.CanView">
+                                <a href="#/HygienePhysicalStockReport" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Hygiene Physical Stocks Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
                     <!-- END SIDEBAR MENU -->
@@ -519,11 +539,13 @@
     <script src="~/SPA/UserGroup/UserGroupCtrl.js"></script>
     <script src="~/SPA/Department/DepartmentCtrl.js"></script>
     <script src="~/SPA/Item/ItemCtrl.js"></script>
+    <script src="~/SPA/Outlet/OutletCtrl.js"></script>
     <script src="~/SPA/Issues/IssuesCtrl.js"></script>
     <script src="~/SPA/Distributor/DistributorCtrl.js"></script>
     <script src="~/SPA/BBD/BBDCtrl.js"></script>
     <script src="~/SPA/Cooler/CoolerCtrl.js"></script>
     <script src="~/SPA/MDO/MDOCtrl.js"></script>
+    <script src="~/SPA/AssetConfigReports/AssetConfigReportsCtrl.js"></script>
     <script src="~/SPA/ShortNote/ShortNoteCtrl.js"></script>
     <script src="~/SPA/Observation/ObservationCtrl.js"></script>
     <script src="~/SPA/Identity/IdentityCtrl.js"></script>

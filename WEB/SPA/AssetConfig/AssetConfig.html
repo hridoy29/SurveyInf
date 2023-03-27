@@ -1,4 +1,4 @@
-﻿<!--<p />
+﻿<p />
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -7,89 +7,190 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Program</span>
+            <span>Asset Info new</span>
         </li>
     </ul>
 </div>
 <p />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <div class="portlet box purple">
             <div class="portlet-title sbold">
-                <div class="caption">Program Entry</div>
+                <div class="caption">Asset Info Entry</div>
             </div>
             <div class="portlet-body">
                 <form name="frm" novalidate>
-                    <div class="form-body">
-                        <div class="form-group" ng-class="{ 'has-error' : frm.ProgramName.$touched && frm.ProgramName.$invalid }" data-toggle="tooltip" data-placement="bottom" title="Program Name">
-                            <div class="input-group">
-                                <input type="text" id="txtFocus" class="form-control" placeholder="Program Name" name="ProgramName" ng-model="entity.ProgramName" maxlength="51" ng-maxlength="50" required autofocus>
-                                <span class="input-group-addon">
-                                    <i class="fa fa-user font-red"></i>
-                                </span>
-                            </div>
-                            <span class="help-block" style="display: block;" ng-if="frm.ProgramName.$error.required && frm.ProgramName.$touched">Program Name is required</span>
-                            <span class="help-block" ng-if="frm.ProgramName.$error.maxlength">50 Character Max</span>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error' : frm.TagLine.$touched && frm.TagLine.$invalid }" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Tag Line" name="TagLine" ng-model="entity.TagLine" maxlength="51" ng-maxlength="50" required>
-                                <span class="input-group-addon">
-                                    <i class="fa fa-user font-red"></i>
-                                </span>
-                            </div>
-                            <span class="help-block" style="display: block;" ng-if="frm.TagLine.$error.required && frm.TagLine.$touched">Tag Line is required</span>
-                            <span class="help-block" ng-if="frm.TagLine.$error.maxlength">50 Character Max</span>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="col-md-3">
-                                    <label class="sbold" style="margin-top: 10px;">Status:</label>
+                    <div class="row">
+                        <div class="form-body">
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Program Name">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" id="txtFocus" class="form-control" placeholder="Asset Number" name="AssetNumber" ng-model="entity.AssetNumber" maxlength="51" ng-maxlength="50" required autofocus>
+                                       
+                                    </div>
+
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="mt-radio-inline">
-                                        <label class="mt-radio">
-                                            <input type="radio" name="optionsRadios" ng-value="true" ng-model="entity.IsActive"> Active
-                                            <span></span>
-                                        </label>
-                                        <label class="mt-radio">
-                                            <input type="radio" name="optionsRadios" ng-value="false" ng-model="entity.IsActive"> Inactive
-                                            <span></span>
-                                        </label>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Serial Number" name="SerialNumber" ng-model="entity.SerialNumber" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3" >
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Distributor Id" name="DistributorId" ng-model="entity.DistributorId" maxlength="51" ng-maxlength="50" required>
+                                        
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Distributor Name" name="DistributorName" ng-model="entity.DistributorName" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+                                    <!--<span class="help-block" style="display: block;" ng-if="frm.DistributorName.$error.required && frm.DistributorName.$touched">Serial Number is required</span>-->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="AIC Name" name="AICName" ng-model="entity.AICName" maxlength="51" ng-maxlength="50" required>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="ASM Name" name="ASMName" ng-model="entity.ASMName" maxlength="51" ng-maxlength="50" required>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="MDO Id" name="MDOId" ng-model="entity.MDOId" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="MDO Name" name="MDOName" ng-model="entity.MDOName" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Outlet Id" name="OutletId" ng-model="entity.OutletId" maxlength="51" ng-maxlength="50" required>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Outlet Name" name="OutletName" ng-model="entity.OutletName" maxlength="51" ng-maxlength="50" required>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Outlet Address" name="OutletAddress" ng-model="entity.OutletAddress" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Contact No" name="ContactNo" ng-model="entity.ContactNo" maxlength="51" ng-maxlength="50" required>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Tag Line">
+                                    <div class="input-group" style="width: 100%;">
+                                        <input type="text" class="form-control" placeholder="Cooler Model" name="CoolerModel" ng-model="entity.CoolerModel" maxlength="51" ng-maxlength="50" required>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-actions" style="margin-top: -15px;" block-ui="entryBlock">
-                        <button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="post('save')">Submit</button>
-                        <button type="button" class="btn btn-lg btn-danger box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-show="entity.ProgramId > 0" ng-click="post('delete')">Delete</button>
-                        <button type="button" class="btn btn-lg btn-default box-shadow--8dp" style="min-width:90px !important; margin-bottom: 5px" ng-click="resetForm()">Reset</button>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-actions" style="margin-top: 10px; margin-left: 10px; " block-ui="entryBlock">
+                                <button type="submit" class="btn btn-lg btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-click="post('save')">Submit</button>
+                                 <button type="button" class="btn btn-lg btn-danger box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-show="entity.Id > 0" ng-click="post('delete')">Delete</button>
+                                <button type="button" class="btn btn-lg btn-default box-shadow--8dp" style="min-width:90px !important; margin-bottom: 5px" ng-click="resetForm()">Reset</button>
+                            </div>
+                        </div>
+
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="portlet box purple">
             <div class="portlet-title sbold">
-                <div class="caption">Program List</div>
+                <div class="caption">Asset Info List</div>
             </div>
             <div class="portlet-body">
                 <div class="tbl-outer">
-                    <table class="responstable table-hover" block-ui="lsitBlock">
+                    <table class="responstable table-hover">
                         <tbody>
                             <tr class="t-head" style="font-size: 14px !important">
                                 <th class="sbold">#</th>
-                                <th class="sbold text-center" data-th="Details"><span>Program Name</span></th>
-                                <th class="sbold text-center">Tag Line</th>
+                                <th class="sbold text-center">Asset Number</th>
+                                <th class="sbold text-center">Serial Number</th>
+                                <th class="sbold text-center">Distributor Id</th>
+                                <th class="sbold text-center">Distributor</th>
+                                <th class="sbold text-center">AIC Name</th>
+                                <th class="sbold text-center">ASM Name</th>
+                                <th class="sbold text-center">MDO Id</th>
+                                <th class="sbold text-center">MDO Name</th>
+                                <th class="sbold text-center">Outlet Id</th>
+                                <th class="sbold text-center">Outlet Name</th>
+                                <th class="sbold text-center">Outlet Address</th>
+                                <th class="sbold text-center">Contact No</th>
+                                <th class="sbold text-center">Cooler</th>
                                 <th class="sbold text-center">Status</th>
                             </tr>
-                            <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: PerPage" current-page="currentPage" total-items="total_count" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}">
+                            <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: PerPage" current-page="currentPage" total-items="total_count" ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.Id === item.Id}">
                                 <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-                                <td class="text-center"> {{item.ProgramName}} </td>
-                                <td class="text-center"> {{item.TagLine}} </td>
-                                <td class="text-center"> {{item.IsActive ? 'Active' : 'Inactive' }} </td>
+                                <td class="text-center"> {{item.AssetNumber}} </td>
+                                <td class="text-center"> {{item.SerialNumber}} </td>
+                                <td class="text-center"> {{item.DistributorId}} </td>
+                                <td class="text-center"> {{item.DistributorName}} </td>
+                                <td class="text-center"> {{item.AICName}} </td>
+                                <td class="text-center"> {{item.ASMName}} </td>
+                                <td class="text-center"> {{item.MDOId}} </td>
+                                <td class="text-center"> {{item.MDOName}} </td>
+                                <td class="text-center"> {{item.OutletId}} </td>
+                                <td class="text-center"> {{item.OutletAddress}} </td>
+                                <td class="text-center"> {{item.ContactNo}} </td>
+                                <td class="text-center"> {{item.OutletName}} </td>
+                                <td class="text-center"> {{item.CoolerModel}} </td>
+                                <td class="text-center"> {{item.IsCancelled ? 'Inactive' : 'Active' }} </td>
                             </tr>
                         </tbody>
                     </table>
@@ -114,5 +215,4 @@
             </div>
         </div>
     </div>
-    <pre>{{entity | json}}</pre>
-</div>-->
+</div>

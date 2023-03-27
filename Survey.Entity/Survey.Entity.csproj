@@ -58,10 +58,14 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asset_configReports.cs" />
+    <Compile Include="Asset_configReportsFormat.cs" />
     <Compile Include="LU_AIC.cs" />
     <Compile Include="LU_ASM.cs" />
-    <Compile Include="LU_ShortNote - Copy %282%29.cs" />
+    <Compile Include="LU_AssetInfo.cs" />
+    <Compile Include="LU_Asset_Config.cs" />
     <Compile Include="LU_MDO.cs" />
+    <Compile Include="LU_Outlet.cs" />
     <Compile Include="LU_ShortNote.cs" />
     <Compile Include="LU_Cooler.cs" />
     <Compile Include="LU_Distributor.cs" />

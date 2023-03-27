@@ -44,11 +44,15 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetConfigReportDAO.cs" />
     <Compile Include="DBExecutor.cs" />
     <Compile Include="DBUtility.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="HygienePhysicalStockDAO.cs" />
+    <Compile Include="LU_AssetInfoDAO.cs" />
+    <Compile Include="LU_Asset_ConfigDAO.cs" />
     <Compile Include="LU_MDODAO.cs" />
+    <Compile Include="LU_OutletDAO.cs" />
     <Compile Include="LU_ShortNoteDAO.cs" />
     <Compile Include="LU_CoolerDAO.cs" />
     <Compile Include="LU_DistributorDAO.cs" />

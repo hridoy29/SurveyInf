@@ -1,0 +1,107 @@
+﻿<div class="row">
+
+    <br />
+    <div class="row">
+        <div class="col-md-4" style=" margin-top: 10px; ">
+            <label for="fromDateReport">From Date:</label>
+            <input type="date" class="form-control" id="fromDate" name="namefromDate" ng-model="entity.fromDate">
+        </div>
+        <div class="col-md-4" style=" margin-top: 10px; ">
+            <label for="toDateReport">To Date:</label>
+            <input type="date" id="toDate" class="form-control" name="tofromDate" ng-model="entity.tofromDate">
+        </div>
+        <div class="col-md-4" style=" margin-top: 10px; ">
+            <label for="toDateReport">Distrbutor Id:</label>
+            <input type="text" class="form-control" placeholder="Search By Distrbutor Id" ng-model="entity.DistrbutorId">
+        </div>
+        <div class="col-md-4" style=" margin-top: 10px; ">
+            <label for="toDateReport">Distrbutor Name:</label>
+            <input type="text" class="form-control" placeholder="Search By Distrbutor Name" ng-model="entity.DistrbutorName">
+        </div>
+        <div class="col-md-4" style=" margin-top: 10px; " ng-show="$scope.userData.UserGroupId!=4">
+            <label for="toDateReport">Surveyor Name:</label>
+            <input type="text" class="form-control" placeholder="Search By Surveyor Name" ng-model="entity.SurveyorName">
+        </div>
+        <div class="col-md-4" style=" margin-top: 35px; ">
+            <label for="toDateReport"></label>
+            <button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="search()">Search</button>
+            <button type="submit" class="btn  btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="col-md-12">
+        <div class="portlet-body">
+            <div class="tbl-outer">
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr class="t-head" style="font-size: 14px !important">
+                            <th class="sbold">#</th>
+                            <!--<th class="sbold text-center" data-th="Details"><span>AssetNumber</span></th>-->
+                            <th class=" text-center">Asset Number</th>
+                            <th class=" text-center">Outlet Name</th>
+                            <th class=" text-center">Distributor Id</th>
+                            <th class=" text-center">Distributor Name</th>
+                            <th class=" text-center">AIC Name</th>
+                            <th class=" text-center">ASM Name</th>
+                            <th class=" text-center">MDO Id</th>
+                            <th class=" text-center">MDO Name</th>
+                            <th class=" text-center">Outlet Id</th>
+                            <th class=" text-center">Outlet Name</th>
+                            <th class=" text-center">Outlet Address </th>
+                            <th class=" text-center">ContactNo</th>
+                            <th class=" text-center">CoolerModel</th>
+                            <th class=" text-center">NightCover</th>
+                            <th class=" text-center">Short Note</th>
+                            <th class=" text-center">Remarks</th>
+                            <th class=" text-center">Shop Image</th>
+                            <th class=" text-center">Asset Image</th>
+                            <th class=" text-center">Cooler Image</th>
+                            <th class=" text-center">Sign Image</th>
+                        </tr>
+
+                        <!-- table data-->
+                        <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
+                            <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
+                            <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
+
+                            <td class="text-center"> {{item.AssetNumber}} </td>
+                            <td class="text-center"> {{item.SerialNumber}} </td>
+                            <td class="text-center"> {{item.DistributorId}} </td>
+                            <td class="text-center"> {{item.DistributorName}} </td>
+                            <td class="text-center"> {{item.AICName}} </td>
+                            <td class="text-center"> {{item.ASMName}} </td>
+                            <td class="text-center"> {{item.MDOId}} </td>
+                            <td class="text-center"> {{item.MDOName}} </td>
+                            <td class="text-center"> {{item.OutletId}} </td>
+                            <td class="text-center"> {{item.OutletName}} </td>
+                            <td class="text-center"> {{item.OutletAddress}} </td>
+                            <td class="text-center"> {{item.ContactNo}} </td>
+                            <td class="text-center"> {{item.CoolerModel}} </td>
+                            <td class="text-center"> {{item.NightCover}} </td>
+                            <td class="text-center"> {{item.ShortNote}} </td>
+                            <td class="text-center"> {{item.Remarks}} </td>
+                            <!--<td class="text-center"> {{item.ShopImage}} </td>
+                            <td class="text-center"> {{item.AssetImage}} </td>
+                            <td class="text-center"> {{item.CoolerImage}} </td>
+                            <td class="text-center"> {{item.SignImage}} </td>-->
+                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.ShopImage)">Image</button></td>
+                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.AssetImage)">Image</button></td>
+                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.CoolerImage)">Image</button></td>
+                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.SignImage)">Image</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="tbl-outer" style="padding:10px 20px !important">
+                    <dir-pagination-controls pagination-id="cust"
+                                             direction-links="true"
+                                             boundary-links="true" on-page-change="onPageChange(currentPage)"></dir-pagination-controls>
+                </div>
+            </div>
+
+        </div>
+
+        <!--</div>-->
+
+    </div>
+</div>
