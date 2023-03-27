@@ -66,7 +66,7 @@
         var whereCondition = '1=1 ';
         //var params = JSON.stringify({ userId: 1 });
         if ($scope.fromDate != '' && $scope.fromDate != undefined && $scope.toDate != '' && $scope.toDate != undefined) {
-            whereCondition += "and l.CreationDate between '" + $scope.fromDate + "' and '" + $scope.toDate + "'";
+            whereCondition += "and l.ModificationDate between '" + $scope.fromDate + "' and '" + $scope.toDate + "'";
         }
         if ($scope.DistrbutorId != '' && $scope.DistrbutorId != undefined) {
             /*and DistributorId = +''' + $scope.DistrbutorId+'';*/
