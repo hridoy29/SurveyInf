@@ -431,10 +431,6 @@
       <Project>{5e251b06-6584-4b27-b762-136801a22630}</Project>
       <Name>Survey.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Survey.Entity\Survey.Entity.csproj">
-      <Project>{26e274b7-f079-4cf0-9428-06c1c36827d7}</Project>
-      <Name>Survey.Entity</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Excel">
