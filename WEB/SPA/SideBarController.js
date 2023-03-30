@@ -55,7 +55,7 @@
         $scope.setupMenuView = false;
     }
 
-    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView && !$scope.questionnaireObservationReports.CanView && !$scope.hygienePhysicalStocksReportPermission.CanView) {
+    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView && !$scope.questionnaireObservationReports.CanView && !$scope.hygienePhysicalStocksReportPermission.CanView && !$scope.AssetConfigReportsPermission.CanView) {
         $scope.reportMenuView = false;
     }
 

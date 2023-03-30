@@ -36,34 +36,21 @@
                 <table class="table table-bordered table-hover">
                     <tbody>
                         <tr class="t-head" style="font-size: 14px !important">
-<<<<<<< HEAD
                             <th class="sbold">Sl No.</th>
                             <!--<th class="sbold text-center" data-th="Details"><span>AssetNumber</span></th>-->
 
-=======
-                            <th class="sbold">#</th>
-                            <!--<th class="sbold text-center" data-th="Details"><span>AssetNumber</span></th>-->
-                            <th class=" text-center">Asset Number</th>
-                            <th class=" text-center">Outlet Name</th>
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
                             <th class=" text-center">Distributor Id</th>
                             <th class=" text-center">Distributor Name</th>
                             <th class=" text-center">AIC Name</th>
                             <th class=" text-center">ASM Name</th>
-<<<<<<< HEAD
                             <th class=" text-center">MDO Name</th>
                             <th class=" text-center">MDO Id</th>
                             <th class=" text-center">Date</th>
-=======
-                            <th class=" text-center">MDO Id</th>
-                            <th class=" text-center">MDO Name</th>
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
                             <th class=" text-center">Outlet Id</th>
                             <th class=" text-center">Outlet Name</th>
                             <th class=" text-center">Outlet Address </th>
                             <th class=" text-center">ContactNo</th>
                             <th class=" text-center">CoolerModel</th>
-<<<<<<< HEAD
                             <th class=" text-center">Asset Number</th>
                             <th class=" text-center">Outlet Name</th>
                             <th class=" text-center">NightCover</th>
@@ -72,11 +59,6 @@
                             <th class=" text-center">Repeat Visit</th>
                             <th class=" text-center">Visitor Name</th>
                             <th class=" text-center">Visitor Id</th>
-=======
-                            <th class=" text-center">NightCover</th>
-                            <th class=" text-center">Short Note</th>
-                            <th class=" text-center">Remarks</th>
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
                             <th class=" text-center">Shop Image</th>
                             <th class=" text-center">Asset Image</th>
                             <th class=" text-center">Cooler Image</th>
@@ -84,25 +66,15 @@
                         </tr>
 
                         <!-- table data-->
-<<<<<<< HEAD
                         <tr dir-paginate="item in entityList | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
                             <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
                             <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
 
 
-=======
-                        <tr dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
-                            <!--ng-click="rowClick(item)" ng-class="{ 'rowSelected' : entity.ProgramId === item.ProgramId}"-->
-                            <td class="text-center">{{$index + ((currentPage-1)*PerPage) + 1}}</td>
-
-                            <td class="text-center"> {{item.AssetNumber}} </td>
-                            <td class="text-center"> {{item.SerialNumber}} </td>
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
                             <td class="text-center"> {{item.DistributorId}} </td>
                             <td class="text-center"> {{item.DistributorName}} </td>
                             <td class="text-center"> {{item.AICName}} </td>
                             <td class="text-center"> {{item.ASMName}} </td>
-<<<<<<< HEAD
                             <td class="text-center"> {{item.MDOName}} </td>
                             <td class="text-center"> {{item.MDOId}} </td>
                             <td class="text-center"> {{item.Date}} </td>
@@ -127,26 +99,6 @@
                             <td class="text-center"><button type="submit" ng-show="item.AssetImage " class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.AssetImage)">Image</button></td>
                             <td class="text-center"><button type="submit" ng-show="item.CoolerImage " class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.CoolerImage)">Image</button></td>
                             <td class="text-center"><button type="submit" ng-show="item.SignImage " class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.SignImage)">Image</button></td>
-=======
-                            <td class="text-center"> {{item.MDOId}} </td>
-                            <td class="text-center"> {{item.MDOName}} </td>
-                            <td class="text-center"> {{item.OutletId}} </td>
-                            <td class="text-center"> {{item.OutletName}} </td>
-                            <td class="text-center"> {{item.OutletAddress}} </td>
-                            <td class="text-center"> {{item.ContactNo}} </td>
-                            <td class="text-center"> {{item.CoolerModel}} </td>
-                            <td class="text-center"> {{item.NightCover}} </td>
-                            <td class="text-center"> {{item.ShortNote}} </td>
-                            <td class="text-center"> {{item.Remarks}} </td>
-                            <!--<td class="text-center"> {{item.ShopImage}} </td>
-                            <td class="text-center"> {{item.AssetImage}} </td>
-                            <td class="text-center"> {{item.CoolerImage}} </td>
-                            <td class="text-center"> {{item.SignImage}} </td>-->
-                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.ShopImage)">Image</button></td>
-                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.AssetImage)">Image</button></td>
-                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.CoolerImage)">Image</button></td>
-                            <td class="text-center"><button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.SignImage)">Image</button></td>
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
                         </tr>
                     </tbody>
                 </table>

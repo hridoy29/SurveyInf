@@ -94,5 +94,11 @@
     <Compile Include="TRN_SchemeAuditChildDAO.cs" />
     <Compile Include="TRN_SchemeAuditParentDAO.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Survey.Entity\Survey.Entity.csproj">
+      <Project>{26e274b7-f079-4cf0-9428-06c1c36827d7}</Project>
+      <Name>Survey.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

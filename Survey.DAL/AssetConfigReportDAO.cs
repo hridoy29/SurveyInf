@@ -67,7 +67,6 @@ namespace Survey.DAL
                 throw ex;
             }
         }
-<<<<<<< HEAD
         public List<Asset_configReports> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder,int id, ref int rows)
         {
             try
@@ -90,8 +89,6 @@ namespace Survey.DAL
                 throw ex;
             }
         }
-=======
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public List<Asset_configReports> GetDynamic(string whereCondition, string orderByExpression)
         {
             try
@@ -109,7 +106,6 @@ namespace Survey.DAL
                 throw ex;
             }
         }
-<<<<<<< HEAD
         public List<Asset_configReportsFormat> GetReportDynamic(string whereCondition, string orderByExpression,int id)
         {
             try
@@ -128,8 +124,6 @@ namespace Survey.DAL
                 throw ex;
             }
         }
-=======
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public List<Asset_configReportsFormat> GetListByUserExport(int id, DateTime? fromDate, DateTime? toDate)
         {
             try

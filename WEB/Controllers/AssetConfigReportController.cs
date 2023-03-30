@@ -28,7 +28,6 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-<<<<<<< HEAD
         public JsonResult AssetConfigReportPaged(int startRecordNo, int rowPerPage, string whereClause,int id, int rows)
         {
             try
@@ -45,8 +44,6 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-=======
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public JsonResult GetDynamic(string where, string orderBy)
         {
             try
@@ -99,7 +96,6 @@ namespace WEB.Controllers
             //    Response.Write("This file does not exist.");
             //}
         }
-<<<<<<< HEAD
         public void getExportDynamically(int userId, string where)
         {
 
@@ -138,7 +134,5 @@ namespace WEB.Controllers
             //    Response.Write("This file does not exist.");
             //}
         }
-=======
->>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
     }
 }
