@@ -28,6 +28,25 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
+<<<<<<< HEAD
+        public JsonResult AssetConfigReportPaged(int startRecordNo, int rowPerPage, string whereClause,int id, int rows)
+        {
+            try
+            {
+                var customMODEntity = new
+                {
+                    ListData = Facade.AssetConfigReportDAO.GetPaged(startRecordNo, rowPerPage, whereClause, "CreateDate", "DESC", id, ref rows),
+                    TotalRecord = rows
+                };
+                return Json(customMODEntity, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
+=======
+>>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public JsonResult GetDynamic(string where, string orderBy)
         {
             try
@@ -80,5 +99,46 @@ namespace WEB.Controllers
             //    Response.Write("This file does not exist.");
             //}
         }
+<<<<<<< HEAD
+        public void getExportDynamically(int userId, string where)
+        {
+
+            List<Asset_configReportsFormat> Asset_configReports_ = new List<Asset_configReportsFormat>();
+            Asset_configReports_ = Facade.AssetConfigReportDAO.GetReportDynamic(where,"",userId);
+            var gv = new GridView();
+            gv.DataSource = Asset_configReports_;
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+
+            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+
+            //string path = @"D:\UserManager.xlsx";  //@getpathfromappconfig + "\\" + FileName + ".xlsx";
+            //System.IO.FileInfo file = new System.IO.FileInfo(path);
+            //string Outgoingfile = "UserManager" + ".xlsx";
+            //if (file.Exists)
+            //{
+            //    Response.Clear();
+            //    Response.AddHeader("Content-Disposition", "attachment; filename=" + Outgoingfile);
+            //    Response.AddHeader("Content-Length", file.Length.ToString());
+            //    Response.ContentType = "application/vnd.ms-excel";
+            //    Response.WriteFile(file.FullName);
+
+            //}
+            //else
+            //{
+            //    Response.Write("This file does not exist.");
+            //}
+        }
+=======
+>>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
     }
 }

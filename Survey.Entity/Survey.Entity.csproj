@@ -62,6 +62,10 @@
     <Compile Include="Asset_configReportsFormat.cs" />
     <Compile Include="LU_AIC.cs" />
     <Compile Include="LU_ASM.cs" />
+<<<<<<< HEAD
+    <Compile Include="LU_AssetConfigReport_GetPaged.cs" />
+=======
+>>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
     <Compile Include="LU_AssetInfo.cs" />
     <Compile Include="LU_Asset_Config.cs" />
     <Compile Include="LU_MDO.cs" />

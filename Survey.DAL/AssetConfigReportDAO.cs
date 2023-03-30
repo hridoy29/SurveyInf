@@ -67,6 +67,31 @@ namespace Survey.DAL
                 throw ex;
             }
         }
+<<<<<<< HEAD
+        public List<Asset_configReports> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder,int id, ref int rows)
+        {
+            try
+            {
+                List<Asset_configReports> Asset_configReportlst = new List<Asset_configReports>();
+                Parameters[] colparameters = new Parameters[6]{
+                new Parameters("@StartRecordNo", startRecordNo, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@RowPerPage", rowPerPage, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@WhereClause", whereClause, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortColumn", sortColumn, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortOrder", sortOrder, DbType.String, ParameterDirection.Input),
+                new Parameters("@UserId", id, DbType.Int32, ParameterDirection.Input),
+                };
+                Asset_configReportlst = dbExecutor.FetchDataRef<Asset_configReports>(CommandType.StoredProcedure, "rpt_LU_AssetConfig_GetPaged", colparameters, ref rows);
+                
+                return Asset_configReportlst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+=======
+>>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public List<Asset_configReports> GetDynamic(string whereCondition, string orderByExpression)
         {
             try
@@ -84,6 +109,27 @@ namespace Survey.DAL
                 throw ex;
             }
         }
+<<<<<<< HEAD
+        public List<Asset_configReportsFormat> GetReportDynamic(string whereCondition, string orderByExpression,int id)
+        {
+            try
+            {
+                List<Asset_configReportsFormat> LU_Asset_ConfigLst = new List<Asset_configReportsFormat>();
+                Parameters[] colparameters = new Parameters[3]{
+                new Parameters("@WhereCondition", whereCondition, DbType.String, ParameterDirection.Input),
+                new Parameters("@OrderByExpression", orderByExpression, DbType.String, ParameterDirection.Input),
+                new Parameters("@paramId", id, DbType.Int32, ParameterDirection.Input),
+                };
+                LU_Asset_ConfigLst = dbExecutor.FetchData<Asset_configReportsFormat>(CommandType.StoredProcedure, "rpt_LU_AssetConfig_Report_GetDynamic", colparameters);
+                return LU_Asset_ConfigLst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+=======
+>>>>>>> 21c34740701a270f0917d93b07ae13698f9654b8
         public List<Asset_configReportsFormat> GetListByUserExport(int id, DateTime? fromDate, DateTime? toDate)
         {
             try
