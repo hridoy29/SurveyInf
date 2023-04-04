@@ -24,6 +24,25 @@ namespace WEB.Controllers
                 return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public JsonResult AssetConfigPaged(int startRecordNo, int rowPerPage, string whereClause, int id, int rows)
+        {
+            try
+            {
+                var customMODEntity = new
+                {
+                    ListData = Facade.LU_Asset_ConfigDAO.GetPaged(startRecordNo, rowPerPage, whereClause, "CreationDate", "DESC", id, ref rows),
+                    TotalRecord = rows
+                };
+                return Json(customMODEntity, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
         public JsonResult GetDynamic(string where, string orderBy)
         {
             try

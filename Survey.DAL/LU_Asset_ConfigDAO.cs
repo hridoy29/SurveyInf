@@ -85,15 +85,16 @@ namespace Survey.DAL
 				throw ex;
 			}
 		}
-		public List<LU_Asset_Config> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, ref int rows)
+		public List<LU_Asset_Config> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder,int id, ref int rows)
 		{
 			try
 			{
 				List<LU_Asset_Config> LU_Asset_ConfigLst = new List<LU_Asset_Config>();
-				Parameters[] colparameters = new Parameters[5]{
+				Parameters[] colparameters = new Parameters[6]{
 				new Parameters("@StartRecordNo", startRecordNo, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@RowPerPage", rowPerPage, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@WhereClause", whereClause, DbType.String, ParameterDirection.Input),
+				new Parameters("@userId", id, DbType.Int32, ParameterDirection.Input),
 				new Parameters("@SortColumn", sortColumn, DbType.String, ParameterDirection.Input),
 				new Parameters("@SortOrder", sortOrder, DbType.String, ParameterDirection.Input),
 				};

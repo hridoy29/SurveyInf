@@ -9,18 +9,32 @@
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
     $scope.UserData = $cookieStore.get('UserData');
     clear();
-    getList();
-    getUserDetails();
-
+    
+  
     function clear() {
         $scope.entityListPaged = [];
         $scope.userData = {};
         $scope.entity = {};
+        getUserid();
+  
     };
+    function getUserid() {
+
+        $http({
+            url: "/User/GetUserId?email=" + $scope.UserData.Username + "&passcode=" + $scope.UserData.Password,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            $scope.userId = data[0].Id;
+            getList();
+            getUserDetails();
+        });
+    }
+
     function getList(curPage) {
         $scope.entityList = [];
         $scope.total_count = 0;
-        var userId = $scope.userId = $cookieStore.get('UserID');
+        var userId = $scope.userId;
         if (curPage == null) curPage = 1;
         var startRecordNo = ($scope.PerPage * (curPage - 1)) + 1;
         if (startRecordNo<0) {
@@ -72,7 +86,7 @@
     };
 
     function getUserDetails() {
-        var userId = $scope.userId = $cookieStore.get('UserID');
+        var userId = $scope.userId;
         var where = "Id=" + userId;
         $http({
             url: "/User/GetDynamic?where=" + where,
@@ -131,7 +145,7 @@
     $scope.getExport = function (entityListPaged) {
         $scope.fromDate = document.getElementById("fromDate").value;
         $scope.toDate = document.getElementById("toDate").value;
-        $scope.userId = $cookieStore.get('UserID');
+        //$scope.userId = $scope.userId;
         $scope.fromDate = document.getElementById("fromDate").value;
         $scope.toDate = document.getElementById("toDate").value;
         $scope.DistrbutorId = $scope.entity.DistrbutorId;

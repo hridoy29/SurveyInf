@@ -154,8 +154,25 @@
             <div class="portlet-title sbold">
                 <div class="caption">Asset Info List</div>
             </div>
+           
             <div class="portlet-body">
-                <div class="tbl-outer">
+                <div style="display: flex; gap: 10px; justify-content: center;flex-wrap:wrap">
+                    <div>
+                        <input type="text" ng-model="search.AssetNumber" class="form-control" placeholder="AssetNumber" />
+                    </div>
+                    <div>
+                        <input type="text" ng-model="search.DistributorName" class="form-control" placeholder="DistributorName" />
+                    </div>
+                    <div>
+                        <input type="text" ng-model="search.DistributorId" class="form-control" placeholder="DistributorId" />
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-click="Search()">Search</button>
+                        <button type="button" class="btn btn-default box-shadow--8dp" style="min-width:90px !important; margin-bottom: 5px" ng-click="Clear()">Clear</button>
+                    </div>
+
+                </div>
+                <div class="tbl-outer" style="margin-top:10px">
                     <table class="responstable table-hover">
                         <tbody>
                             <tr class="t-head" style="font-size: 14px !important">

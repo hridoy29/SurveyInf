@@ -1,7 +1,20 @@
-﻿<div class="row">
+﻿<style>
+    @media screen and (max-width:992px){
+        .top-row{
+            margin:10px;
+        }
+        .table-bottom{
+            overflow-x:scroll;
+        }
+    }
+</style>
+
+
+
+<div class="row">
 
     <br />
-    <div class="row">
+    <div class="row top-row">
         <div class="col-md-4" style=" margin-top: 10px; ">
             <label for="fromDateReport">From Date:</label>
             <input type="date" class="form-control" id="fromDate" name="namefromDate" ng-model="entity.fromDate">
@@ -30,7 +43,7 @@
     </div>
     <br />
     <br />
-    <div class="col-md-12">
+    <div class="col-md-12 table-bottom">
         <div class="portlet-body">
             <div class="tbl-outer">
                 <table class="table table-bordered table-hover">

@@ -1,41 +1,89 @@
-﻿app.controller("AssetConfigCtrl", function ($scope, $http, blockUI) {
+﻿app.controller("AssetConfigCtrl", function ($scope, $http, blockUI, $cookieStore) {
     $scope.DefaultPerPage = 20;
     $scope.currentPage = 1;
     $scope.PerPage = $scope.DefaultPerPage;
     $scope.total_count = 0;
-    $scope.entityList = [];
     $scope.entityListPaged = [];
+    $scope.entityListPagedPaged = [];
     $scope.entryBlock = blockUI.instances.get('entryBlock');
     $scope.lsitBlock = blockUI.instances.get('lsitBlock');
+    $scope.UserData = $cookieStore.get('UserData');
     clear();
-    getList();
+    getUserid();
 
     function clear() {
         $scope.entity = { Id: 0, IsCancelled: true };
         $("#txtFocus").focus();
-
-        $scope.entityListPaged = [];
+        $scope.entityListPagedPaged = [];
        
     };
 
 
-    function getList() {
+    function getUserid() {
+       
+        $http({
+            url: "/User/GetUserId?email=" + $scope.UserData.Username + "&passcode=" + $scope.UserData.Password,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).success(function (data) {
+            $scope.userId = data[0].Id;
+            getList(0);
+        });
+    }
+
+    $scope.Search = function () {
+        $scope.entityListPaged = [];
+        $scope.where = "1=1";
+        if ($scope.search.DistributorId != undefined && $scope.search.DistributorId!="") {
+            $scope.where = $scope.where + " and DistributorId='" + $scope.search.DistributorId + "'";
+        }
+        if ($scope.search.DistributorName != undefined && $scope.search.DistributorName != "") {
+            $scope.where = $scope.where + " and DistributorName='" + $scope.search.DistributorName + "'";
+        }
+        if ($scope.search.AssetNumber != undefined && $scope.search.AssetNumber != "") {
+            $scope.where = $scope.where + " and AssetNumber='" + $scope.search.AssetNumber+"'";
+        }
+        getList(0);
+    }
+
+    $scope.Clear = function () {
+        $scope.search.DistributorId = "";
+        $scope.search.DistributorName = "";
+        $scope.search.AssetNumber = "";
+        $scope.where = "";
+        getList(0);
+    }
+    function getList(curPage) {
+        $scope.entityListPagedPaged = [];
+        $scope.total_count = 0;
+        var userId = $scope.userId;
+        if (curPage == null) curPage = 1;
+        var startRecordNo = ($scope.PerPage * (curPage - 1)) + 1;
+        if (startRecordNo < 0) {
+            startRecordNo = 1;
+        }
+        //$scope.fromDate = document.getElementById("fromDate").value;
+        //$scope.toDate = document.getElementById("toDate").value;
+        //$scope.DistrbutorId = $scope.entity.DistrbutorId;
+        //$scope.DistrbutorName = $scope.entity.DistrbutorName;
+        //$scope.SurveyorName = $scope.entity.SurveyorName;
+        var whereCondition = "";
+        if ($scope.where != undefined && $scope.where!="") {
+             whereCondition = $scope.where;
+        }
+
+     
+
         $scope.lsitBlock.start();
         $http({
-            url: "/AssetConfig/Get",
+            url: encodeURI("/AssetConfig/AssetConfigPaged?startRecordNo=" + startRecordNo + '&rowPerPage=' + $scope.PerPage + "&whereClause=" + whereCondition + '&id=' + userId + '&rows=' + 0),
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).success(function (data) {
 
-            if (data.length) {
-                $scope.lsitBlock.stop();
-
-                $scope.entityList = data;
-                $scope.total_count = data.length;
-
-                var begin = ($scope.PerPage * ($scope.currentPage - 1));
-                var end = begin + $scope.PerPage;
-                $scope.entityListPaged = $scope.entityList.slice(begin, end);
+            if (data.ListData.length) {
+                $scope.entityListPaged = data.ListData;
+                $scope.total_count = data.TotalRecord;
             }
             else {
                 $scope.lsitBlock.stop();
@@ -50,22 +98,22 @@
 
 
     $scope.GetPaged = function (curPage) {
-        $scope.currentPage = curPage;
-        $scope.PerPage = (angular.isUndefined($scope.PerPage) || $scope.PerPage == null) ? $scope.DefaultPerPage : $scope.PerPage;
-
         if ($scope.PerPage > 100) {
             $scope.PerPage = 100;
-            alertify.log('Maximum record  per page is 100', 'error', '5000');
+            $scope.currentPage = curPage;
+            getList($scope.currentPage);
+            toastr.error('Maximum record  per page is 100');
         }
         else if ($scope.PerPage < 1) {
             $scope.PerPage = 1;
-            alertify.log('Minimum record  per page is 1', 'error', '5000');
+            $scope.currentPage = curPage;
+            getList($scope.currentPage);
+            toastr.error('Maximum record  per page is 100');
         }
-
-        var begin = ($scope.PerPage * (curPage - 1));
-        var end = begin + $scope.PerPage;
-
-        $scope.entityListPaged = $scope.entityList.slice(begin, end);
+        else {
+            $scope.currentPage = curPage;
+            getList($scope.currentPage);
+        }
     }
 
     $scope.rowClick = function (obj) {
