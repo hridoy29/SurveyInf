@@ -1,13 +1,46 @@
 ﻿<style>
-    @media screen and (max-width:992px){
-        .top-row{
-            margin:10px;
+    @media screen and (max-width:992px) {
+        .top-row {
+            margin: 10px;
         }
-        .table-bottom{
-            overflow-x:scroll;
+
+        .table-bottom {
+            overflow-x: scroll;
         }
     }
+
+    swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    swiper-slide {
+        overflow: hidden;
+    }
 </style>
+
+<div id="SelectedImageModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style=" background-color: transparent; box-shadow: none; border: none;">
+            <div class="modal-header" style=" border-bottom: 0; color: white;">
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+            </div>
+            <div class="modal-body" style="overflow-x:auto">
+                <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+                                  zoom="true" navigation="true" pagination="true" pagination-clickable="true">
+                    <swiper-slide>
+                        <div class="swiper-zoom-container">
+                            <img src="{{SelectedImage}}" style="height:100%;width:100%"/>
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
@@ -35,9 +68,10 @@
             <label for="toDateReport">Surveyor Name:</label>
             <input type="text" class="form-control" placeholder="Search By Surveyor Name" ng-model="entity.SurveyorName">
         </div>
-        <div class="col-md-4" style=" margin-top: 35px; ">
+        <div class="col-md-4" style=" display:flex; margin-top: 35px; ">
             <label for="toDateReport"></label>
             <button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="search()">Search</button>
+            <button type="submit" class="btn  btn-primary box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="Refresh()">Refresh</button>
             <button type="submit" class="btn  btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
         </div>
     </div>
@@ -105,9 +139,9 @@
                             <td class="text-center"> {{item.VisitorName}} </td>
                             <td class="text-center"> {{item.VisitorId}} </td>
                             <!--<td class="text-center"> {{item.ShopImage}} </td>
-    <td class="text-center"> {{item.AssetImage}} </td>
-    <td class="text-center"> {{item.CoolerImage}} </td>
-    <td class="text-center"> {{item.SignImage}} </td>-->
+                            <td class="text-center"> {{item.AssetImage}} </td>
+                            <td class="text-center"> {{item.CoolerImage}} </td>
+                            <td class="text-center"> {{item.SignImage}} </td>-->
                             <td class="text-center"><button ng-show="item.ShopImage " type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.ShopImage)">Image</button></td>
                             <td class="text-center"><button type="submit" ng-show="item.AssetImage " class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.AssetImage)">Image</button></td>
                             <td class="text-center"><button type="submit" ng-show="item.CoolerImage " class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 10px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getImage(item.CoolerImage)">Image</button></td>
@@ -128,3 +162,4 @@
 
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>

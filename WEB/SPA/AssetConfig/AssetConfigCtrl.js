@@ -38,7 +38,7 @@
             $scope.where = $scope.where + " and DistributorId='" + $scope.search.DistributorId + "'";
         }
         if ($scope.search.DistributorName != undefined && $scope.search.DistributorName != "") {
-            $scope.where = $scope.where + " and DistributorName='" + $scope.search.DistributorName + "'";
+            $scope.where = $scope.where + " and DistributorName like'%" + $scope.search.DistributorName + "%'";
         }
         if ($scope.search.AssetNumber != undefined && $scope.search.AssetNumber != "") {
             $scope.where = $scope.where + " and AssetNumber='" + $scope.search.AssetNumber+"'";
@@ -69,7 +69,10 @@
         //$scope.SurveyorName = $scope.entity.SurveyorName;
         var whereCondition = "";
         if ($scope.where != undefined && $scope.where!="") {
-             whereCondition = $scope.where;
+            whereCondition = $scope.where;
+            if (whereCondition.includes('&')) {
+                whereCondition = whereCondition.replace('&', 'and22');
+            }
         }
 
      
@@ -248,6 +251,6 @@
         });
     };
 
-
+  
 
 })

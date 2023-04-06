@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gallery View</title>
+</head>
+<body style="background-color:black">
+    <div style="display:flex;justify-content:center;align-items:center">
+        <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+                          zoom="true" navigation="true" pagination="true" pagination-clickable="true">
+            <swiper-slide>
+                <div class="swiper-zoom-container">
+                    <img src="" id="imgTag" style=" min-width: 30%;" />
+                </div>
+            </swiper-slide>
+        </swiper-container>
+    </div>
+    
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+<script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let value = params.img;
+    var a = document.getElementById("imgTag");
+    a.src = "http://api.infinigentconsulting.com" + value;
+    console.log(value)
+</script>
+<style>
+    swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    swiper-slide {
+        overflow: hidden;
+    }
+</style>

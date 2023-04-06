@@ -49,7 +49,7 @@
         var whereCondition = '1=1 ';
         //var params = JSON.stringify({ userId: 1 });
         if ($scope.fromDate != '' && $scope.fromDate != undefined && $scope.toDate != '' && $scope.toDate != undefined) {
-            whereCondition += "and l.ModificationDate between '" + $scope.fromDate + "' and '" + $scope.toDate + "'";
+            whereCondition += "and convert(date,l.ModificationDate) between convert(Date,'" + $scope.fromDate + "') and convert(Date,'" + $scope.toDate + "')";
         }
         if ($scope.DistrbutorId != '' && $scope.DistrbutorId != undefined) {
             /*and DistributorId = +''' + $scope.DistrbutorId+'';*/
@@ -101,9 +101,11 @@
         });
     };
     $scope.getImage = function (number) {
+        //$scope.SelectedImage = 'http://api.infinigentconsulting.com' + number;
+        //$("#SelectedImageModal").modal('show');
 
-       // window.open('http://inf.sundarbanautomation.com' + number);
-        window.open('http://api.infinigentconsulting.com' + number);
+        window.open('http://web.infinigentconsulting.com/Gallery/Index?img=' + number);
+        //window.open('http://localhost:59700/Gallery/Index?img=' + number);
     }
     $scope.search = function () {
         //$scope.fromDate = document.getElementById("fromDate").value;
@@ -155,7 +157,7 @@
         var whereCondition = '';
         //var params = JSON.stringify({ userId: 1 });
         if ($scope.fromDate != '' && $scope.fromDate != undefined && $scope.toDate != '' && $scope.toDate != undefined) {
-            whereCondition += "and l.ModificationDate between '" + $scope.fromDate + "' and '" + $scope.toDate + "'";
+            whereCondition += "and convert(date,l.ModificationDate) between convert(Date,'" + $scope.fromDate + "') and convert(Date,'" + $scope.toDate + "')";
         }
         if ($scope.DistrbutorId != '' && $scope.DistrbutorId != undefined) {
             /*and DistributorId = +''' + $scope.DistrbutorId+'';*/
@@ -204,5 +206,13 @@
             $scope.currentPage = curPage;
             getList($scope.currentPage);
         }
+    }
+    $scope.Refresh = function () {
+        document.getElementById("fromDate").value = "";
+        document.getElementById("toDate").value = "";
+        $scope.entity.DistrbutorId="";
+        $scope.entity.DistrbutorName = "";
+        $scope.entity.SurveyorName = "";
+        getList(0);
     }
 })

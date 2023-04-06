@@ -29,6 +29,10 @@ namespace WEB.Controllers
         {
             try
             {
+                if (whereClause.Contains("and22"))
+                {
+                    whereClause = whereClause.Replace("and22", "&");
+                }
                 var customMODEntity = new
                 {
                     ListData = Facade.LU_Asset_ConfigDAO.GetPaged(startRecordNo, rowPerPage, whereClause, "CreationDate", "DESC", id, ref rows),
