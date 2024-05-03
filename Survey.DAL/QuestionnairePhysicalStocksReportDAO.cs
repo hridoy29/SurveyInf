@@ -94,6 +94,30 @@ namespace SurveyDAL
                 throw ex;
             }
         }
+
+        public List<Asset_configReports> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, int id, ref int rows)
+        {
+            try
+            {
+                List<Asset_configReports> Asset_configReportlst = new List<Asset_configReports>();
+                Parameters[] colparameters = new Parameters[6]{
+                new Parameters("@StartRecordNo", startRecordNo, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@RowPerPage", rowPerPage, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@WhereClause", whereClause, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortColumn", sortColumn, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortOrder", sortOrder, DbType.String, ParameterDirection.Input),
+                new Parameters("@UserId", id, DbType.Int32, ParameterDirection.Input),
+                };
+                Asset_configReportlst = dbExecutor.FetchDataRef<Asset_configReports>(CommandType.StoredProcedure, "rpt_LU_AssetConfig_GetPaged", colparameters, ref rows);
+
+                return Asset_configReportlst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime? toDate)
         {
             try
