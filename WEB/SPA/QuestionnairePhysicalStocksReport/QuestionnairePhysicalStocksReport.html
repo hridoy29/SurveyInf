@@ -10,10 +10,17 @@
     </div>
     <div class="col-md-4" style=" margin-top: 10px; ">
         <label for="toDateReport">Distrbutor Name: </label>
-        <div class="form-group"ng-class="{'has-error':frm.Distributor.$touched && frm.Distributor.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+        <!--<div class="form-group" ng-class="{'has-error':frm.Distributor.$touched && frm.Distributor.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
             <select class="form-control" id="distributoName" name="Distributor" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id" ng-change="distributorId= cmbDistributor.Id" required>
-                <option value="" selected>{{DistributorName}}</option>
+                <option value="" selected>DistributorName</option>
             </select>
+        </div>-->
+        <div class="form-group">
+            <div class="input-group distributorinputGroup">
+                <select class="form-control" id="distributoName" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id">
+                    <option value=""> --Select DistributorName--</option>
+                </select>
+            </div>
         </div>
     </div>
     <!--<div class="col-md-4" style=" margin-top: 10px; ">
@@ -182,5 +189,8 @@
         startView: "months",
         minViewMode: "months"
     });
-    $('#distributoName').select2();
+    $(document).ready(function () {
+        $('#distributoName').select2();
+    });
+    
 </script>

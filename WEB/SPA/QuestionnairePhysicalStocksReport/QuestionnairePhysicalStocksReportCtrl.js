@@ -76,14 +76,20 @@
             alertify.log('Please Select ToDate !', 'error', '10000');
             valid = false;
         }
-        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+        if ($scope.cmbDistributor.Id == 0 || $scope.cmbDistributor.Id == null || $scope.cmbDistributor.Id == undefined) {
             $scope.distributorId = null;
             
         }
-        else if ($scope.DistrbutorName == 0 || $scope.DistrbutorName == null || $scope.DistrbutorName == undefined) {
+        else {
+            $scope.distributorId = $scope.cmbDistributor.Id;
+        }
+        if ($scope.cmbDistributor.Name == 0 || $scope.cmbDistributor.Name == null || $scope.cmbDistributor.Name == undefined) {
             $scope.DistrbutorName = null;
         }
-        else if ($scope.SurveyorName == 0 || $scope.SurveyorName == null || $scope.SurveyorName == undefined) {
+        else {
+            $scope.DistrbutorName = $scope.cmbDistributor.Name;
+        }
+        if ($scope.SurveyorName == 0 || $scope.SurveyorName == null || $scope.SurveyorName == undefined) {
             $scope.SurveyorName = null;
         }
         if(valid) {
@@ -177,23 +183,36 @@
      
         $scope.toDate = document.getElementById("toDate").value; 
         $scope.userId = $cookieStore.get('UserID');
-        var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
-        if ($scope.toDate == undefined || $scope.toDate == null) {
+        var valid = true;
+        var params = JSON.stringify({ fromDate: $scope.fromDate, todate: $scope.toDate, distributorId: $scope.distributorId, distributorName: $scope.distributorName, surveyorName: $scope.SurveyorName });
+        if ($scope.fromDate == undefined || $scope.fromDate == null || $scope.fromDate == "") {
 
-            alertify.log('Please Select Valid Date !', 'error', '10000');
+            alertify.log('Please Select FromDate !', 'error', '10000');
+            valid = false;
 
         }
-        else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
+        if ($scope.toDate == undefined || $scope.toDate == null || $scope.toDate == "") {
 
-            alertify.log('Please Select Distributor!', 'error', '10000');
+            alertify.log('Please Select ToDate !', 'error', '10000');
+            valid = false;
         }
-        else {
+        if ($scope.cmbDistributor.Id == 0 || $scope.cmbDistributor.Id == null || $scope.cmbDistributor.Id == undefined) {
+            $scope.distributorId = $scope.cmbDistributor.Id;
+
+        }
+        if ($scope.cmbDistributor.Name == 0 || $scope.cmbDistributor.Name == null || $scope.cmbDistributor.Name == undefined) {
+            $scope.DistrbutorName = $scope.cmbDistributor.Name;
+        }
+        if ($scope.SurveyorName == 0 || $scope.SurveyorName == null || $scope.SurveyorName == undefined) {
+            $scope.SurveyorName = null;
+        }
+        if (valid) {
             //var params = JSON.stringify({ userId: 1 });
 
             $http({
                 url: '/QuestionnairePhysicalStocksReport/getExport',
                 method: "POST",
-                data: params, //this is your json data string
+                data: { fromDate: $scope.fromDate, todate: $scope.toDate, distributorId: $scope.distributorId, distributorName: $scope.distributorName, surveyorName: $scope.SurveyorName }, //this is your json data string
                 headers: {
                     'Content-type': 'application/json'
                 },
@@ -278,6 +297,20 @@
     $scope.rowClick = function (obj) {
         $scope.entity = obj;
         $('#txtFocus').focus();
+    };
+
+    $scope.Refresh = function () {
+        $scope.entityList = [];
+
+        $scope.total_count = 0;
+        $scope.entityListPaged = [];
+        $scope.cmbDistributor = {};
+        $scope.SurveyorName = null;
+        $scope.toDate = null;
+        $scope.fromDate = null;
+        clear();
+        $scope.frm.$setUntouched();
+        $scope.frm.$setPristine();
     };
 
     $scope.resetForm = function () {

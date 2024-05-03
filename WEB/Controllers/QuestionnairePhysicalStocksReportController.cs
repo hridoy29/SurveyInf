@@ -53,9 +53,23 @@ namespace WEB.Controllers
         {
 
             List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_Get = new List<ExpandableQuestionnairePhysicalStocksReport>();
+            List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_List = new List<ExpandableQuestionnairePhysicalStocksReport>();
             tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(fromDate, toDate, distributorId, distributorName, surveyorName);
+
+            foreach (var item in tRN_SurveyReports_Get)
+            {
+                ExpandableQuestionnairePhysicalStocksReport physicalStocksReport = new ExpandableQuestionnairePhysicalStocksReport();
+                physicalStocksReport = item;
+                QuestionnairePhysicalStocksReport questionnairePhysicalStocksReport = item.ItemGroupWisePhysicalStockList.LastOrDefault();
+                physicalStocksReport.SystemStockSum = questionnairePhysicalStocksReport.SystemStock;
+                physicalStocksReport.BBDDamageSum = questionnairePhysicalStocksReport.BBDDamage;
+                physicalStocksReport.PhysicalStockSum = questionnairePhysicalStocksReport.PhysicalStock;
+                physicalStocksReport.DifferenceSum = questionnairePhysicalStocksReport.Difference;
+                tRN_SurveyReports_List.Add(physicalStocksReport);
+            }
+
             var gv = new GridView();
-            gv.DataSource = tRN_SurveyReports_Get;
+            gv.DataSource = tRN_SurveyReports_List;
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
