@@ -64,20 +64,33 @@
         $scope.lsitBlock.start();
         $scope.toDate = document.getElementById("toDate").value;
         var params = JSON.stringify({ todate: $scope.toDate, distributorId: $scope.distributorId });
-        if ($scope.toDate == undefined || $scope.toDate == null) {
+        var valid = true;
+        if ($scope.fromDate == undefined || $scope.fromDate == null || $scope.fromDate == "") {
 
-            alertify.log('Please Select Valid Date !', 'error', '10000');
+            alertify.log('Please Select FromDate !', 'error', '10000');
+            valid = false;
 
+        }
+        if ($scope.toDate == undefined || $scope.toDate == null || $scope.toDate =="") {
+
+            alertify.log('Please Select ToDate !', 'error', '10000');
+            valid = false;
         }
         else if ($scope.distributorId == 0 || $scope.distributorId == null || $scope.distributorId == undefined) {
-
-            alertify.log('Please Select Distributor!', 'error', '10000');
+            $scope.distributorId = null;
+            
         }
-        else {
+        else if ($scope.DistrbutorName == 0 || $scope.DistrbutorName == null || $scope.DistrbutorName == undefined) {
+            $scope.DistrbutorName = null;
+        }
+        else if ($scope.SurveyorName == 0 || $scope.SurveyorName == null || $scope.SurveyorName == undefined) {
+            $scope.SurveyorName = null;
+        }
+        if(valid) {
             $http({
                 url: "/QuestionnairePhysicalStocksReport/Get",
                 method: 'Get',
-                params: { todate: $scope.toDate, distributorId: $scope.distributorId },
+                params: { fromDate: $scope.fromDate, todate: $scope.toDate, distributorId: $scope.distributorId, distributorName: $scope.distributorName, surveyorName: $scope.SurveyorName},
                 headers: { 'Content-Type': 'application/json' }
 
             }).success(function (data) {

@@ -137,43 +137,56 @@
     }
 
     $scope.post = function (trnType) {
-        var where = "Name = '" + $scope.entity.Name + "'";
-        if ($scope.entity.Id > 0)
-            where += " AND Id <> " + $scope.entity.Id;
+        if (trnType == "delete") {
+            submitRequest(trnType);
+        }
+       
+        else {
+            var where = "Name = '" + $scope.entity.Name + "'";
+            if ($scope.entity.ItemCode > 0)
+                where += " or ItemCode = " + $scope.entity.ItemCode;
 
-        $http({
-            url: '/Item/GetDynamic?where=' + where + '&orderBy=Name',
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }).success(function (data) {
-            if (data.length > 0) {
-                alertify.log($scope.entity.Name + ' already exists!', 'already', '5000');
-                $('#txtFocus').focus();
-            } else {
-                if (trnType === 'save') {
-                    trnType = $scope.entity.Id === 0 ? "INSERT" : "UPDATE";
-                    submitRequest(trnType);
+            $http({
+                url: '/Item/GetDynamic?where=' + where + '&orderBy=Name',
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data) {
+                if (data.length > 0) {
+                    if (data[0].ItemCode == $scope.entity.ItemCode) {
+                        alertify.log($scope.entity.ItemCode + ' already exists!', 'already', '5000');
+                    }
+                    else if (data[0].Name == $scope.entity.Name) {
+                        alertify.log($scope.entity.Name + ' already exists!', 'already', '5000');
+                    }
+
+                    $('#txtFocus').focus();
+                } else {
+                    if (trnType === 'save') {
+                        trnType = $scope.entity.Id === 0 ? "INSERT" : "UPDATE";
+                        submitRequest(trnType);
+                    }
+
+                    else {
+                        trnType = "DELETE";
+
+                        alertify.set({
+                            labels: {
+                                ok: "Yes",
+                                cancel: "No"
+                            },
+                            buttonReverse: true
+                        });
+
+                        alertify.confirm('Are you sure to delete?', function (e) {
+                            if (e) {
+                                submitRequest(trnType);
+                            }
+                        });
+                    }
                 }
-
-                else {
-                    trnType = "DELETE";
-
-                    alertify.set({
-                        labels: {
-                            ok: "Yes",
-                            cancel: "No"
-                        },
-                        buttonReverse: true
-                    });
-
-                    alertify.confirm('Are you sure to delete?', function (e) {
-                        if (e) {
-                            submitRequest(trnType);
-                        }
-                    });
-                }
-            }
-        });
+            });
+        }
+        
     };
 
 

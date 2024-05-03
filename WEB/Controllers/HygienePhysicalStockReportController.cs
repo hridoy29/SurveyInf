@@ -49,11 +49,11 @@ namespace WEB.Controllers
         }
        
  
-        public void getExport(DateTime todate,int distributorId)
+        public void getExport(DateTime fromDate, DateTime toDate, int? distributorId = null, string distributorName = null, string surveyorName = null)
         {
 
             List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_Get = new List<ExpandableQuestionnairePhysicalStocksReport>();
-            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate,distributorId);
+            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(fromDate, toDate, distributorId, distributorName, surveyorName);
             var gv = new GridView();
             gv.DataSource = tRN_SurveyReports_Get;
             gv.DataBind();
