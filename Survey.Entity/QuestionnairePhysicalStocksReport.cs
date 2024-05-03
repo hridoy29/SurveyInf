@@ -36,5 +36,6 @@ namespace Survey.Entity
         public decimal PhysicalStockSum { get; set; }
         public decimal BBDDamageSum { get; set; }
         public decimal DifferenceSum { get; set; }
+        public string Issue { get; set; }
     }
 }

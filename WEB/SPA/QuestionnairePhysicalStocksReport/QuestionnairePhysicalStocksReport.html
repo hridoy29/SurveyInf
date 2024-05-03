@@ -59,7 +59,7 @@
                                 <th class="sbold text-center">Total Physical Stock</th>
                                 <th class="sbold text-center">Total BBD & Damage</th>
                                 <th class="sbold text-center">Total Difference</th>
-
+                                <th class="sbold text-center">Issue</th>
                             </tr>
                         </thead>
                         <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
@@ -79,6 +79,7 @@
                                 <td class="text-center"> {{item.PhysicalStockSum}} </td>
                                 <td class="text-center"> {{item.BBDDamageSum}} </td>
                                 <td class="text-center"> {{item.DifferenceSum}} </td>
+                                <td class="text-center"> {{item.Issue}} </td>
 
                             </tr>
 

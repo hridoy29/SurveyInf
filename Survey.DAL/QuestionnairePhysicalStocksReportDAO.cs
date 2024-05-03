@@ -84,6 +84,7 @@ namespace SurveyDAL
                     expandable.BBDDamageSum = item[0].BBDDamageSum;
                     expandable.DifferenceSum = item[0].DifferenceSum;
                     expandable.ItemGroupWisePhysicalStockList = item;
+                    expandable.Issue = item.LastOrDefault().Issue;
                     QuestionnaireDetailsReport_getLst.Add(expandable);
                 }
                 return QuestionnaireDetailsReport_getLst;
