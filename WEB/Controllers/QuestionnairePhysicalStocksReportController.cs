@@ -20,11 +20,11 @@ namespace WEB.Controllers
 {
     public class QuestionnairePhysicalStocksReportController : Controller
     {
-        public JsonResult Get(DateTime todate, int distributorId)
+        public JsonResult Get(DateTime fromDate, DateTime toDate, int? distributorId = null, string distributorName = null, string surveyorName = null)
         {
             try
             {
-                var list = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate, distributorId);
+                var list = Facade.QuestionnairePhysicalStocksReportDAO.Get(fromDate, toDate, distributorId, distributorName, surveyorName);
                 string contentType = "application/json";
                 return Json(list, contentType, Encoding.UTF8, JsonRequestBehavior.AllowGet);
             }
@@ -49,13 +49,27 @@ namespace WEB.Controllers
         }
        
  
-        public void getExport(DateTime todate,int distributorId)
+        public void getExport(DateTime fromDate, DateTime toDate, int? distributorId = null, string distributorName = null, string surveyorName = null)
         {
 
             List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_Get = new List<ExpandableQuestionnairePhysicalStocksReport>();
-            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(todate,distributorId);
+            List<ExpandableQuestionnairePhysicalStocksReport> tRN_SurveyReports_List = new List<ExpandableQuestionnairePhysicalStocksReport>();
+            tRN_SurveyReports_Get = Facade.QuestionnairePhysicalStocksReportDAO.Get(fromDate, toDate, distributorId, distributorName, surveyorName);
+
+            foreach (var item in tRN_SurveyReports_Get)
+            {
+                ExpandableQuestionnairePhysicalStocksReport physicalStocksReport = new ExpandableQuestionnairePhysicalStocksReport();
+                physicalStocksReport = item;
+                QuestionnairePhysicalStocksReport questionnairePhysicalStocksReport = item.ItemGroupWisePhysicalStockList.LastOrDefault();
+                physicalStocksReport.SystemStockSum = questionnairePhysicalStocksReport.SystemStock;
+                physicalStocksReport.BBDDamageSum = questionnairePhysicalStocksReport.BBDDamage;
+                physicalStocksReport.PhysicalStockSum = questionnairePhysicalStocksReport.PhysicalStock;
+                physicalStocksReport.DifferenceSum = questionnairePhysicalStocksReport.Difference;
+                tRN_SurveyReports_List.Add(physicalStocksReport);
+            }
+
             var gv = new GridView();
-            gv.DataSource = tRN_SurveyReports_Get;
+            gv.DataSource = tRN_SurveyReports_List;
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;

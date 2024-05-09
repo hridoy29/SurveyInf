@@ -21,7 +21,7 @@
                                 <span class="help-block" ng-if="frm.ItemCode.$error.maxlength">15 Character Max</span>
                             </div>
                             <div class="form-group" style="padding: 5px 15px !important" ng-class="{'has-error':frm.Name.$touched && frm.Name.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Item Name">
-                                <input type="text" class="form-control" id="txtFocus" placeholder="Item Code" name="ItemCode" ng-model="entity.Name" maxlength="101" ng-maxlength="100" required autofocus />
+                                <input type="text" class="form-control" id="txtFocus" placeholder="Item Name" name="ItemCode" ng-model="entity.Name" maxlength="101" ng-maxlength="100" required autofocus />
                                 <span class="help-block" style="display: block;" ng-if="frm.Name.$error.required && frm.Name.$touched">Item Name is required!</span>
                                 <span class="help-block" ng-if="frm.Name.$error.maxlength">100 Character Max</span>
                             </div>

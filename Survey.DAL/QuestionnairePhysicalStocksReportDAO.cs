@@ -54,17 +54,20 @@ namespace SurveyDAL
             dbExecutor = new DBExecutor();
         }
 
-        public List<ExpandableQuestionnairePhysicalStocksReport> Get(DateTime toDate,int distributorId)
+        public List<ExpandableQuestionnairePhysicalStocksReport> Get(DateTime fromDate, DateTime toDate,int? distributorId=null,string distributorName=null, string surveyorName = null)
         {
             try
             {
                 List<ExpandableQuestionnairePhysicalStocksReport> QuestionnaireDetailsReport_getLst = new List<ExpandableQuestionnairePhysicalStocksReport>();
                 List<QuestionnairePhysicalStocksReport> QuestionnairePhysicalStocksReport_getLst = new List<QuestionnairePhysicalStocksReport>();
-                Parameters[] colparameters = new Parameters[2]{
-                new Parameters("@paramDate", toDate, DbType.Date, ParameterDirection.Input),
-                new Parameters("@distributorId", distributorId, DbType.Int32, ParameterDirection.Input)
+                Parameters[] colparameters = new Parameters[5]{
+                new Parameters("@paramFromDate", fromDate, DbType.Date, ParameterDirection.Input),
+                new Parameters("@paramToDate", toDate, DbType.Date, ParameterDirection.Input),
+                new Parameters("@distributorId", distributorId, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@distributorName", distributorName, DbType.String, ParameterDirection.Input),
+                new Parameters("@surveyorName", surveyorName, DbType.String, ParameterDirection.Input)
                 };
-                QuestionnairePhysicalStocksReport_getLst = dbExecutor.FetchData<QuestionnairePhysicalStocksReport>(CommandType.StoredProcedure, "wsp_QuestionnairePhysicalStockReport_Get", colparameters);
+                QuestionnairePhysicalStocksReport_getLst = dbExecutor.FetchData<QuestionnairePhysicalStocksReport>(CommandType.StoredProcedure, "wsp_QuestionnairePhysicalStockReport_Get_NewVers", colparameters);
 
                 List < List < QuestionnairePhysicalStocksReport >> _List = new List<List<QuestionnairePhysicalStocksReport>>();
                 _List  = QuestionnairePhysicalStocksReport_getLst
@@ -84,6 +87,7 @@ namespace SurveyDAL
                     expandable.BBDDamageSum = item[0].BBDDamageSum;
                     expandable.DifferenceSum = item[0].DifferenceSum;
                     expandable.ItemGroupWisePhysicalStockList = item;
+                    expandable.Issue = item.LastOrDefault().Issue;
                     QuestionnaireDetailsReport_getLst.Add(expandable);
                 }
                 return QuestionnaireDetailsReport_getLst;
@@ -93,6 +97,30 @@ namespace SurveyDAL
                 throw ex;
             }
         }
+
+        public List<Asset_configReports> GetPaged(int startRecordNo, int rowPerPage, string whereClause, string sortColumn, string sortOrder, int id, ref int rows)
+        {
+            try
+            {
+                List<Asset_configReports> Asset_configReportlst = new List<Asset_configReports>();
+                Parameters[] colparameters = new Parameters[6]{
+                new Parameters("@StartRecordNo", startRecordNo, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@RowPerPage", rowPerPage, DbType.Int32, ParameterDirection.Input),
+                new Parameters("@WhereClause", whereClause, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortColumn", sortColumn, DbType.String, ParameterDirection.Input),
+                new Parameters("@SortOrder", sortOrder, DbType.String, ParameterDirection.Input),
+                new Parameters("@UserId", id, DbType.Int32, ParameterDirection.Input),
+                };
+                Asset_configReportlst = dbExecutor.FetchDataRef<Asset_configReports>(CommandType.StoredProcedure, "rpt_LU_AssetConfig_GetPaged", colparameters, ref rows);
+
+                return Asset_configReportlst;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<QuestionnaireDetailsReport> GetListByUserExport( DateTime? toDate)
         {
             try

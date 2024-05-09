@@ -1,9 +1,46 @@
 ﻿
-
-</p>
+<div class="row top-row">
+    <div class="col-md-4" style=" margin-top: 10px; ">
+        <label for="fromDateReport">From Date:</label>
+        <input type="date" class="form-control" id="fromDate" name="namefromDate" ng-model="fromDate">
+    </div>
+    <div class="col-md-4" style=" margin-top: 10px; ">
+        <label for="toDateReport">To Date:</label>
+        <input type="date" id="toDate" class="form-control" name="toDate" ng-model="toDate">
+    </div>
+    <div class="col-md-4" style=" margin-top: 10px; ">
+        <label for="toDateReport">Distrbutor Name: </label>
+        <!--<div class="form-group" ng-class="{'has-error':frm.Distributor.$touched && frm.Distributor.$invalid}" data-toggle="tooltip" data-placement="bottom" title="Distributor">
+            <select class="form-control" id="distributoName" name="Distributor" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id" ng-change="distributorId= cmbDistributor.Id" required>
+                <option value="" selected>DistributorName</option>
+            </select>
+        </div>-->
+        <div class="form-group">
+            <div class="input-group distributorinputGroup">
+                <select class="form-control" id="distributoName" ng-model="cmbDistributor" ng-options=" distributor.Name for  distributor in distributorList track by  distributor.Id">
+                    <option value=""> --Select DistributorName--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-md-4" style=" margin-top: 10px; ">
+        <label for="toDateReport">Distrbutor Name:</label>
+        <input type="text" class="form-control" placeholder="Search By Distrbutor Name" ng-model="DistrbutorName">
+    </div>-->
+    <div class="col-md-4" style=" margin-top: 10px; margin-bottom:10px" >
+        <label for="toDateReport">Surveyor Name:</label>
+        <input type="text" class="form-control" placeholder="Search By Surveyor Name" ng-model="SurveyorName">
+    </div>
+    <div class="col-md-4" style=" display:flex; margin-top: 35px; ">
+        <label for="toDateReport"></label>
+        <button type="submit" class="btn  btn-success box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
+        <button type="submit" class="btn  btn-primary box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="Refresh()">Refresh</button>
+        <button type="submit" class="btn  btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
+    </div>
+</div>
 <div class="row">
 
-    <div class="col-md-2">
+    <!--<div class="col-md-2">
         <label for="toDateReport">Select Month</label>
 
     </div>
@@ -24,15 +61,14 @@
                 <option value="" selected>{{DistributorName}}</option>
             </select>
         </div>
-    </div>
-    <div class="col-md-3">
+    </div>-->
+    <!--<div class="col-md-3">
         <div class="">
             <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
             <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getExport(entityListPaged)">Export</button>
 
         </div>
-    </div>
-    </p>
+    </div>-->
     <div class="col-md-12">
         <div class="portlet box purple">
             <div class="portlet-title sbold">
@@ -59,7 +95,7 @@
                                 <th class="sbold text-center">Total Physical Stock</th>
                                 <th class="sbold text-center">Total BBD & Damage</th>
                                 <th class="sbold text-center">Total Difference</th>
-
+                                <th class="sbold text-center">Issue</th>
                             </tr>
                         </thead>
                         <tbody dir-paginate="item in entityListPaged | filter:q | itemsPerPage: DefaultPerPage" current-page="currentPage" total-items="total_count" pagination-id="cust">
@@ -79,6 +115,7 @@
                                 <td class="text-center"> {{item.PhysicalStockSum}} </td>
                                 <td class="text-center"> {{item.BBDDamageSum}} </td>
                                 <td class="text-center"> {{item.DifferenceSum}} </td>
+                                <td class="text-center"> {{item.Issue}} </td>
 
                             </tr>
 
@@ -134,21 +171,26 @@
 
         </div>
     </div>
-    <script>
-        $('#questionnairePhysicalStock').datepicker({
-            format: 'MM/yyyy',
-            icons: {
-                time: 'fa fa-time',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-screenshot',
-                clear: 'fa fa-trash',
-                close: 'fa fa-remove'
-            },
-            startView: "months",
-            minViewMode: "months"
-        });
-    </script>
+</div>
+<script>
+    $('#questionnairePhysicalStock').datepicker({
+        format: 'MM/yyyy',
+        icons: {
+            time: 'fa fa-time',
+            date: 'fa fa-calendar',
+            up: 'fa fa-chevron-up',
+            down: 'fa fa-chevron-down',
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-screenshot',
+            clear: 'fa fa-trash',
+            close: 'fa fa-remove'
+        },
+        startView: "months",
+        minViewMode: "months"
+    });
+    $(document).ready(function () {
+        $('#distributoName').select2();
+    });
+    
+</script>
