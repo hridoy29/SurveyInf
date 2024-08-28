@@ -1,0 +1,316 @@
+﻿
+<div class="row">
+
+    <div class="col-md-2>
+        <label for="toDateReport">Select Month</label>
+    </div>
+    <div class="col-md-3">
+
+        <div class='input-group date datepicker' id='questionnairePhysicalStock'>
+            <input type='text' name="tgl" class="form-control" id="toDate" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+        <div class="">
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="getList()">Search</button>
+            <button type="submit" class="btn btn-lg btn-warning box-shadow--8dp" style="min-width:90px !important; margin-right: 30px; margin-bottom: 5px" ng-disabled="frm.$invalid" ng-click="Export2Word('exportContent',  entityListPaged[0].DistributorName)">Export</button>
+            <img src="../../img/StoreRoom.png">
+        </div>
+    </div>
+    <div class="col-md-12" id="exportContent">
+        <div class="portlet-title sbold">
+            <div class="caption" ng-show="entityListPaged.length">
+                <div style="text-align: center; font-family: Arial;"><span style="font-size: 21px; font-weight: bold;">Executive Summary</span></div><span class="fontstyle0"></span>
+                <div style="font-family: Arial" ;>
+                    <span style="font-weight: bold; font-size: 18.5px">Introduction</span>
+                    <p style="text-align: justify;">
+                        Stock verification of the distribution center is an independent check on the way of stockkeeping in an organization. It reflects
+                        management’s focus on proper stock management. An audit refers to a thorough check of the entire system so that it facilitates the prevention and early detection of fraud
+                    </p>
+                    <p style="text-align: justify;">
+                        Stock verification of the distribution centers is of great interest and importance to two sets
+                        of people in an organization they are the financial controller and the planning manager.
+                        While the financial controller is concerned about the accuracy of the stock value, the
+                        planning manager is concerned about the accuracy of the stock quantity
+                    </p>
+                    <p style="text-align: justify;">
+                        The simple reason for audit and physical verification of the stock is that it acts as a
+                        safeguard against the occurrence of both, Internal and External Fraud. The other reasons
+                        are:
+                    </p>
+                    <ul>
+                        <li>To find out whether there is enough and a suitable environment for the preservation of the stock</li>
+                        <li>To find out whether the stocks are safeguarded against theft or misuse by any person at any time.</li>
+                        <li>To find out whether the stocks can get degraded.</li>
+                    </ul>
+                    <p style="text-align: justify;">
+                        Stock verification of distribution involves physically counting all of your stock and
+                        matching this up to stock records to discover any discrepancies. The frequency of stock
+                        take varies between businesses, with some preferring once or twice a year, while others
+                        prefer quarterly or monthly counts in a retail business. Discrepancies between manual
+                        stock count and electronic records allow us to pick up on a range of issues. This leads to
+                        putting the right processes in place.
+                    </p>
+                    <span style="font-weight: bold; font-size: 19px">Objective</span>
+                    <p style="text-align: justify;">
+                        ‘infinigent’ team is assigned to perform the physical verification of stocks and hygiene
+                        checks of the distributors. For hygiene checks, CCBBL has prescribed a particular format
+                        and required commandments for the construction of the warehouse. By following the
+                        instruction from CCBBL, ‘infinigent’ team performs the stock verification. The scope of
+                        this audit (for the month of November 2023) includes 18 distributors located in Dhaka
+                        metro, Near metro & Up-country.
+                    </p>
+                    <br />
+                    <span style="font-weight: bold; font-size: 16px">Objectives are:</span>
+                    <ol type="a">
+                        <li>To verify the accuracy of stock records.</li>
+                        <li>To check the update status of IDAS with the physical counting.</li>
+                        <li>To review the documentation hygiene</li>
+                        <li>To review the process of stock control.</li>
+                        <li>To review the environment of stock-keeping.</li>
+                        <li>To review the commandments prescribed by CCBBL.</li>
+                    </ol>
+                    <span style="font-weight: bold; font-size: 19px">Methodology</span>
+                    <p style="text-align: justify;">
+                        ‘infinigent’ team visited the distribution point located in Dhaka metro, Near metro & UpCountry as per the list provided by CCBBL.
+                    </p>
+                    <span style="font-weight: bold; font-size: 16px">The following method was used in the collection of data.</span>
+                    <ol type="a">
+                        <li>Physical visit to the distribution centers.</li>
+                        <li>Physical counting of stocks.</li>
+                        <li>Oral interview based on the questionnaire.</li>
+                        <li>Physical checking of supporting documents.</li>
+                        <li>Physical checking of supporting documents.</li>
+                        <li>Try to ensure data input of the stock variances, in IDAS.</li>
+                    </ol>
+                    <span style="font-weight: bold; font-size: 19px">Summary of Findings</span><br /><br />
+                    <span style="font-weight: bold; font-size: 16px">Discrepancies in Stock Verification:</span>
+                    <ol type="1">
+                        <li>
+                            The Difference between orders from retailers and supplies from distributors
+                            contributes to the discrepancy. ({{entityList.monthlyObservationReports_Get_Distributor_Count[0].distributor_selection}}). This is an important observation.
+                            The route cause for the same should be analyzed. It must be further drilled down
+                            if such a mismatch is happening because of the dearth of stocks.
+                        </li>
+                        <li>
+                            Differences arise due to the selling of products without the input of order in the
+                            system. ({{entityList.monthlyObservationReports_Get_Distributor_Count[3].distributor_selection}}). This is being reported continuously. Needs urgent action.
+                        </li>
+                        <li>
+                            Pending deliveries are reasons for differences in physical versus book stocks. ({{entityList.monthlyObservationReports_Get_Distributor_Count[1].distributor_selection}})
+                        </li>
+                        <li>Return from the market has not been adjusted in IDAS. ({{entityList.monthlyObservationReports_Get_Distributor_Count[4].distributor_selection}})</li>
+                        <li>
+                            As per instruction from CCBBL, the differences between the physical and book
+                            stocks was adjusted as shortage in leackage & breakage of the inventory section.
+                            The distritutor-wise adjusted volume is as below:
+                        </li>
+                        <div>
+                            <style>
+                                #dynamicTable {
+                                    border-collapse: collapse;
+                                    width: 80%;
+                                    margin: 20px auto;
+                                }
+
+                                    #dynamicTable th, #dynamicTable td {
+                                        border: 1px solid black;
+                                        width: 150px;
+                                        height: 10px;
+                                        text-align: center;
+                                        vertical-align: middle;
+                                        padding: 8px;
+                                    }
+                            </style>
+                            <table border="1" align="center" id="dynamicTable">
+                                <thead>
+                                    <tr>
+                                        <th>DB Code</th>
+                                        <th>DB Name</th>
+                                        <th>Adjusted (Cs)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <li>
+                            10 out of {{entityList.monthlyObservationReports_Get_Distributor_Count[0].total_distributors}} distributors have major variations in physical versus book stock.
+                            They are:
+
+                        </li>
+                        <ol type="a">
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[0].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[1].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[2].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[3].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[4].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[5].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[6].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[7].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[8].DistributorInfo}}</li>
+                            <li>{{entityList.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation[9].DistributorInfo}}</li>
+                        </ol>
+                    </ol>
+                    <p style="text-align: justify;">
+                        We suggest a separate meeting/discussion with this set of distributors to make them
+                        understand the importance of correct stock keeping. The same set should be verified
+                        after a gap of three months and improvements should be monitored.
+                    </p>
+                    <span style="font-weight: bold; font-size: 19px">IDAS Hygiene</span>
+                    <ol type="1">
+                        <li>Invoices were not preserved by the distributors. (15 out of 18)</li>
+                        <li>
+                            Distributors who could not reason out the difference between physical stock and
+                            IDAS stock. (17 out of 18).
+                        </li>
+                    </ol>
+                    <span style="font-weight: bold; font-size: 19px">Commandments Prescribed by CCBBL</span>
+                    <p>No. of distributors Verified: {{entityList.monthlyObservationReports_Get_Distributor_CCBBL_Observations[0].total_distributor_count}}</p>
+                    <ol type="1" id="observationList"></ol>
+                    <span style="font-weight: bold; font-size: 19px">Recommendation</span>
+                    <ol type="a" style="text-align: justify;">
+                        <li> Products returned from the market should be recorded in IDAS</li>
+                        <li>
+                            The root cause of the difference between orders from retailers and supply to
+                            distributors should be analyzed. It may lead to an important conclusion like stockouts, mismanagement by distributors etc.
+                        </li>
+                        <li>
+                            The manual ordering process should be avoided and the focus on input in the IDAS
+                            system needs enhancement. Individual cases should be taken up with the
+                            concerned salesperson & need to figure out the reason for such manual inputs.
+                        </li>
+                        <li>
+                            Returned products are not being updated in IDAS. This is the due to understanding
+                            deficit of IDAS. Therefore, training should be conducted for distributor staff, who
+                            may face problems in operating IDAS.
+                        </li>
+                        <li>
+                            Products unadjusted for more than a year should be immediately adjusted by
+                            CCBBL.
+                        </li>
+                        <li>
+                            Different aspects of warehouse management, like the use of pallets, pest control,
+                            and keeping distance from the wall are something which is not improving. We are
+                            not sure of the training process and we feel rigorous training on all aspects of
+                            warehouse management should be conducted.
+                        </li>
+                        <li>
+                            A lucrative incentive scheme should be introduced to motivate the distributors to
+                            focus on hygiene issues by following the commandments prescribed by CCBBL.
+                        </li>
+                    </ol>
+                    <div style="font-weight: bold; font-size: 30px; text-align: center">
+                        <p>Distributor Wise Detailed Report</p>
+                        <p>(Month:)</p>
+                    </div>
+                    <img src="../../img/StoreRoom.png">
+                    <div>
+                        <ol type="1">
+                            <li ng-repeat="distributor in distributorList">
+                                <p style="font-weight: bold; font-size: 19px">{{distributor.Name}}</p>
+                                <p>
+                                    Address: {{distributor.Address}}<br>
+                                    Contact Person's Name: {{distributor.ContactPersonName}}<br>
+                                    DB Code: {{distributor.DbCode}}<br>
+                                    Contact Number: {{distributor.Mobile}}<br><br>
+
+                                    <span style="font-weight: bold; font-size: 16px"><u>Observation of physical verification:</u></span>
+                                    <div ng-repeat="distributorGroupList in distributor.monthlyObservationReports_Get_Distributor_StockDetails">
+                                        <ol type="a">
+                                            <li>{{distributorGroupList[0].IssueText}}</li>
+                                        </ol>
+                                        <table border="1">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sbold text-center">Sl No.</th>
+                                                    <th class="sbold text-center">SKU</th>
+                                                    <th class="sbold text-center">Physical Stock</th>
+                                                    <th class="sbold text-center">System Stock</th>
+                                                    <th class="sbold text-center">BBD & Damage</th>
+                                                    <th class="sbold text-center">Difference</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="text-align:center">
+                                                <tr ng-repeat="distributorDetails in distributorGroupList">
+                                                    <td class="text-center">{{$index + 1}}</td>
+                                                    <td class="text-center">{{distributorDetails.Name}}</td>
+                                                    <td class="text-center">{{distributorDetails.PhysicalStock}}</td>
+                                                    <td class="text-center">{{distributorDetails.SystemStock}}</td>
+                                                    <td class="text-center">{{distributorDetails.BBDDamage}}</td>
+                                                    <td class="text-center">{{distributorDetails.Difference}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <span style="font-weight: bold; font-size: 16px"><u>Observation of IDAS documents hygiene:</u></span><br />
+                                    <span style="font-weight: bold; font-size: 16px"><u>Observation of commandments prescribed by CCBBL:</u></span><br />
+
+                                    <div ng-repeat="distributorCCBBL in distributor.monthlyObservationReports_Get_Distributor_CCBBL_Statuses.Status_list">
+                                        <ul>
+                                            <li>{{distributorCCBBL.Name}}</li>
+                                        </ul>
+                                    </div>
+
+                                    <span style="font-weight: bold; font-size: 16px"><u>Improvements</u></span><br />
+
+                                    <div ng-repeat="distributorCCBBL in distributor.monthlyObservationReports_Get_Distributor_CCBBL_Statuses.Improvment">
+                                        <ul>
+                                            <li>{{distributorCCBBL.Name}}</li>
+                                        </ul>
+                                    </div>
+                                    <span style="font-weight: bold; font-size: 16px"><u>Observation continuing from the last visit:</u></span><br />
+
+                                    <div ng-repeat="distributorCCBBL in distributor.monthlyObservationReports_Get_Distributor_CCBBL_Statuses.Continuing">
+                                        <ul>
+                                            <li style="color:red">{{distributorCCBBL.Name}}</li>
+                                        </ul>
+                                    </div>
+
+                                </p>
+
+                            </li>
+                        </ol>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#questionnairePhysicalStock').datepicker({
+            format: 'MM/yyyy',
+            icons: {
+                time: 'fa fa-time',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            },
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>
+    <script>
+        const tableBody = document.querySelector('#dynamicTable tbody');
+
+        for (let i = 1; i <= 10; i++) {
+            const row = document.createElement('tr');
+            for (let j = 1; j <= 3; j++) {
+                const cell = document.createElement('td');
+                row.appendChild(cell);
+            }
+            tableBody.appendChild(row);
+        }
+    </script>
+

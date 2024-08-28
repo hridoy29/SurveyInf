@@ -408,6 +408,10 @@ app.config(function ($routeProvider, blockUIConfig) {
 			//    }
 			//}
 		})
+		.when('/MonthlyObservationReports', {
+			templateUrl: '/SPA/MonthlyObservationReports/MonthlyObservationReports.html',
+			controller: 'MonthlyObservationReportsCtrl',
+		})
         .when('/', {
             templateUrl: '/SPA/Home/Home.html',
             controller: 'HomeController',

@@ -142,6 +142,7 @@
     <Compile Include="Controllers\AssetInfoController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\MDOController.cs" />
+    <Compile Include="Controllers\MonthlyObservationReportsController.cs" />
     <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\ShortNoteController.cs" />
     <Compile Include="Controllers\CoolerController.cs" />
@@ -328,6 +329,8 @@
     <Content Include="SPA\AssetConfig\AssetConfigCtrl.js" />
     <Content Include="SPA\MDO\MDO.html" />
     <Content Include="SPA\MDO\MDOCtrl.js" />
+    <Content Include="SPA\MonthlyObservationReports\MonthlyObservationReports.html" />
+    <Content Include="SPA\MonthlyObservationReports\MonthlyObservationReportsCtrl.js" />
     <Content Include="SPA\Outlet\Outlet.html" />
     <Content Include="SPA\Outlet\OutletCtrl.js" />
     <Content Include="SPA\ShortNote\ShortNote.html" />
@@ -411,6 +414,7 @@
     <Folder Include="Views\AssetConfig\" />
     <Folder Include="Views\AssetInfo\" />
     <Folder Include="Views\CommentType\" />
+    <Folder Include="Views\MonthlyObservationReports\" />
     <Folder Include="Views\Outlet\" />
     <Folder Include="Views\UserGroup\" />
     <Folder Include="Views\User\" />
