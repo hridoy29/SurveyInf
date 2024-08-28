@@ -41,5 +41,6 @@ namespace SurveyDAL
         public static LU_AssetInfoDAO LU_AssetInfoDAO { get { return new LU_AssetInfoDAO(); } }
         public static LU_Asset_ConfigDAO LU_Asset_ConfigDAO { get { return new LU_Asset_ConfigDAO(); } }
         public static AssetConfigReportDAO AssetConfigReportDAO { get { return new AssetConfigReportDAO(); } }
+        public static MonthlyObservationReportsDAO MonthlyObservationReportsDAO  { get { return new MonthlyObservationReportsDAO(); } }
     }
 }

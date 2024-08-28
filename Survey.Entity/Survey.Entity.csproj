@@ -95,6 +95,9 @@
     <Compile Include="LU_ItemGroup.cs" />
     <Compile Include="LU_UserGroup.cs" />
     <Compile Include="LU_UserLoginIds.cs" />
+    <Compile Include="MonthlyObservationReports.cs" />
+    <Compile Include="MonthlyObservationReports_Get_distributorInfo_for_Stock_variation.cs" />
+    <Compile Include="MonthlyObservationReports_Get_distributor_count.cs" />
     <Compile Include="QuestionnaireObservationReport.cs" />
     <Compile Include="HygeinePhysicalStocksReport.cs" />
     <Compile Include="QuestionnairePhysicalStocksReport.cs" />
