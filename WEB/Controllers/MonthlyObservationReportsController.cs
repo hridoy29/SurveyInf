@@ -20,11 +20,13 @@ namespace WEB.Controllers
                 monthlyObservationReports.monthlyObservationReports_Get_Distributor_Count = Facade.MonthlyObservationReportsDAO.Get_Distributor_count(toDate);
                 monthlyObservationReports.monthlyObservationReports_Get_DistributorInfo_For_Stock_Variation= Facade.MonthlyObservationReportsDAO.Get_Distributor_Info_for_Stock_variation(toDate);
                 monthlyObservationReports.monthlyObservationReports_Get_Distributor_CCBBL_Observations = Facade.MonthlyObservationReportsDAO.Get_Distributor_CCBBL_Observation(toDate);
+                monthlyObservationReports.monthlyObservationReports_Get_Distributor_IDAS_Hygiene = Facade.MonthlyObservationReportsDAO.Get_Distributor_IDAS_Hygiene(toDate);
                 monthlyObservationReports.monthlyObservationReports_Get_Distributor_Infos = Facade.MonthlyObservationReportsDAO.Get_Distributor_Info(toDate);
                 foreach (var distributor in monthlyObservationReports.monthlyObservationReports_Get_Distributor_Infos)
                 {
                     distributor.monthlyObservationReports_Get_Distributor_StockDetails = Facade.MonthlyObservationReportsDAO.Get_Distributor_StockDetails(toDate, distributor.Id);
                     distributor.monthlyObservationReports_Get_Distributor_CCBBL_Statuses = Facade.MonthlyObservationReportsDAO.Get_Distributor_CCBBL_Status(toDate, distributor.Id);
+                    distributor.monthlyObservationReports_Get_Distributor_IDAS_Hygiene_Status = Facade.MonthlyObservationReportsDAO.Get_Distributor_IDAS_Hygiene_Status(toDate, distributor.Id);
                 }           
 
                 //var list = Facade.MonthlyObservationReportsDAO.Get_Distributor_count(toDate);

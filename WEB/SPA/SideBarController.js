@@ -42,6 +42,7 @@
     $scope.questionnairePhysicalStocksReportPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Physical Stocks Reports'").FirstOrDefault();
     $scope.questionnaireObservationReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Questionnaire Observation Reports'").FirstOrDefault();
     $scope.hygienePhysicalStocksReportPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Hygiene Physical Stock Report'").FirstOrDefault();
+    $scope.monthlyObservationReportsPermission = Enumerable.From($scope.permissionList).Where("$.ScreenName === 'Monthly Observation Reports'").FirstOrDefault();
 
     if (!$scope.userPermission.CanView && !$scope.userGroupPermission.CanView && !$scope.permissionPermission.CanView && !$scope.changePassPermission.CanView && !$scope.departmentPermission.CanView ) {
         $scope.securityMenuView = false;
@@ -55,7 +56,7 @@
         $scope.setupMenuView = false;
     }
 
-    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView && !$scope.questionnaireObservationReports.CanView && !$scope.hygienePhysicalStocksReportPermission.CanView && !$scope.AssetConfigReportsPermission.CanView) {
+    if (!$scope.surveyReportsPermission.CanView && !$scope.questionnaireReportsPermission.CanView && !$scope.questionnaireDetailsReportsPermission.CanView && !$scope.questionnairePhysicalStocksReportPermission.CanView && !$scope.questionnaireObservationReports.CanView && !$scope.hygienePhysicalStocksReportPermission.CanView && !$scope.AssetConfigReportsPermission.CanView && !$scope.monthlyObservationReportsPermission.CanView) {
         $scope.reportMenuView = false;
     }
 
@@ -121,6 +122,7 @@
         $scope.isHygienePhysicalStocksReport = false;
         $scope.isQuestionnaireObservationReports = false;
         $scope.isSetupOutLet = false;
+        $scope.isMonthlyObservationReports = false;
     };
 
     $scope.setActiveMenu = function (menu) {
@@ -260,6 +262,10 @@
         else if (menu === 'hygienePhysicalStocksReport') {
             $scope.isReports = true;
             $scope.isHygienePhysicalStocksReport = true;
+        }
+        else if (menu === 'monthlyObservationReports') {
+            $scope.isReports = true;
+            $scope.isMonthlyObservationReports = true;
         }
     };
 });

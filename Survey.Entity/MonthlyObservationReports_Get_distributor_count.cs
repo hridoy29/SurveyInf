@@ -43,9 +43,7 @@ namespace Survey.Entity
 
         public List<List<MonthlyObservationReports_Get_distributor_StockDetails>> monthlyObservationReports_Get_Distributor_StockDetails { get; set; }
         public MonthlyObservationReports_Get_distributor_CCBBL_Status_2 monthlyObservationReports_Get_Distributor_CCBBL_Statuses { get; set; }
-
-
-
+        public List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status> monthlyObservationReports_Get_Distributor_IDAS_Hygiene_Status { get; set; }
 }
 
     public class MonthlyObservationReports_Get_distributor_StockDetails
@@ -76,4 +74,20 @@ namespace Survey.Entity
         public List<MonthlyObservationReports_Get_distributor_CCBBL_Status> Improvment { get; set; } = new List<MonthlyObservationReports_Get_distributor_CCBBL_Status>();
         public List<MonthlyObservationReports_Get_distributor_CCBBL_Status> Continuing { get; set; } = new List<MonthlyObservationReports_Get_distributor_CCBBL_Status>();
     }
+
+    public class MonthlyObservationReports_Get_distributor_IDAS_Hygiene
+    {
+        public int Distributor_count_Invoice { get; set; }
+        public string distributor_selection_Invoice { get; set; }
+        public int Distributor_count_No_explanation { get; set; }
+        public string distributor_selection_No_explanation { get; set; }
+    }
+
+    public class MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status
+    {
+        public string MemoStorageStatus { get; set; }
+    }
+
+
+
 }

@@ -184,5 +184,44 @@ namespace Survey.DAL
 				throw ex;
 			}
 		}
+
+		public List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene> Get_Distributor_IDAS_Hygiene(DateTime toDate)
+		{
+			try
+			{
+				List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene> distributorIntoList = new List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene>();
+				Parameters[] colparameters = new Parameters[1]{
+				new Parameters("@reportdate", toDate, DbType.Date, ParameterDirection.Input)
+
+				};
+				distributorIntoList = dbExecutor.FetchData<MonthlyObservationReports_Get_distributor_IDAS_Hygiene>(CommandType.StoredProcedure, "wsp_QuestionnaireMonthlyObservationReport_Get_Distributor_IDAS_Hygiene_Observation", colparameters);
+				return distributorIntoList;
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		public List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status> Get_Distributor_IDAS_Hygiene_Status(DateTime toDate, int distributorId)
+		{
+			try
+			{
+				List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status> distributorIntoList = new List<MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status>();
+				Parameters[] colparameters = new Parameters[2]{
+			new Parameters("@reportdate", toDate, DbType.Date, ParameterDirection.Input),
+			new Parameters("@DistributorId", distributorId, DbType.Int32, ParameterDirection.Input)
+		};
+
+				distributorIntoList = dbExecutor.FetchData<MonthlyObservationReports_Get_distributor_IDAS_Hygiene_Status>(CommandType.StoredProcedure, "wsp_QuestionnaireMonthlyObservationReport_Get_Distributor_IDAS_Status", colparameters);
+
+
+				return distributorIntoList;
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
 	}
 }
