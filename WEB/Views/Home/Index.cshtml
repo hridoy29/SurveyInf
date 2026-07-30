@@ -464,6 +464,13 @@
                                     <span class="title">Stocks Verification Reports</span>
                                 </a>
                             </li>
+                            @*monthlyObservationReports*@
+                            <li class="nav-item " ng-click="setActiveMenu('monthlyObservationReports')" ng-class="{selectedsubmenu: isMonthlyObservationReports, unselectedsubmenu: !isMonthlyObservationReports}" ng-show="monthlyObservationReportsPermission.CanView">
+                                <a href="#/MonthlyObservationReports" class="nav-link">
+                                    <i class="icon-star"></i>
+                                    <span class="title">Monthly Observation Report</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     </ul>
